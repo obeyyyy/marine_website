@@ -30,7 +30,7 @@ export default function Navbar() {
             <Link href="/" className="text-xl font-bold text-gray-900">
               <Image 
                 src="/logo.svg" 
-                alt="Company Logo" 
+                alt="Logo" 
                 width={120} 
                 height={40} 
                 className="h-10 w-auto"
