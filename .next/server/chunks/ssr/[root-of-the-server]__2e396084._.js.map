@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 3, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"","debugId":null}},
+    {"offset": {"line": 15, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/oubay/OneDrive/Desktop/Marine_website/marine-site/src/app/trading/page.tsx"],"sourcesContent":["import React from 'react';\r\n\r\nexport default function TradingPage() {\r\n    return (\r\n        <div>\r\n            <h1>Trading Page</h1>\r\n        </div>\r\n    );\r\n}\r\n"],"names":[],"mappings":";;;;;;AAEe,SAAS;IACpB,qBACI,8OAAC;kBACG,cAAA,8OAAC;sBAAG;;;;;;;;;;;AAGhB","debugId":null}}]
+}
