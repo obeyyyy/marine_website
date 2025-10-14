@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import { motion, useAnimation, useInView } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import QuoteForm from '@/components/QuoteForm';
 
 // Animation variants
 const container = {
@@ -646,7 +647,7 @@ export default function ServicesPage() {
 
      {/* Compliance Section */}
      <motion.div 
-       className="w-full min-h-screen bg-white py-20 px-4 sm:px-6 lg:px-8"
+       className="w-full min-h-screen bg-[#EBEEFF] py-20 px-4 sm:px-6 lg:px-8"
        initial={{ opacity: 0, y: 30 }}
        whileInView={{ opacity: 1, y: 0 }}
        viewport={{ once: true, margin: "-100px" }}
@@ -711,46 +712,7 @@ export default function ServicesPage() {
          </div>
        </div>
      </motion.div>
-
-    {/* Next Section */}
-    <motion.div 
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8 }}
-      className="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20 overflow-hidden"
-      >
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] bg-center"></div>
-        </div>
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3, duration: 0.8 }}
-          className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
-        >
-          <motion.h2 
-            variants={fadeInUp}
-            className="text-3xl md:text-4xl font-bold mb-6"
-          >
-            Ready to Start Your Project?
-          </motion.h2>
-          <motion.p 
-            variants={fadeInUp}
-            className="text-xl mb-8 max-w-2xl mx-auto text-blue-100"
-          >
-            Contact us today for a free consultation and let's discuss how we can bring your marine project to life.
-          </motion.p>
-          <motion.button 
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-            className="bg-white text-blue-700 font-semibold py-3 px-8 rounded-lg shadow-lg"
-          >
-            Get a Free Quote
-          </motion.button>
-        </motion.div>
-      </motion.div>
+      <QuoteForm bgColor='bg-white' title='GET IN TOUCH WITH US TODAY'/>
       <Footer />
     </main>
   );

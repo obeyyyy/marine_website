@@ -5,10 +5,10 @@ import Image from 'next/image';
 import { FaLinkedin, FaTwitter, FaFacebook, FaInstagram } from 'react-icons/fa';
 
 export default function Footer() {
-  const navLinks = [
-    { name: 'About Us', href: '/about' },
-    { name: 'Services', href: '/services' },
-    { name: 'Projects', href: '/projects' },
+  const navLinks = [ 
+    { name: 'Services', href: '/services' ,subtitles: ['Marine Projects Engineering', 'E-commerce Solutions', 'Compliance & Documentation', 'Equipment Trading' , 'Service Brokerage' ]},
+    { name: 'Trading', href: '/trading' ,subtitles: ['Marine Equipments' , 'Spare Parts' , 'Industrial Supplies' , 'Machinery & Components' ]},
+    { name: 'Contact Us', href: '/contact' ,subtitles: ['Dubai | UK | China', 'Dummy1@vymarine.com', '+971 123456789']},
   ];
 
   const socialLinks = [
@@ -21,37 +21,46 @@ export default function Footer() {
   return (
     <footer className="bg-white border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Logo Section */}
-          <div className="flex items-center md:justify-start justify-center">
-            <Link href="/" className="flex items-center">
+          <div className="lg:col-span-3 flex justify-center lg:justify-start">
+            <Link href="/" className="flex">
               <Image
-                src="/logo.svg" // Update with your logo path
+                src="/logo.svg"
                 alt="Company Logo"
-                width={120}
-                height={40}
-                className="h-10 w-auto"
+                width={150}
+                height={50}
+                className="h-12 w-auto"
               />
             </Link>
           </div>
 
           {/* Navigation Links */}
-          <div className="flex justify-center">
-            <div className="grid grid-cols-3 gap-x-8 gap-y-4">
+          <div className="lg:col-span-6">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
               {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className="text-gray-600 hover:text-blue-600 transition-colors"
-                >
-                  {link.name}
-                </Link>
+                <div key={link.name} className="min-w-[200px]">
+                  <Link href={link.href}>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-4 hover:text-blue-600 transition-colors">
+                      {link.name}
+                    </h3>
+                  </Link>
+                  <ul className="space-y-2">
+                    {link.subtitles.map((subtitle, index) => (
+                      <li key={index} className="text-gray-600 hover:text-blue-600 transition-colors">
+                        <Link href={link.href} className="block py-1 text-sm">
+                          {subtitle}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               ))}
             </div>
           </div>
 
           {/* Social Media Links */}
-          <div className="flex items-center justify-center md:justify-end space-x-6">
+          <div className="lg:col-span-3 flex items-center justify-center lg:justify-end space-x-6">
             {socialLinks.map((social, index) => (
               <a
                 key={index}

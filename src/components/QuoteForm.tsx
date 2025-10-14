@@ -3,7 +3,12 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 
-export default function QuoteForm() {
+interface QuoteFormProps {
+  bgColor?: string;
+  title?: string;
+}
+
+export default function QuoteForm({ bgColor = '#3CADC482', title = 'NEED A QUOTE ON EQUIPMENT OR SPARES?' }: QuoteFormProps) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -26,10 +31,10 @@ export default function QuoteForm() {
   };
 
   return (
-    <div className="max-w-full mx-auto bg-[#3CADC482] rounded-lg overflow-hidden shadow-lg">
+    <div className={`max-w-full mx-auto ${bgColor.startsWith('#') ? `bg-[${bgColor}]` : bgColor} rounded-lg overflow-hidden shadow-lg`}>
       {/* Header */}
       <div className="mx-auto text-black py-12 text-center">
-        <h2 className="w-full text-4xl font-bold">NEED A QUOTE ON EQUIPMENT OR SPARES?</h2>
+        <h2 className="w-full text-4xl font-bold">{title}</h2>
         <div className="mx-auto w-200 relative flex py-5 items-center">
           <div className="flex-grow border-t border-4 border-purple-600"></div>
         </div> 
