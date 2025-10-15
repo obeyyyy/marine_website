@@ -19,6 +19,7 @@ var _s = __turbopack_context__.k.signature();
 function Navbar() {
     _s();
     const [scrolled, setScrolled] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [isOpen, setIsOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "Navbar.useEffect": ()=>{
             const handleScroll = {
@@ -37,126 +38,197 @@ function Navbar() {
     }["Navbar.useEffect"], [
         scrolled
     ]);
+    const toggleMenu = ()=>{
+        setIsOpen(!isOpen);
+    };
+    const navLinks = [
+        {
+            href: "/",
+            label: "Home"
+        },
+        {
+            href: "/services",
+            label: "Services"
+        },
+        {
+            href: "/about",
+            label: "About Us"
+        },
+        {
+            href: "/contact",
+            label: "Contact"
+        }
+    ];
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
-        className: "fixed w-full z-50 transition-all duration-300 ".concat(scrolled ? 'bg-white/80 backdrop-blur-md shadow-sm' : 'bg-transparent'),
-        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
-            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "flex items-center justify-between h-20",
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "flex-shrink-0 w-1/4",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                            href: "/",
-                            className: "block",
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                src: "/logo.svg",
-                                alt: "VY Marine Logo",
-                                width: 150,
-                                height: 50,
-                                className: "h-10 w-auto",
-                                priority: true
+        className: "fixed w-full z-50 transition-all duration-300 ".concat(scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm' : 'bg-transparent'),
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "flex items-center justify-between h-20",
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "flex-shrink-0",
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                href: "/",
+                                className: "block",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                    src: "/logo.svg",
+                                    alt: "VY Marine Logo",
+                                    width: 150,
+                                    height: 50,
+                                    className: "h-10 w-auto",
+                                    priority: true
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/Navbar.tsx",
+                                    lineNumber: 47,
+                                    columnNumber: 15
+                                }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/Navbar.tsx",
-                                lineNumber: 32,
-                                columnNumber: 15
+                                lineNumber: 46,
+                                columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/components/Navbar.tsx",
-                            lineNumber: 31,
-                            columnNumber: 13
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/src/components/Navbar.tsx",
-                        lineNumber: 30,
-                        columnNumber: 11
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "hidden md:flex items-center justify-center flex-1",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex items-center space-x-6 lg:space-x-8",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                    href: "/",
-                                    className: "text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors whitespace-nowrap",
-                                    children: "Home"
-                                }, void 0, false, {
-                                    fileName: "[project]/src/components/Navbar.tsx",
-                                    lineNumber: 46,
-                                    columnNumber: 15
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                    href: "/services",
-                                    className: "text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors whitespace-nowrap",
-                                    children: "Services"
-                                }, void 0, false, {
-                                    fileName: "[project]/src/components/Navbar.tsx",
-                                    lineNumber: 49,
-                                    columnNumber: 15
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                    href: "/trading",
-                                    className: "text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors whitespace-nowrap",
-                                    children: "Trading"
-                                }, void 0, false, {
-                                    fileName: "[project]/src/components/Navbar.tsx",
-                                    lineNumber: 52,
-                                    columnNumber: 15
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                    href: "/contact",
-                                    className: "text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors whitespace-nowrap",
-                                    children: "Contact"
-                                }, void 0, false, {
-                                    fileName: "[project]/src/components/Navbar.tsx",
-                                    lineNumber: 55,
-                                    columnNumber: 15
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/src/components/Navbar.tsx",
                             lineNumber: 45,
-                            columnNumber: 13
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/src/components/Navbar.tsx",
-                        lineNumber: 44,
-                        columnNumber: 11
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "flex-shrink-0 w-1/4 flex justify-end",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                            href: "/contact",
-                            className: "bg-blue-600 text-white px-5 py-2.5 rounded-md text-sm font-medium hover:bg-blue-700 transition-colors whitespace-nowrap",
-                            children: "Get a Quote"
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "hidden md:flex items-center justify-center flex-1",
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "flex items-center space-x-6 lg:space-x-8",
+                                children: navLinks.map((link)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                        href: link.href,
+                                        className: "text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors whitespace-nowrap",
+                                        children: link.label
+                                    }, link.href, false, {
+                                        fileName: "[project]/src/components/Navbar.tsx",
+                                        lineNumber: 62,
+                                        columnNumber: 17
+                                    }, this))
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/Navbar.tsx",
+                                lineNumber: 60,
+                                columnNumber: 13
+                            }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/components/Navbar.tsx",
-                            lineNumber: 63,
-                            columnNumber: 13
+                            lineNumber: 59,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "md:hidden flex items-center",
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                onClick: toggleMenu,
+                                className: "inline-flex items-center justify-center p-2 rounded-md text-gray-900 hover:text-blue-600 focus:outline-none",
+                                "aria-expanded": "false",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        className: "sr-only",
+                                        children: "Open main menu"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/Navbar.tsx",
+                                        lineNumber: 80,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                        className: "h-6 w-6 ".concat(isOpen ? 'hidden' : 'block'),
+                                        xmlns: "http://www.w3.org/2000/svg",
+                                        fill: "none",
+                                        viewBox: "0 0 24 24",
+                                        stroke: "currentColor",
+                                        "aria-hidden": "true",
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                            strokeLinecap: "round",
+                                            strokeLinejoin: "round",
+                                            strokeWidth: 2,
+                                            d: "M4 6h16M4 12h16M4 18h16"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/Navbar.tsx",
+                                            lineNumber: 90,
+                                            columnNumber: 17
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/Navbar.tsx",
+                                        lineNumber: 82,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                        className: "h-6 w-6 ".concat(isOpen ? 'block' : 'hidden'),
+                                        xmlns: "http://www.w3.org/2000/svg",
+                                        fill: "none",
+                                        viewBox: "0 0 24 24",
+                                        stroke: "currentColor",
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                            strokeLinecap: "round",
+                                            strokeLinejoin: "round",
+                                            strokeWidth: 2,
+                                            d: "M6 18L18 6M6 6l12 12"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/Navbar.tsx",
+                                            lineNumber: 105,
+                                            columnNumber: 17
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/Navbar.tsx",
+                                        lineNumber: 98,
+                                        columnNumber: 15
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/Navbar.tsx",
+                                lineNumber: 75,
+                                columnNumber: 13
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/Navbar.tsx",
+                            lineNumber: 74,
+                            columnNumber: 11
                         }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/src/components/Navbar.tsx",
-                        lineNumber: 62,
-                        columnNumber: 11
-                    }, this)
-                ]
-            }, void 0, true, {
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/src/components/Navbar.tsx",
+                    lineNumber: 43,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
                 fileName: "[project]/src/components/Navbar.tsx",
-                lineNumber: 28,
-                columnNumber: 9
+                lineNumber: 42,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "md:hidden transition-all duration-300 ease-in-out ".concat(isOpen ? 'max-h-96' : 'max-h-0 overflow-hidden'),
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-lg",
+                    children: navLinks.map((link)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                            href: link.href,
+                            className: "block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-100",
+                            onClick: ()=>setIsOpen(false),
+                            children: link.label
+                        }, link.href, false, {
+                            fileName: "[project]/src/components/Navbar.tsx",
+                            lineNumber: 125,
+                            columnNumber: 13
+                        }, this))
+                }, void 0, false, {
+                    fileName: "[project]/src/components/Navbar.tsx",
+                    lineNumber: 123,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/src/components/Navbar.tsx",
+                lineNumber: 118,
+                columnNumber: 7
             }, this)
-        }, void 0, false, {
-            fileName: "[project]/src/components/Navbar.tsx",
-            lineNumber: 27,
-            columnNumber: 7
-        }, this)
-    }, void 0, false, {
+        ]
+    }, void 0, true, {
         fileName: "[project]/src/components/Navbar.tsx",
-        lineNumber: 22,
+        lineNumber: 35,
         columnNumber: 5
     }, this);
 }
-_s(Navbar, "tQtW9FyKD+Ut/6k+f0BCbABprL4=");
+_s(Navbar, "Dzqi2xAUv+FtKVqhjxJJjE41njw=");
 _c = Navbar;
 var _c;
 __turbopack_context__.k.register(_c, "Navbar");
@@ -181,7 +253,7 @@ function Hero() {
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "container mx-auto px-6",
             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "flex flex-col md:flex-row items-center",
+                className: "flex flex-col md:flex-row sm:flex-col items-center",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "md:w-1/2 mb-10 md:mb-0",
@@ -584,590 +656,275 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 
 __turbopack_context__.s([
     "default",
-    ()=>Story
+    ()=>__TURBOPACK__default__export__
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$styled$2d$jsx$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/styled-jsx/style.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i("[project]/node_modules/gsap/index.js [app-client] (ecmascript) <locals>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$ScrollTrigger$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/gsap/ScrollTrigger.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$ScrollToPlugin$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/gsap/ScrollToPlugin.js [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
-'use client';
+"use client";
 ;
 ;
 ;
 ;
-// Register ScrollTrigger plugin
-__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["default"].registerPlugin(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$ScrollTrigger$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ScrollTrigger"]);
-const StoryCard = (param)=>{
-    let { year, title, description, isLast = false, isActive = false, index, icon } = param;
-    const cardVariants = [
+__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["gsap"].registerPlugin(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$ScrollTrigger$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ScrollTrigger"], __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$ScrollToPlugin$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ScrollToPlugin"]);
+const Story = ()=>{
+    _s();
+    const panelsContainerRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
+    const panelsSectionRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
+    const tweenRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
+    const storyTimeline = [
         {
-            from: 'rgb(37, 99, 235)',
-            to: 'rgb(29, 78, 216)',
-            accent: 'rgb(59, 130, 246)'
+            year: "Global Reach",
+            title: "Vendor Network",
+            description: "A worldwide network connecting partners across UAE, India, UK, and China, ensuring you access the best resources globally.",
+            icon: "🌍"
         },
         {
-            from: 'rgb(5, 150, 105)',
-            to: 'rgb(4, 120, 87)',
-            accent: 'rgb(16, 185, 129)'
+            year: "Quality",
+            title: "Certified Partnerships",
+            description: "Our partnerships with ISO-certified manufacturers guarantee that every product meets international standards of excellence.",
+            icon: "✅"
         },
         {
-            from: 'rgb(217, 119, 6)',
-            to: 'rgb(180, 83, 9)',
-            accent: 'rgb(245, 158, 11)'
+            year: "Transparency",
+            title: "Project Reporting",
+            description: "With transparent, milestone-based project tracking, you're always informed at every step of the journey.",
+            icon: "📊"
         },
         {
-            from: 'rgb(225, 29, 72)',
-            to: 'rgb(190, 18, 60)',
-            accent: 'rgb(244, 63, 94)'
+            year: "Sustainability",
+            title: "Responsible Sourcing",
+            description: "Our sourcing practices prioritize environmental stewardship and sustainability in every decision we make.",
+            icon: "🌱"
         },
         {
-            from: 'rgb(79, 70, 229)',
-            to: 'rgb(67, 56, 202)',
-            accent: 'rgb(99, 102, 241)'
+            year: "Efficiency",
+            title: "Rapid Response",
+            description: "We move fast — with a typical 72-hour lead time to shortlist qualified vendors for your unique needs.",
+            icon: "⚡"
         },
         {
-            from: 'rgb(13, 148, 136)',
-            to: 'rgb(15, 118, 110)',
-            accent: 'rgb(20, 184, 166)'
-        } // teal
+            year: "Reliability",
+            title: "On-time Delivery",
+            description: "With a 97% on-time delivery rate, we ensure your projects stay on schedule without compromise.",
+            icon: "⏱️"
+        }
     ];
-    const currentVariant = cardVariants[index % cardVariants.length];
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "relative flex-shrink-0 w-[300px] sm:w-[340px] md:w-[380px] lg:w-[420px] p-6 sm:p-7 md:p-8 rounded-2xl sm:rounded-3xl overflow-hidden transition-all duration-500 ease-out ".concat(isActive ? 'text-white shadow-2xl scale-100 opacity-100 translate-y-0' : 'bg-white/90 backdrop-blur-md text-gray-800 shadow-lg border border-gray-200/50 scale-[0.92] opacity-60 translate-y-3'),
-        style: {
-            minHeight: '380px',
-            display: 'flex',
-            flexDirection: 'column',
-            willChange: 'transform, opacity'
-        },
+    // Horizontal scroll setup
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useLayoutEffect"])({
+        "Story.useLayoutEffect": ()=>{
+            if (!panelsContainerRef.current || !panelsSectionRef.current) return;
+            const panels = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["gsap"].utils.toArray(".panel");
+            const container = panelsContainerRef.current;
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["gsap"].set(container, {
+                width: "".concat(panels.length * 100, "%")
+            });
+            tweenRef.current = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["gsap"].to(panels, {
+                x: {
+                    "Story.useLayoutEffect": ()=>-1 * (container.scrollWidth - window.innerWidth)
+                }["Story.useLayoutEffect"],
+                ease: "none",
+                scrollTrigger: {
+                    trigger: panelsSectionRef.current,
+                    pin: true,
+                    scrub: 1,
+                    start: "top top",
+                    end: {
+                        "Story.useLayoutEffect": ()=>"+=".concat(container.scrollWidth - window.innerWidth)
+                    }["Story.useLayoutEffect"],
+                    invalidateOnRefresh: true
+                }
+            });
+            // Animate panels as they come into view
+            panels.forEach({
+                "Story.useLayoutEffect": (panel, i)=>{
+                    __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["gsap"].fromTo(panel.querySelector(".panel-content"), {
+                        opacity: 0,
+                        x: i % 2 === 0 ? 100 : -100,
+                        scale: 0.95
+                    }, {
+                        opacity: 1,
+                        x: 0,
+                        scale: 1,
+                        duration: 0.2,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: panel,
+                            containerAnimation: tweenRef.current || undefined,
+                            start: "left center",
+                            end: "right center",
+                            toggleActions: "play reverse play reverse"
+                        }
+                    });
+                }
+            }["Story.useLayoutEffect"]);
+            return ({
+                "Story.useLayoutEffect": ()=>{
+                    var _tweenRef_current;
+                    (_tweenRef_current = tweenRef.current) === null || _tweenRef_current === void 0 ? void 0 : _tweenRef_current.kill();
+                    __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$ScrollTrigger$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ScrollTrigger"].getAll().forEach({
+                        "Story.useLayoutEffect": (trigger)=>trigger.kill()
+                    }["Story.useLayoutEffect"]);
+                }
+            })["Story.useLayoutEffect"];
+        }
+    }["Story.useLayoutEffect"], []);
+    const scrollToPanel = (index)=>{
+        const panel = document.getElementById("panel-".concat(index + 1));
+        panel === null || panel === void 0 ? void 0 : panel.scrollIntoView({
+            behavior: "smooth"
+        });
+    };
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
+        className: "relative min-h-screen overflow-hidden bg-gradient-to-b from-sky-50 via-blue-50 to-slate-100 text-slate-900",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "absolute inset-0 transition-opacity duration-500 ".concat(isActive ? 'opacity-100' : 'opacity-0'),
-                style: {
-                    background: "linear-gradient(135deg, ".concat(currentVariant.from, ", ").concat(currentVariant.to, ", ").concat(currentVariant.accent, ")"),
-                    backgroundSize: '300% 300%',
-                    animation: isActive ? 'gradientShift 6s ease infinite' : 'none'
-                }
-            }, void 0, false, {
-                fileName: "[project]/src/components/Story.tsx",
-                lineNumber: 61,
-                columnNumber: 7
-            }, ("TURBOPACK compile-time value", void 0)),
-            isActive && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "absolute inset-0 opacity-20",
-                style: {
-                    background: 'linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%)',
-                    backgroundSize: '200% 200%',
-                    animation: 'shimmer 3s ease-in-out infinite'
-                }
-            }, void 0, false, {
-                fileName: "[project]/src/components/Story.tsx",
-                lineNumber: 72,
-                columnNumber: 9
-            }, ("TURBOPACK compile-time value", void 0)),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "relative z-10 flex flex-col h-full",
+                className: "absolute top-0 left-0 w-full text-center py-16 bg-gradient-to-b from-white/70 to-transparent backdrop-blur-sm z-20",
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-bold tracking-wider mb-3 sm:mb-4 px-3 py-1 rounded-full w-fit transition-all duration-500 ".concat(isActive ? 'bg-white/20 text-white backdrop-blur-sm' : 'bg-blue-50 text-blue-600'),
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                className: "w-1.5 h-1.5 rounded-full ".concat(isActive ? 'bg-white' : 'bg-blue-600')
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/Story.tsx",
-                                lineNumber: 90,
-                                columnNumber: 11
-                            }, ("TURBOPACK compile-time value", void 0)),
-                            year
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/src/components/Story.tsx",
-                        lineNumber: 87,
-                        columnNumber: 9
-                    }, ("TURBOPACK compile-time value", void 0)),
-                    icon && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "p-2.5 sm:p-3 inline-flex rounded-xl sm:rounded-2xl mb-4 sm:mb-5 transition-all duration-500 ".concat(isActive ? 'bg-white/15 backdrop-blur-sm shadow-lg' : 'bg-blue-50/80', " w-12 h-12 sm:w-14 sm:h-14 items-center justify-center transform ").concat(isActive ? 'scale-110' : 'scale-100'),
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                            className: "text-2xl sm:text-3xl transition-all duration-500 ".concat(isActive ? 'text-white drop-shadow-lg' : 'text-blue-600'),
-                            children: icon
-                        }, void 0, false, {
-                            fileName: "[project]/src/components/Story.tsx",
-                            lineNumber: 99,
-                            columnNumber: 13
-                        }, ("TURBOPACK compile-time value", void 0))
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                        className: "text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-blue-700 to-sky-500 bg-clip-text text-transparent tracking-tight drop-shadow-sm",
+                        children: "Our Story"
                     }, void 0, false, {
                         fileName: "[project]/src/components/Story.tsx",
-                        lineNumber: 96,
-                        columnNumber: 11
-                    }, ("TURBOPACK compile-time value", void 0)),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                        className: "text-xl sm:text-2xl lg:text-3xl font-bold mb-3 sm:mb-4 leading-tight transition-all duration-500 ".concat(isActive ? 'text-white drop-shadow-md' : 'text-gray-900'),
-                        children: title
-                    }, void 0, false, {
-                        fileName: "[project]/src/components/Story.tsx",
-                        lineNumber: 106,
+                        lineNumber: 128,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        className: "text-sm sm:text-base mb-4 sm:mb-6 leading-relaxed transition-all duration-500 ".concat(isActive ? 'text-white/95' : 'text-gray-600'),
-                        children: description
+                        className: "mt-4 text-slate-600 text-lg sm:text-xl max-w-2xl mx-auto px-6",
+                        children: "A journey built on trust, innovation, and reliability — connecting the world through sustainable and transparent partnerships."
                     }, void 0, false, {
                         fileName: "[project]/src/components/Story.tsx",
-                        lineNumber: 113,
-                        columnNumber: 9
-                    }, ("TURBOPACK compile-time value", void 0)),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "mt-auto pt-4 transition-all duration-500 ".concat(isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2 pointer-events-none'),
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "flex items-center justify-between pt-3 sm:pt-4 border-t border-white/20",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                    className: "text-xs sm:text-sm font-semibold tracking-wide",
-                                    children: "LEARN MORE"
-                                }, void 0, false, {
-                                    fileName: "[project]/src/components/Story.tsx",
-                                    lineNumber: 124,
-                                    columnNumber: 13
-                                }, ("TURBOPACK compile-time value", void 0)),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "w-8 h-8 sm:w-9 sm:h-9 bg-white/95 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg transform transition-all hover:scale-110 hover:shadow-xl cursor-pointer group",
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                        className: "w-4 h-4 text-gray-800 transform transition-transform group-hover:translate-x-0.5",
-                                        fill: "none",
-                                        stroke: "currentColor",
-                                        viewBox: "0 0 24 24",
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                            strokeLinecap: "round",
-                                            strokeLinejoin: "round",
-                                            strokeWidth: 2.5,
-                                            d: "M9 5l7 7-7 7"
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/components/Story.tsx",
-                                            lineNumber: 127,
-                                            columnNumber: 17
-                                        }, ("TURBOPACK compile-time value", void 0))
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/Story.tsx",
-                                        lineNumber: 126,
-                                        columnNumber: 15
-                                    }, ("TURBOPACK compile-time value", void 0))
-                                }, void 0, false, {
-                                    fileName: "[project]/src/components/Story.tsx",
-                                    lineNumber: 125,
-                                    columnNumber: 13
-                                }, ("TURBOPACK compile-time value", void 0))
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/src/components/Story.tsx",
-                            lineNumber: 123,
-                            columnNumber: 11
-                        }, ("TURBOPACK compile-time value", void 0))
-                    }, void 0, false, {
-                        fileName: "[project]/src/components/Story.tsx",
-                        lineNumber: 120,
+                        lineNumber: 131,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/Story.tsx",
-                lineNumber: 83,
+                lineNumber: 127,
+                columnNumber: 7
+            }, ("TURBOPACK compile-time value", void 0)),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                ref: panelsSectionRef,
+                className: "relative h-screen w-full overflow-hidden",
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    ref: panelsContainerRef,
+                    className: "flex flex-nowrap w-full h-full overflow-hidden",
+                    children: storyTimeline.map((item, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            id: "panel-".concat(index + 1),
+                            className: "panel w-screen h-full flex items-center justify-center px-6 sm:px-10",
+                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "panel-content max-w-2xl w-11/12 text-center rounded-3xl border shadow-2xl backdrop-blur-xl p-10 transform transition-all duration-500 hover:-translate-y-3 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(0,0,0,0.15)] relative overflow-hidden\n                ".concat(index % 6 === 0 ? "bg-gradient-to-br from-sky-500 via-blue-500 to-indigo-600 text-white border-blue-400/50" : index % 6 === 1 ? "bg-gradient-to-br from-purple-500 via-fuchsia-500 to-pink-500 text-white border-fuchsia-400/50" : index % 6 === 2 ? "bg-gradient-to-br from-emerald-500 via-green-400 to-lime-500 text-white border-green-400/50" : index % 6 === 3 ? "bg-gradient-to-br from-orange-400 via-amber-500 to-yellow-400 text-white border-amber-400/50" : index % 6 === 4 ? "bg-gradient-to-br from-rose-500 via-pink-500 to-red-500 text-white border-rose-400/50" : "bg-gradient-to-br from-cyan-400 via-sky-400 to-blue-500 text-white border-cyan-300/50"),
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-0 hover:opacity-20 transition-opacity duration-700 animate-pulse"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/Story.tsx",
+                                        lineNumber: 165,
+                                        columnNumber: 15
+                                    }, ("TURBOPACK compile-time value", void 0)),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "inline-flex items-center gap-2 bg-white/20 px-5 py-2 rounded-full text-sm font-semibold mb-6 backdrop-blur-md border border-white/30",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "text-lg",
+                                                children: item.icon
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/Story.tsx",
+                                                lineNumber: 168,
+                                                columnNumber: 17
+                                            }, ("TURBOPACK compile-time value", void 0)),
+                                            item.year
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/Story.tsx",
+                                        lineNumber: 167,
+                                        columnNumber: 15
+                                    }, ("TURBOPACK compile-time value", void 0)),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                        className: "text-3xl sm:text-4xl font-extrabold mb-4 drop-shadow-md",
+                                        children: item.title
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/Story.tsx",
+                                        lineNumber: 172,
+                                        columnNumber: 15
+                                    }, ("TURBOPACK compile-time value", void 0)),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                        className: "text-base sm:text-lg leading-relaxed text-white/90 font-light",
+                                        children: item.description
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/Story.tsx",
+                                        lineNumber: 176,
+                                        columnNumber: 15
+                                    }, ("TURBOPACK compile-time value", void 0))
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/Story.tsx",
+                                lineNumber: 149,
+                                columnNumber: 13
+                            }, ("TURBOPACK compile-time value", void 0))
+                        }, index, false, {
+                            fileName: "[project]/src/components/Story.tsx",
+                            lineNumber: 144,
+                            columnNumber: 13
+                        }, ("TURBOPACK compile-time value", void 0)))
+                }, void 0, false, {
+                    fileName: "[project]/src/components/Story.tsx",
+                    lineNumber: 139,
+                    columnNumber: 9
+                }, ("TURBOPACK compile-time value", void 0))
+            }, void 0, false, {
+                fileName: "[project]/src/components/Story.tsx",
+                lineNumber: 138,
+                columnNumber: 7
+            }, ("TURBOPACK compile-time value", void 0)),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "fixed bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-50 bg-white/80 backdrop-blur-md px-5 py-3 rounded-full shadow-lg",
+                children: storyTimeline.map((item, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                        onClick: ()=>scrollToPanel(index),
+                        className: "relative group",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "w-3.5 h-3.5 bg-blue-300 rounded-full transition-all duration-300 group-hover:scale-125 group-hover:bg-blue-500"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/Story.tsx",
+                                lineNumber: 194,
+                                columnNumber: 13
+                            }, ("TURBOPACK compile-time value", void 0)),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                className: "absolute -top-9 left-1/2 -translate-x-1/2 text-xs text-slate-700 bg-white/90 px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap shadow",
+                                children: item.title
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/Story.tsx",
+                                lineNumber: 195,
+                                columnNumber: 13
+                            }, ("TURBOPACK compile-time value", void 0))
+                        ]
+                    }, index, true, {
+                        fileName: "[project]/src/components/Story.tsx",
+                        lineNumber: 189,
+                        columnNumber: 11
+                    }, ("TURBOPACK compile-time value", void 0)))
+            }, void 0, false, {
+                fileName: "[project]/src/components/Story.tsx",
+                lineNumber: 187,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/Story.tsx",
-        lineNumber: 47,
+        lineNumber: 125,
         columnNumber: 5
     }, ("TURBOPACK compile-time value", void 0));
 };
-_c = StoryCard;
-function Story() {
-    _s();
-    const containerRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
-    const scrollContainerRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
-    const [activeIndex, setActiveIndex] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(0);
-    const scrollTween = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
-    const [isMobile, setIsMobile] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    const storyTimeline = [
-        {
-            year: 'Global Reach',
-            title: 'Vendor Network',
-            description: 'Extensive network across UAE, India, UK, and China, connecting you with trusted partners worldwide.',
-            icon: '🌍'
-        },
-        {
-            year: 'Quality',
-            title: 'Certified Partnerships',
-            description: 'Exclusive partnerships with ISO-certified manufacturers ensuring the highest quality standards.',
-            icon: '✅'
-        },
-        {
-            year: 'Transparency',
-            title: 'Project Reporting',
-            description: 'Comprehensive, milestone-based project reporting keeping you informed at every step.',
-            icon: '📊'
-        },
-        {
-            year: 'Sustainability',
-            title: 'Responsible Sourcing',
-            description: 'Mindful sourcing practices that prioritize environmental responsibility and sustainability.',
-            icon: '🌱'
-        },
-        {
-            year: 'Efficiency',
-            title: 'Rapid Response',
-            description: '72-hour typical lead time to shortlist qualified vendors for your specific needs.',
-            icon: '⚡'
-        },
-        {
-            year: 'Reliability',
-            title: 'On-time Delivery',
-            description: '97% on-time delivery rate across all orders, ensuring your projects stay on schedule.',
-            icon: '⏱️'
-        }
-    ];
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "Story.useEffect": ()=>{
-            const checkMobile = {
-                "Story.useEffect.checkMobile": ()=>{
-                    setIsMobile(window.innerWidth < 768);
-                }
-            }["Story.useEffect.checkMobile"];
-            checkMobile();
-            window.addEventListener('resize', checkMobile);
-            return ({
-                "Story.useEffect": ()=>window.removeEventListener('resize', checkMobile)
-            })["Story.useEffect"];
-        }
-    }["Story.useEffect"], []);
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "Story.useEffect": ()=>{
-            if (!containerRef.current || !scrollContainerRef.current) return;
-            const container = containerRef.current;
-            const scrollContainer = scrollContainerRef.current;
-            // Kill any existing ScrollTrigger instances
-            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$ScrollTrigger$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ScrollTrigger"].getAll().forEach({
-                "Story.useEffect": (trigger)=>{
-                    var _trigger_vars;
-                    if (((_trigger_vars = trigger.vars) === null || _trigger_vars === void 0 ? void 0 : _trigger_vars.trigger) === container) {
-                        trigger.kill();
-                    }
-                }
-            }["Story.useEffect"]);
-            // Calculate dimensions with mobile optimization
-            const updateSizes = {
-                "Story.useEffect.updateSizes": ()=>{
-                    const cards = scrollContainer.querySelectorAll('.story-card');
-                    if (cards.length === 0) return null;
-                    const containerWidth = container.offsetWidth;
-                    const isMobileView = window.innerWidth < 768;
-                    let totalWidth = 0;
-                    cards.forEach({
-                        "Story.useEffect.updateSizes": (card, index)=>{
-                            totalWidth += card.offsetWidth;
-                            if (index < cards.length - 1) {
-                                const style = window.getComputedStyle(card);
-                                totalWidth += parseInt(style.marginRight) || 0;
-                            }
-                        }
-                    }["Story.useEffect.updateSizes"]);
-                    // Add extra padding at the end for better last card visibility
-                    totalWidth += containerWidth * 0.4;
-                    return {
-                        containerWidth,
-                        totalWidth,
-                        isMobileView
-                    };
-                }
-            }["Story.useEffect.updateSizes"];
-            const sizes = updateSizes();
-            if (!sizes) return;
-            const { containerWidth, totalWidth, isMobileView } = sizes;
-            const scrollDistance = totalWidth - containerWidth;
-            // Create the horizontal scroll animation
-            const getScrollEnd = {
-                "Story.useEffect.getScrollEnd": ()=>{
-                    if (isMobileView) {
-                        // For mobile, adjust the scroll distance to ensure cards are fully visible
-                        return "+=".concat(scrollDistance + containerWidth * 0.2);
-                    }
-                    return "+=".concat(Math.max(totalWidth * 1.8, 3000));
-                }
-            }["Story.useEffect.getScrollEnd"];
-            scrollTween.current = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["default"].to(scrollContainer, {
-                x: -scrollDistance,
-                ease: 'none',
-                scrollTrigger: {
-                    trigger: container,
-                    pin: true,
-                    scrub: isMobileView ? 1.2 : 0.8,
-                    start: isMobileView ? 'top top+=100' : 'top top',
-                    end: getScrollEnd,
-                    invalidateOnRefresh: true,
-                    anticipatePin: 1,
-                    onUpdate: {
-                        "Story.useEffect": (self)=>{
-                            if (!self.isActive) return;
-                            const progress = self.progress;
-                            const cardCount = storyTimeline.length;
-                            // Calculate active index with mobile optimization
-                            let newIndex = Math.min(Math.floor(progress * cardCount * 0.99), cardCount - 1);
-                            // Ensure we don't go below 0
-                            newIndex = Math.max(0, newIndex);
-                            if (newIndex !== activeIndex) {
-                                setActiveIndex(newIndex);
-                            }
-                        }
-                    }["Story.useEffect"]
-                }
-            });
-            // Handle window resize with debounce
-            let resizeTimeout;
-            const handleResize = {
-                "Story.useEffect.handleResize": ()=>{
-                    clearTimeout(resizeTimeout);
-                    resizeTimeout = setTimeout({
-                        "Story.useEffect.handleResize": ()=>{
-                            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$gsap$2f$ScrollTrigger$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ScrollTrigger"].refresh();
-                        }
-                    }["Story.useEffect.handleResize"], 250);
-                }
-            }["Story.useEffect.handleResize"];
-            window.addEventListener('resize', handleResize);
-            return ({
-                "Story.useEffect": ()=>{
-                    window.removeEventListener('resize', handleResize);
-                    clearTimeout(resizeTimeout);
-                    if (scrollTween.current) {
-                        var _scrollTween_current_scrollTrigger;
-                        (_scrollTween_current_scrollTrigger = scrollTween.current.scrollTrigger) === null || _scrollTween_current_scrollTrigger === void 0 ? void 0 : _scrollTween_current_scrollTrigger.kill();
-                        scrollTween.current.kill();
-                    }
-                }
-            })["Story.useEffect"];
-        }
-    }["Story.useEffect"], [
-        activeIndex,
-        storyTimeline.length
-    ]);
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
-        id: "about",
-        className: "jsx-d15e74d1f58df4f" + " " + "py-12 sm:py-16 md:py-20 relative overflow-hidden bg-gradient-to-b from-gray-50 via-white to-gray-50",
-        children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$styled$2d$jsx$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                id: "d15e74d1f58df4f",
-                children: "@keyframes gradientShift{0%,to{background-position:0%}50%{background-position:100%}}@keyframes shimmer{0%{background-position:-200%}to{background-position:200%}}@keyframes float{0%,to{transform:translateY(0)}50%{transform:translateY(-10px)}}"
-            }, void 0, false, void 0, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "jsx-d15e74d1f58df4f" + " " + "container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl mb-8 sm:mb-12 md:mb-16",
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "jsx-d15e74d1f58df4f" + " " + "text-center max-w-4xl mx-auto",
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "jsx-d15e74d1f58df4f" + " " + "inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 mb-4 sm:mb-6",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                    className: "jsx-d15e74d1f58df4f" + " " + "w-2 h-2 bg-blue-500 rounded-full animate-pulse"
-                                }, void 0, false, {
-                                    fileName: "[project]/src/components/Story.tsx",
-                                    lineNumber: 334,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                    className: "jsx-d15e74d1f58df4f" + " " + "text-xs sm:text-sm font-semibold text-blue-600 tracking-wide",
-                                    children: "WHY CHOOSE US"
-                                }, void 0, false, {
-                                    fileName: "[project]/src/components/Story.tsx",
-                                    lineNumber: 335,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/src/components/Story.tsx",
-                            lineNumber: 333,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                            className: "jsx-d15e74d1f58df4f" + " " + "text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight",
-                            children: [
-                                "Our ",
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                    className: "jsx-d15e74d1f58df4f" + " " + "bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent",
-                                    children: "Advantages"
-                                }, void 0, false, {
-                                    fileName: "[project]/src/components/Story.tsx",
-                                    lineNumber: 339,
-                                    columnNumber: 17
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/src/components/Story.tsx",
-                            lineNumber: 338,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                            className: "jsx-d15e74d1f58df4f" + " " + "text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-3",
-                            children: "Family-owned business with global reach, blending engineering rigor with relationship-driven trade."
-                        }, void 0, false, {
-                            fileName: "[project]/src/components/Story.tsx",
-                            lineNumber: 342,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                            className: "jsx-d15e74d1f58df4f" + " " + "text-sm sm:text-base text-gray-500 max-w-2xl mx-auto",
-                            children: "Every project receives senior attention, transparent communication, and end-to-end logistics support."
-                        }, void 0, false, {
-                            fileName: "[project]/src/components/Story.tsx",
-                            lineNumber: 346,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "[project]/src/components/Story.tsx",
-                    lineNumber: 332,
-                    columnNumber: 9
-                }, this)
-            }, void 0, false, {
-                fileName: "[project]/src/components/Story.tsx",
-                lineNumber: 331,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                ref: containerRef,
-                className: "jsx-d15e74d1f58df4f" + " " + "relative h-[500px] sm:h-[550px] md:h-[600px] lg:h-screen lg:min-h-[600px] lg:max-h-[800px] overflow-hidden touch-pan-x",
-                children: [
-                    !isMobile && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "jsx-d15e74d1f58df4f" + " " + "absolute top-6 left-1/2 transform -translate-x-1/2 z-20 flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-md rounded-full shadow-lg border border-gray-200/50",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                fill: "none",
-                                stroke: "currentColor",
-                                viewBox: "0 0 24 24",
-                                className: "jsx-d15e74d1f58df4f" + " " + "w-4 h-4 text-gray-600",
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                    strokeLinecap: "round",
-                                    strokeLinejoin: "round",
-                                    strokeWidth: 2,
-                                    d: "M19 9l-7 7-7-7",
-                                    className: "jsx-d15e74d1f58df4f"
-                                }, void 0, false, {
-                                    fileName: "[project]/src/components/Story.tsx",
-                                    lineNumber: 361,
-                                    columnNumber: 15
-                                }, this)
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/Story.tsx",
-                                lineNumber: 360,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                className: "jsx-d15e74d1f58df4f" + " " + "text-xs font-medium text-gray-600",
-                                children: "Scroll to explore"
-                            }, void 0, false, {
-                                fileName: "[project]/src/components/Story.tsx",
-                                lineNumber: 363,
-                                columnNumber: 13
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/src/components/Story.tsx",
-                        lineNumber: 359,
-                        columnNumber: 11
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "jsx-d15e74d1f58df4f" + " " + "h-full w-full flex items-center",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            ref: scrollContainerRef,
-                            className: "jsx-d15e74d1f58df4f" + " " + "flex items-center h-full py-8 sm:py-12 md:py-16 pl-4 sm:pl-8 md:pl-16 lg:pl-32",
-                            children: storyTimeline.map((item, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    style: {
-                                        marginRight: index < storyTimeline.length - 1 ? '20px' : '0'
-                                    },
-                                    className: "jsx-d15e74d1f58df4f" + " " + "story-card",
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(StoryCard, {
-                                        year: item.year,
-                                        title: item.title,
-                                        description: item.description,
-                                        isLast: index === storyTimeline.length - 1,
-                                        isActive: index === activeIndex,
-                                        index: index,
-                                        icon: item.icon
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/components/Story.tsx",
-                                        lineNumber: 380,
-                                        columnNumber: 17
-                                    }, this)
-                                }, index, false, {
-                                    fileName: "[project]/src/components/Story.tsx",
-                                    lineNumber: 373,
-                                    columnNumber: 15
-                                }, this))
-                        }, void 0, false, {
-                            fileName: "[project]/src/components/Story.tsx",
-                            lineNumber: 368,
-                            columnNumber: 11
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/src/components/Story.tsx",
-                        lineNumber: 367,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "jsx-d15e74d1f58df4f" + " " + "absolute bottom-6 sm:bottom-8 left-0 right-0 flex justify-center z-20",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "jsx-d15e74d1f58df4f" + " " + "flex items-center gap-2 px-4 py-3 bg-white/90 backdrop-blur-md rounded-full shadow-lg border border-gray-200/50",
-                            children: storyTimeline.map((_, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "jsx-d15e74d1f58df4f" + " " + "h-1.5 rounded-full transition-all duration-500 ".concat(index === activeIndex ? 'w-8 bg-gradient-to-r from-blue-600 to-blue-400' : 'w-1.5 bg-gray-300 hover:bg-gray-400')
-                                }, index, false, {
-                                    fileName: "[project]/src/components/Story.tsx",
-                                    lineNumber: 398,
-                                    columnNumber: 15
-                                }, this))
-                        }, void 0, false, {
-                            fileName: "[project]/src/components/Story.tsx",
-                            lineNumber: 396,
-                            columnNumber: 11
-                        }, this)
-                    }, void 0, false, {
-                        fileName: "[project]/src/components/Story.tsx",
-                        lineNumber: 395,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "jsx-d15e74d1f58df4f" + " " + "absolute left-0 top-0 bottom-0 w-20 sm:w-32 bg-gradient-to-r from-white via-white/50 to-transparent pointer-events-none z-10"
-                    }, void 0, false, {
-                        fileName: "[project]/src/components/Story.tsx",
-                        lineNumber: 411,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "jsx-d15e74d1f58df4f" + " " + "absolute right-0 top-0 bottom-0 w-20 sm:w-32 bg-gradient-to-l from-white via-white/50 to-transparent pointer-events-none z-10"
-                    }, void 0, false, {
-                        fileName: "[project]/src/components/Story.tsx",
-                        lineNumber: 412,
-                        columnNumber: 9
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/src/components/Story.tsx",
-                lineNumber: 353,
-                columnNumber: 7
-            }, this)
-        ]
-    }, void 0, true, {
-        fileName: "[project]/src/components/Story.tsx",
-        lineNumber: 300,
-        columnNumber: 5
-    }, this);
-}
-_s(Story, "JgFtWIY5CHDx/ywQ83xyrlB043A=");
-_c1 = Story;
-var _c, _c1;
-__turbopack_context__.k.register(_c, "StoryCard");
-__turbopack_context__.k.register(_c1, "Story");
+_s(Story, "h0aSgiKxfH+fXXZ69h9glSb/ABA=");
+_c = Story;
+const __TURBOPACK__default__export__ = Story;
+var _c;
+__turbopack_context__.k.register(_c, "Story");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
 }
@@ -1590,7 +1347,7 @@ function QuoteForm(param) {
         columnNumber: 5
     }, this);
 }
-_s(QuoteForm, "Jhr+Io/7334kOREZQuqUlK27sGc=");
+_s(QuoteForm, "HyqtxIy52tcV/+/7GAOVn6Bwbeg=");
 _c = QuoteForm;
 var _c;
 __turbopack_context__.k.register(_c, "QuoteForm");

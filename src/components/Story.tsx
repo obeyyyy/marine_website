@@ -1,20 +1,10 @@
-'use client';
-import { useRef, useEffect, useState } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+"use client";
+import { useRef, useLayoutEffect } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
-// Register ScrollTrigger plugin
-gsap.registerPlugin(ScrollTrigger);
-
-interface StoryCardProps {
-  year: string;
-  title: string;
-  description: string;
-  isLast?: boolean;
-  isActive?: boolean;
-  index: number;
-  icon?: string;
-}
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 interface StoryItem {
   year: string;
@@ -23,394 +13,193 @@ interface StoryItem {
   icon?: string;
 }
 
-const StoryCard: React.FC<StoryCardProps> = ({ 
-  year, 
-  title, 
-  description, 
-  isLast = false, 
-  isActive = false,
-  index,
-  icon
-}) => {
-  const cardVariants = [
-    { from: 'rgb(37, 99, 235)', to: 'rgb(29, 78, 216)', accent: 'rgb(59, 130, 246)' }, // blue
-    { from: 'rgb(5, 150, 105)', to: 'rgb(4, 120, 87)', accent: 'rgb(16, 185, 129)' }, // emerald
-    { from: 'rgb(217, 119, 6)', to: 'rgb(180, 83, 9)', accent: 'rgb(245, 158, 11)' }, // amber
-    { from: 'rgb(225, 29, 72)', to: 'rgb(190, 18, 60)', accent: 'rgb(244, 63, 94)' }, // rose
-    { from: 'rgb(79, 70, 229)', to: 'rgb(67, 56, 202)', accent: 'rgb(99, 102, 241)' }, // indigo
-    { from: 'rgb(13, 148, 136)', to: 'rgb(15, 118, 110)', accent: 'rgb(20, 184, 166)' } // teal
-  ];
-
-  const currentVariant = cardVariants[index % cardVariants.length];
-
-  return (
-    <div 
-      className={`relative flex-shrink-0 w-[300px] sm:w-[340px] md:w-[380px] lg:w-[420px] p-6 sm:p-7 md:p-8 rounded-2xl sm:rounded-3xl overflow-hidden transition-all duration-500 ease-out ${
-        isActive 
-          ? 'text-white shadow-2xl scale-100 opacity-100 translate-y-0' 
-          : 'bg-white/90 backdrop-blur-md text-gray-800 shadow-lg border border-gray-200/50 scale-[0.92] opacity-60 translate-y-3'
-      }`}
-      style={{
-        minHeight: '380px',
-        display: 'flex',
-        flexDirection: 'column',
-        willChange: 'transform, opacity',
-      }}
-    >
-      {/* Animated gradient background with shimmer effect */}
-      <div 
-        className={`absolute inset-0 transition-opacity duration-500 ${isActive ? 'opacity-100' : 'opacity-0'}`}
-        style={{
-          background: `linear-gradient(135deg, ${currentVariant.from}, ${currentVariant.to}, ${currentVariant.accent})`,
-          backgroundSize: '300% 300%',
-          animation: isActive ? 'gradientShift 6s ease infinite' : 'none',
-        }}
-      />
-      
-      {/* Overlay shimmer effect */}
-      {isActive && (
-        <div 
-          className="absolute inset-0 opacity-20"
-          style={{
-            background: 'linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%)',
-            backgroundSize: '200% 200%',
-            animation: 'shimmer 3s ease-in-out infinite',
-          }}
-        />
-      )}
-      
-      {/* Content wrapper */}
-      <div className="relative z-10 flex flex-col h-full">
-      
-        
-        {/* Year/Category tag */}
-        <div className={`inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-bold tracking-wider mb-3 sm:mb-4 px-3 py-1 rounded-full w-fit transition-all duration-500 ${
-          isActive ? 'bg-white/20 text-white backdrop-blur-sm' : 'bg-blue-50 text-blue-600'
-        }`}>
-          <span className={`w-1.5 h-1.5 rounded-full ${isActive ? 'bg-white' : 'bg-blue-600'}`}></span>
-          {year}
-        </div>
-        
-        {/* Icon */}
-        {icon && (
-          <div className={`p-2.5 sm:p-3 inline-flex rounded-xl sm:rounded-2xl mb-4 sm:mb-5 transition-all duration-500 ${
-            isActive ? 'bg-white/15 backdrop-blur-sm shadow-lg' : 'bg-blue-50/80'
-          } w-12 h-12 sm:w-14 sm:h-14 items-center justify-center transform ${isActive ? 'scale-110' : 'scale-100'}`}>
-            <span className={`text-2xl sm:text-3xl transition-all duration-500 ${isActive ? 'text-white drop-shadow-lg' : 'text-blue-600'}`}>
-              {icon}
-            </span>
-          </div>
-        )}
-        
-        {/* Title */}
-        <h3 className={`text-xl sm:text-2xl lg:text-3xl font-bold mb-3 sm:mb-4 leading-tight transition-all duration-500 ${
-          isActive ? 'text-white drop-shadow-md' : 'text-gray-900'
-        }`}>
-          {title}
-        </h3>
-        
-        {/* Description */}
-        <p className={`text-sm sm:text-base mb-4 sm:mb-6 leading-relaxed transition-all duration-500 ${
-          isActive ? 'text-white/95' : 'text-gray-600'
-        }`}>
-          {description}
-        </p>
-        
-        {/* Learn more button - only show when active */}
-        <div className={`mt-auto pt-4 transition-all duration-500 ${
-          isActive ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2 pointer-events-none'
-        }`}>
-          <div className="flex items-center justify-between pt-3 sm:pt-4 border-t border-white/20">
-            <span className="text-xs sm:text-sm font-semibold tracking-wide">LEARN MORE</span>
-            <div className="w-8 h-8 sm:w-9 sm:h-9 bg-white/95 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg transform transition-all hover:scale-110 hover:shadow-xl cursor-pointer group">
-              <svg className="w-4 h-4 text-gray-800 transform transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default function Story() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const scrollTween = useRef<gsap.core.Tween | null>(null);
-  const [isMobile, setIsMobile] = useState(false);
+const Story = () => {
+  const panelsContainerRef = useRef<HTMLDivElement>(null);
+  const panelsSectionRef = useRef<HTMLDivElement>(null);
+  const tweenRef = useRef<gsap.core.Tween | null>(null);
 
   const storyTimeline: StoryItem[] = [
     {
-      year: 'Global Reach',
-      title: 'Vendor Network',
-      description: 'Extensive network across UAE, India, UK, and China, connecting you with trusted partners worldwide.',
-      icon: '🌍'
+      year: "Global Reach",
+      title: "Vendor Network",
+      description:
+        "A worldwide network connecting partners across UAE, India, UK, and China, ensuring you access the best resources globally.",
+      icon: "🌍",
     },
     {
-      year: 'Quality',
-      title: 'Certified Partnerships',
-      description: 'Exclusive partnerships with ISO-certified manufacturers ensuring the highest quality standards.',
-      icon: '✅'
+      year: "Quality",
+      title: "Certified Partnerships",
+      description:
+        "Our partnerships with ISO-certified manufacturers guarantee that every product meets international standards of excellence.",
+      icon: "✅",
     },
     {
-      year: 'Transparency',
-      title: 'Project Reporting',
-      description: 'Comprehensive, milestone-based project reporting keeping you informed at every step.',
-      icon: '📊'
+      year: "Transparency",
+      title: "Project Reporting",
+      description:
+        "With transparent, milestone-based project tracking, you're always informed at every step of the journey.",
+      icon: "📊",
     },
     {
-      year: 'Sustainability',
-      title: 'Responsible Sourcing',
-      description: 'Mindful sourcing practices that prioritize environmental responsibility and sustainability.',
-      icon: '🌱'
+      year: "Sustainability",
+      title: "Responsible Sourcing",
+      description:
+        "Our sourcing practices prioritize environmental stewardship and sustainability in every decision we make.",
+      icon: "🌱",
     },
     {
-      year: 'Efficiency',
-      title: 'Rapid Response',
-      description: '72-hour typical lead time to shortlist qualified vendors for your specific needs.',
-      icon: '⚡'
+      year: "Efficiency",
+      title: "Rapid Response",
+      description:
+        "We move fast — with a typical 72-hour lead time to shortlist qualified vendors for your unique needs.",
+      icon: "⚡",
     },
     {
-      year: 'Reliability',
-      title: 'On-time Delivery',
-      description: '97% on-time delivery rate across all orders, ensuring your projects stay on schedule.',
-      icon: '⏱️'
-    }
+      year: "Reliability",
+      title: "On-time Delivery",
+      description:
+        "With a 97% on-time delivery rate, we ensure your projects stay on schedule without compromise.",
+      icon: "⏱️",
+    },
   ];
 
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+  // Horizontal scroll setup
+  useLayoutEffect(() => {
+    if (!panelsContainerRef.current || !panelsSectionRef.current) return;
+    const panels = gsap.utils.toArray(".panel");
+    const container = panelsContainerRef.current;
+
+    gsap.set(container, { width: `${panels.length * 100}%` });
+
+    tweenRef.current = gsap.to(panels as gsap.TweenTarget[], {
+      x: () => -1 * (container.scrollWidth - window.innerWidth),
+      ease: "none",
+      scrollTrigger: {
+        trigger: panelsSectionRef.current,
+        pin: true,
+        scrub: 1,
+        start: "top top",
+        end: () => `+=${container.scrollWidth - window.innerWidth}`,
+        invalidateOnRefresh: true,
+      },
+    });
+
+    // Animate panels as they come into view
+    panels.forEach((panel: any, i) => {
+      gsap.fromTo(
+        panel.querySelector(".panel-content"),
+        {
+          opacity: 0,
+          x: i % 2 === 0 ? 100 : -100,
+          scale: 0.95,
+        },
+        {
+          opacity: 1,
+          x: 0,
+          scale: 1,
+          duration: 0.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: panel,
+            containerAnimation: tweenRef.current || undefined,
+            start: "left center",
+            end: "right center",
+            toggleActions: "play reverse play reverse",
+          },
+        }
+      );
+    });
+
+    return () => {
+      tweenRef.current?.kill();
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  useEffect(() => {
-    if (!containerRef.current || !scrollContainerRef.current) return;
-
-    const container = containerRef.current;
-    const scrollContainer = scrollContainerRef.current;
-    
-    // Kill any existing ScrollTrigger instances
-    ScrollTrigger.getAll().forEach(trigger => {
-      if (trigger.vars?.trigger === container) {
-        trigger.kill();
-      }
-    });
-    
-    // Calculate dimensions with mobile optimization
-    const updateSizes = () => {
-      const cards = scrollContainer.querySelectorAll('.story-card');
-      if (cards.length === 0) return null;
-      
-      const containerWidth = container.offsetWidth;
-      const isMobileView = window.innerWidth < 768;
-      let totalWidth = 0;
-      
-      cards.forEach((card, index) => {
-        totalWidth += (card as HTMLElement).offsetWidth;
-        if (index < cards.length - 1) {
-          const style = window.getComputedStyle(card);
-          totalWidth += parseInt(style.marginRight) || 0;
-        }
-      });
-      
-      // Add extra padding at the end for better last card visibility
-      totalWidth += containerWidth * 0.4;
-      
-      return { containerWidth, totalWidth, isMobileView };
-    };
-    
-    const sizes = updateSizes();
-    if (!sizes) return;
-    
-    const { containerWidth, totalWidth, isMobileView } = sizes;
-    const scrollDistance = totalWidth - containerWidth;
-
-    // Create the horizontal scroll animation
-    const getScrollEnd = () => {
-      if (isMobileView) {
-        // For mobile, adjust the scroll distance to ensure cards are fully visible
-        return `+=${scrollDistance + (containerWidth * 0.2)}`;
-      }
-      return `+=${Math.max(totalWidth * 1.8, 3000)}`;
-    };
-
-    scrollTween.current = gsap.to(scrollContainer, {
-      x: -scrollDistance,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: container,
-        pin: true,
-        scrub: isMobileView ? 1.2 : 0.8, // Smoother scrub on mobile
-        start: isMobileView ? 'top top+=100' : 'top top', // Start earlier on mobile
-        end: getScrollEnd,
-        invalidateOnRefresh: true,
-        anticipatePin: 1,
-        onUpdate: (self) => {
-          if (!self.isActive) return;
-          
-          const progress = self.progress;
-          const cardCount = storyTimeline.length;
-          
-          // Calculate active index with mobile optimization
-          let newIndex = Math.min(
-            Math.floor(progress * cardCount * 0.99), // Slight adjustment for better mobile feel
-            cardCount - 1
-          );
-          
-          // Ensure we don't go below 0
-          newIndex = Math.max(0, newIndex);
-          
-          if (newIndex !== activeIndex) {
-            setActiveIndex(newIndex);
-          }
-        }
-      }
-    });
-
-    // Handle window resize with debounce
-    let resizeTimeout: NodeJS.Timeout;
-    const handleResize = () => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
-        ScrollTrigger.refresh();
-      }, 250);
-    };
-    
-    window.addEventListener('resize', handleResize);
-    
-    return () => {
-      window.removeEventListener('resize', handleResize);
-      clearTimeout(resizeTimeout);
-      if (scrollTween.current) {
-        scrollTween.current.scrollTrigger?.kill();
-        scrollTween.current.kill();
-      }
-    };
-  }, [activeIndex, storyTimeline.length]);
+  const scrollToPanel = (index: number) => {
+    const panel = document.getElementById(`panel-${index + 1}`);
+    panel?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
-    <section className="py-12 sm:py-16 md:py-20 relative overflow-hidden bg-gradient-to-b from-gray-50 via-white to-gray-50" id="about">
-      <style jsx>{`
-        @keyframes gradientShift {
-          0%, 100% {
-            background-position: 0% 50%;
-          }
-          50% {
-            background-position: 100% 50%;
-          }
-        }
-        
-        @keyframes shimmer {
-          0% {
-            background-position: -200% center;
-          }
-          100% {
-            background-position: 200% center;
-          }
-        }
-        
-        @keyframes float {
-          0%, 100% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(-10px);
-          }
-        }
-      `}</style>
-      
-      {/* Header Section */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl mb-8 sm:mb-12 md:mb-16">
-        <div className="text-center max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 mb-4 sm:mb-6">
-            <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
-            <span className="text-xs sm:text-sm font-semibold text-blue-600 tracking-wide">WHY CHOOSE US</span>
+    <section className="relative min-h-screen overflow-hidden bg-gradient-to-b from-sky-50 via-blue-50 to-slate-100 text-slate-900">
+      {/* Section Header */}
+      <div className="absolute top-0 left-0 w-full text-center py-16 bg-gradient-to-b from-white/70 to-transparent backdrop-blur-sm z-20">
+        <h2 className="text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-blue-700 to-sky-500 bg-clip-text text-transparent tracking-tight drop-shadow-sm">
+          Our Story
+        </h2>
+        <p className="mt-4 text-slate-600 text-lg sm:text-xl max-w-2xl mx-auto px-6">
+          A journey built on trust, innovation, and reliability — connecting
+          the world through sustainable and transparent partnerships.
+        </p>
+      </div>
+
+      {/* Panels Section */}
+      <div ref={panelsSectionRef} className="relative h-screen w-full overflow-hidden">
+        <div
+          ref={panelsContainerRef}
+          className="flex flex-nowrap w-full h-full overflow-hidden"
+        >
+          {storyTimeline.map((item, index) => (
+            <div
+            key={index}
+            id={`panel-${index + 1}`}
+            className="panel w-screen h-full flex items-center justify-center px-6 sm:px-10"
+          >
+            <div
+              className={`panel-content max-w-2xl w-11/12 text-center rounded-3xl border shadow-2xl backdrop-blur-xl p-10 transform transition-all duration-500 hover:-translate-y-3 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(0,0,0,0.15)] relative overflow-hidden
+                ${index % 6 === 0
+                  ? "bg-gradient-to-br from-sky-500 via-blue-500 to-indigo-600 text-white border-blue-400/50"
+                  : index % 6 === 1
+                  ? "bg-gradient-to-br from-purple-500 via-fuchsia-500 to-pink-500 text-white border-fuchsia-400/50"
+                  : index % 6 === 2
+                  ? "bg-gradient-to-br from-emerald-500 via-green-400 to-lime-500 text-white border-green-400/50"
+                  : index % 6 === 3
+                  ? "bg-gradient-to-br from-orange-400 via-amber-500 to-yellow-400 text-white border-amber-400/50"
+                  : index % 6 === 4
+                  ? "bg-gradient-to-br from-rose-500 via-pink-500 to-red-500 text-white border-rose-400/50"
+                  : "bg-gradient-to-br from-cyan-400 via-sky-400 to-blue-500 text-white border-cyan-300/50"
+                }`}
+            >
+              {/* Glow animation overlay */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-0 hover:opacity-20 transition-opacity duration-700 animate-pulse" />
+
+              <div className="inline-flex items-center gap-2 bg-white/20 px-5 py-2 rounded-full text-sm font-semibold mb-6 backdrop-blur-md border border-white/30">
+                <span className="text-lg">{item.icon}</span>
+                {item.year}
+              </div>
+
+              <h3 className="text-3xl sm:text-4xl font-extrabold mb-4 drop-shadow-md">
+                {item.title}
+              </h3>
+
+              <p className="text-base sm:text-lg leading-relaxed text-white/90 font-light">
+                {item.description}
+              </p>
+            </div>
           </div>
-          
-          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
-            Our <span className="bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent">Advantages</span>
-          </h2>
-          
-          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-3">
-            Family-owned business with global reach, blending engineering rigor with relationship-driven trade.
-          </p>
-          
-          <p className="text-sm sm:text-base text-gray-500 max-w-2xl mx-auto">
-            Every project receives senior attention, transparent communication, and end-to-end logistics support.
-          </p>
+
+          ))}
         </div>
       </div>
 
-      {/* Horizontal Scroll Section */}
-      <div 
-        ref={containerRef} 
-        className="relative h-[500px] sm:h-[550px] md:h-[600px] lg:h-screen lg:min-h-[600px] lg:max-h-[800px] overflow-hidden touch-pan-x"
-      >
-        {/* Scroll instruction - desktop only */}
-        {!isMobile && (
-          <div className="absolute top-6 left-1/2 transform -translate-x-1/2 z-20 flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-md rounded-full shadow-lg border border-gray-200/50">
-            <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
-            <span className="text-xs font-medium text-gray-600">Scroll to explore</span>
-          </div>
-        )}
-        
-        <div className="h-full w-full flex items-center">
-          <div 
-            ref={scrollContainerRef}
-            className="flex items-center h-full py-8 sm:py-12 md:py-16 pl-4 sm:pl-8 md:pl-16 lg:pl-32"
+      {/* Scroll Indicator */}
+      <div className="fixed bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-50 bg-white/80 backdrop-blur-md px-5 py-3 rounded-full shadow-lg">
+        {storyTimeline.map((item, index) => (
+          <button
+            key={index}
+            onClick={() => scrollToPanel(index)}
+            className="relative group"
           >
-            {storyTimeline.map((item, index) => (
-              <div 
-                key={index}
-                className="story-card"
-                style={{
-                  marginRight: index < storyTimeline.length - 1 ? '20px' : '0',
-                }}
-              >
-                <StoryCard 
-                  year={item.year}
-                  title={item.title}
-                  description={item.description}
-                  isLast={index === storyTimeline.length - 1} 
-                  isActive={index === activeIndex}
-                  index={index} 
-                  icon={item.icon}              
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-        
-        {/* Enhanced Scroll indicator */}
-        <div className="absolute bottom-6 sm:bottom-8 left-0 right-0 flex justify-center z-20">
-          <div className="flex items-center gap-2 px-4 py-3 bg-white/90 backdrop-blur-md rounded-full shadow-lg border border-gray-200/50">
-            {storyTimeline.map((_, index) => (
-              <div 
-                key={index}
-                className={`h-1.5 rounded-full transition-all duration-500 ${
-                  index === activeIndex 
-                    ? 'w-8 bg-gradient-to-r from-blue-600 to-blue-400' 
-                    : 'w-1.5 bg-gray-300 hover:bg-gray-400'
-                }`}
-              />
-            ))}
-          </div>
-        </div>
-        
-        {/* Gradient overlays for depth */}
-        <div className="absolute left-0 top-0 bottom-0 w-20 sm:w-32 bg-gradient-to-r from-white via-white/50 to-transparent pointer-events-none z-10" />
-        <div className="absolute right-0 top-0 bottom-0 w-20 sm:w-32 bg-gradient-to-l from-white via-white/50 to-transparent pointer-events-none z-10" />
+            <div className="w-3.5 h-3.5 bg-blue-300 rounded-full transition-all duration-300 group-hover:scale-125 group-hover:bg-blue-500" />
+            <span className="absolute -top-9 left-1/2 -translate-x-1/2 text-xs text-slate-700 bg-white/90 px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap shadow">
+              {item.title}
+            </span>
+          </button>
+        ))}
       </div>
     </section>
   );
-}
+};
+
+export default Story;

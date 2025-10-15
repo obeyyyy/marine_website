@@ -4,7 +4,7 @@ export default function Hero() {
   return (
     <section className="pt-20 pb-10 md:pt-32 md:pb-24 relative">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row items-center">
+        <div className="flex flex-col md:flex-row sm:flex-col items-center">
           {/* Left side - Content */}
           <div className="md:w-1/2 mb-10 md:mb-0">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
