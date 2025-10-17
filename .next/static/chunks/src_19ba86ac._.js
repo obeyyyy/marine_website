@@ -51,8 +51,8 @@ function Navbar() {
             label: "Services"
         },
         {
-            href: "/about",
-            label: "About Us"
+            href: "/trading",
+            label: "Trading"
         },
         {
             href: "/contact",
@@ -60,7 +60,7 @@ function Navbar() {
         }
     ];
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
-        className: "fixed w-full z-50 transition-all duration-300 ".concat(scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm' : 'bg-transparent'),
+        className: "fixed w-full z-50 transition-all duration-300 ".concat(scrolled ? 'bg-white/10 backdrop-blur-md shadow-sm' : 'bg-transparent '),
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
@@ -100,7 +100,7 @@ function Navbar() {
                                 className: "flex items-center space-x-6 lg:space-x-8",
                                 children: navLinks.map((link)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                                         href: link.href,
-                                        className: "text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors whitespace-nowrap",
+                                        className: "text-gray-900 hover:text-blue-600 px-3 py-2 text-md font-medium transition-colors whitespace-nowrap",
                                         children: link.label
                                     }, link.href, false, {
                                         fileName: "[project]/src/components/Navbar.tsx",
