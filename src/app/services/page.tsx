@@ -42,46 +42,17 @@ const fadeInUp = {
   },
 };
 
-type Service = {
-  title: string;
-  description: string;
-  icon: string;
-};
-
-const services: Service[] = [
-  {
-    title: 'Marine Construction',
-    description: 'Expert marine construction services including docks, seawalls, and waterfront structures built to last.',
-    icon: '⛵',
-  },
-  {
-    title: 'Boat Repair',
-    description: 'Comprehensive boat repair and maintenance services to keep your vessel in top condition.',
-    icon: '🔧',
-  },
-  {
-    title: 'Dock Maintenance',
-    description: 'Professional dock maintenance and repair services to ensure safety and longevity of your waterfront property.',
-    icon: '⚓',
-  },
-  {
-    title: 'Marine Consulting',
-    description: 'Expert advice and consulting services for all your marine construction and maintenance needs.',
-    icon: '📝',
-  },
-];
 
 const DottedLinesBackground: React.FC = () => (
   // The DottedLinesBackground wrapper should not use max-w-7xl here, 
   // but let's assume the component consuming it has the wrapper (as in your last solution).
   // I'll update the properties inside.
   <div className="absolute inset-0 pointer-events-none z-0">
-    
     {/* 1. Top-Left Dotted Border Box (around the image) */}
     <div 
       className="absolute top-15 left-10 h-[90%] w-[47%] border-t-[3px]
                 border-dashed border-[#A999D0]
-                 opacity-70 hidden lg:block" 
+                opacity-70 hidden lg:block" 
     />
 
     {/* 2. Vertical Separator Line */}
@@ -94,9 +65,7 @@ const DottedLinesBackground: React.FC = () => (
         transform: 'translateX(-50%)', 
       }}
     />
-
     {/* 3. Bottom-Right L-Shaped Line */}
-    
     {/* Horizontal Line Segment (The FIX) */}
     <div 
       // Start just past the vertical separator (left-1/2) and extend to the right edge.
@@ -105,10 +74,44 @@ const DottedLinesBackground: React.FC = () => (
                  opacity-70 hidden lg:block"
       
     />
-
     {/* Vertical L-Segment (The part that connects the horizontal line upwards) */}
     {/* Adjust top/bottom to control its length and position */}
-   
+  </div>
+);
+
+const DottedLinesBackground2: React.FC = () => (
+  // The DottedLinesBackground wrapper should not use max-w-7xl here, 
+  // but let's assume the component consuming it has the wrapper (as in your last solution).
+  // I'll update the properties inside.
+  <div className="absolute inset-0 pointer-events-none z-0">
+    {/* 1. Top-Left Dotted Border Box (around the image) */}
+    <div 
+      className="absolute top-15 right-10 h-[90%] w-[47%] border-t-[3px]
+                border-dashed border-[#5e1fff]
+                opacity-70 hidden lg:block" 
+    />
+
+    {/* 2. Vertical Separator Line */}
+    <div 
+      className="absolute top-[9%] left-1/2 h-[85%] w-0 
+                 border-l-[3px] border-dashed border-[#5e1fff] 
+                 opacity-70 hidden lg:block"
+      style={{
+        // Centers the line on the division between columns
+        transform: 'translateX(-50%)', 
+      }}
+    />
+    {/* 3. Bottom-Right L-Shaped Line */}
+    {/* Horizontal Line Segment (The FIX) */}
+    <div 
+      // Start just past the vertical separator (left-1/2) and extend to the right edge.
+      className="absolute bottom-10 right-1/2 w-[60%] h-0 
+                 border-b-[3px] border-dashed border-[#5e1fff] 
+                 opacity-70 hidden lg:block"
+      
+    />
+    {/* Vertical L-Segment (The part that connects the horizontal line upwards) */}
+    {/* Adjust top/bottom to control its length and position */}
   </div>
 );
 
@@ -527,60 +530,83 @@ export default function ServicesPage() {
     </section>
 
      {/* Services Brokerage Section */}
-     <motion.div 
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8 }}
-      className="relative w-full min-h-screen flex"
-    >
-      {/* Left Image - Full Height */}
-      <div className="w-1/2 h-screen sticky top-0">
-        <motion.img 
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="w-full h-full object-cover"
-          src="/images/services-4.png"
-          alt="Marine Services"
-        />
-      </div>
+    <motion.div 
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.8 }}
+    className="relative w-full min-h-screen flex flex-col lg:flex-row"
+  >
+    {/* Left Image - Full Height on Desktop, Auto on Mobile */}
+    <div className="w-full lg:w-1/2 h-96 lg:h-screen lg:sticky lg:top-0">
+      <motion.img 
+        initial={{ opacity: 0, x: -20 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="w-full h-full object-cover"
+        src="/images/services-4.png"
+        alt="Marine Services"
+        loading="lazy"
+      />
+    </div>
 
       {/* Right Content */}
-      <div className="w-1/2 p-12 flex-shrink-0">
-        <div className="max-w-2xl mx-auto flex flex-col-2">
+      <div className="w-full lg:w-1/2 p-6 lg:p-12 flex-shrink-0">
+        <div className="flex flex-col lg:flex-row h-full">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-lg md:text-xl text-gray-700 mb-10 max-w-3xl justify-self-start"
+            className="text-lg lg:text-xl text-gray-700 mb-6 lg:mb-0 w-full"
           >
-            <h1 className="text-4xl font-bold mb-6">Services Brokerage</h1>
-            <div className="space-y-8">
-              <p>We act as a service broker between shipowners, manufacturers, and service providers — ensuring reliable, cost-effective, and timely solutions.</p>
-              <p>Our brokerage services include:</p>
-              <ul className="list-disc list-inside text-clip space-y-4">
-                <li>Connecting technical service providers for maintenance, inspection, and repair</li>
-                <li>Negotiating service contracts and sourcing specialized technicians</li>
-                <li>Coordinating logistics for dry-docking, retrofits, or port operations</li>
-                <li>Facilitating vendor-client partnerships for long-term operational support</li>
-              </ul>
-              <p className="h-0 w-[100%] flex">Through our brokerage expertise, we help clients reduce downtime and streamline project execution across global ports.</p>
+            <div className="space-y-6">
+              <h1 className="text-3xl lg:text-4xl font-bold text-gray-900">Services Brokerage</h1>
+              <div className="space-y-4">
+                <p>We act as a service broker between shipowners, manufacturers, and service providers — ensuring reliable, cost-effective, and timely solutions.</p>
+                <p className="font-medium">Our brokerage services include:</p>
+                <ul className="space-y-2 pl-5">
+                  <li className="flex items-start">
+                    <span className="inline-block w-1.5 h-1.5 bg-blue-600 rounded-full mt-2.5 mr-3 flex-shrink-0"></span>
+                    <span>Connecting technical service providers for maintenance, inspection, and repair</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="inline-block w-1.5 h-1.5 bg-blue-600 rounded-full mt-2.5 mr-3 flex-shrink-0"></span>
+                    <span>Negotiating service contracts and sourcing specialized technicians</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="inline-block w-1.5 h-1.5 bg-blue-600 rounded-full mt-2.5 mr-3 flex-shrink-0"></span>
+                    <span>Coordinating logistics for dry-docking, retrofits, or port operations</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="inline-block w-1.5 h-1.5 bg-blue-600 rounded-full mt-2.5 mr-3 flex-shrink-0"></span>
+                    <span>Facilitating vendor-client partnerships for long-term operational support</span>
+                  </li>
+                </ul>
+                <p>Through our brokerage expertise, we help clients reduce downtime and streamline project execution across global ports.</p>
+              </div>
             </div>
           </motion.div>
-          <motion.img 
+          
+
+          <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="w-[40%] h-[10%] object-cover mt-50"
-            src="/images/services-5.png"
-          />
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="w-full lg:w-1/3 flex-shrink-0 lg:pl-8 mt-8 lg:mt-55"
+          >
+            <img 
+              src="/images/services-5.png"
+              alt="Marine Services"
+              className="w-full h-auto rounded-lg p-0"
+              loading="lazy"
+            />
+          </motion.div>
         </div>
       </div>
-     </motion.div>
+      </motion.div>
 
      {/* Trading Section */}
      <motion.div
@@ -588,60 +614,75 @@ export default function ServicesPage() {
        whileInView={{ opacity: 1, y: 0 }}
        viewport={{ once: true }}
        transition={{ duration: 0.6 }}
-       className="relative w-full min-h-[120vh] bg-[#92CDE1] overflow-hidden"
+       className="relative w-full min-h-screen bg-[#92CDE1] overflow-hidden py-12 md:py-0"
      >
-       <div 
-         className="absolute inset-0 m-4 md:m-8 lg:m-12 rounded-lg overflow-hidden"
-         style={{
-           backgroundImage: "url('/images/trading.png')",
-           backgroundSize: 'cover',
-           backgroundPosition: 'center',
-           backgroundRepeat: 'no-repeat',
-         }}
-       />
-       <div className="relative z-10 min-h-[120vh] flex items-center">
+       <DottedLinesBackground2 />
+       <div className="relative gap-30 z-10 container mx-auto px-4 md:px-6 h-full flex flex-col md:flex-row items-center justify-center min-h-[calc(100vh-6rem)] md:min-h-screen">
          <motion.div 
            initial={{ opacity: 0, x: -20 }}
            whileInView={{ opacity: 1, x: 0 }}
            viewport={{ once: true }}
            transition={{ duration: 0.6, delay: 0.2 }}
-           className="w-[45%] max-w-3xl p-8 md:p-12 lg:p-16"
+           className="w-full md:w-1/2 lg:w-2/5 xl:w-1/2 p-6 md:p-8 lg:p-12"
          >
-           <h1 className="text-5xl md:text-6xl font-bold mb-8 text-black leading-tight">
+           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-black leading-tight">
              General Trading
            </h1>
-           <div className="space-y-8 max-w-2xl">
-             <p className="text-lg md:text-xl text-[#016CA0] leading-relaxed">
+           <div className="space-y-6">
+             <p className="text-base sm:text-lg lg:text-xl text-[#016CA0] leading-relaxed">
                OVy Marine's General Trading division focuses on delivering high-quality industrial goods and marine-related materials beyond engineering and machinery.
              </p>
              
-             <div className="space-y-4 w-[75%]">
-               <h3 className="text-2xl font-semibold text-[#016CA0]">We handle:</h3>
-               <ul className="space-y-3 pl-6">
-                 <li className="flex items-start">
-                   <span className="inline-block w-2 h-2 bg-[#016CA0] rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                   <span className="text-lg text-[#016CA0]">Industrial and construction materials</span>
-                 </li>
-                 <li className="flex items-start">
-                   <span className="inline-block w-2 h-2 bg-[#016CA0] rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                   <span className="text-lg text-[#016CA0]">Marine chemicals, lubricants, and consumables</span>
-                 </li>
-                 <li className="flex items-start">
-                   <span className="inline-block w-2 h-2 bg-[#016CA0] rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                   <span className="text-lg text-[#016CA0]">Safety gear and protective equipment</span>
-                 </li>
-                 <li className="flex items-start">
-                   <span className="inline-block w-2 h-2 bg-[#016CA0] rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                   <span className="text-lg text-[#016CA0]">Customized sourcing for specialized operations</span>
-                 </li>
+             <div className="space-y-3 w-full">
+               <h3 className="text-xl sm:text-2xl font-semibold text-[#016CA0]">We handle:</h3>
+               <ul className="space-y-2 pl-5">
+                 {[
+                   'Industrial and construction materials',
+                   'Marine chemicals, lubricants, and consumables',
+                   'Safety gear and protective equipment',
+                   'Customized sourcing for specialized operations'
+                 ].map((item, index) => (
+                   <li key={index} className="flex items-start">
+                     <span className="inline-block w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#016CA0] rounded-full mt-2.5 mr-3 flex-shrink-0"></span>
+                     <span className="text-base sm:text-lg text-[#016CA0] leading-relaxed">{item}</span>
+                   </li>
+                 ))}
                </ul>
              </div>
              
-             <p className="text-lg md:text-xl text-[#016CA0] leading-relaxed">
+             <p className="text-base sm:text-lg lg:text-xl text-[#016CA0] leading-relaxed">
                Our commitment to reliability, transparency, and customer satisfaction ensures consistent quality and smooth supply chain operations, no matter the scale of your project.
              </p>
            </div>
          </motion.div>
+         
+         <div className="relative w-full md:w-1/2 lg:w-2/5 h-64 sm:h-80 md:h-[70vh] mt-8 md:mt-0">
+           <motion.img 
+             initial={{ opacity: 0, y: 20 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             viewport={{ once: true }}
+             transition={{ duration: 0.6 }}
+             className="w-full h-full object-cover rounded-2xl md:rounded-4xl shadow-lg"
+             src="/images/trading.png"
+             alt="Marine Trading Services"
+           />
+         </div>
+         
+         {/* Vessels Button */}
+        <motion.div 
+            variants={item}
+            className="absolute -bottom-4 -right-4 md:bottom-25 md:right-140
+                    flex items-center p-0 m-0 rounded-full 
+                    transition-all duration-300 hover:scale-105"
+        >
+            <div className="w-20 h-20 md:w-35 md:h-35">
+            <img 
+                src="images/vessels2.png" 
+                alt="View our Vessels" 
+                className="w-full h-full object-contain rounded-full"
+            />
+            </div>
+        </motion.div>
        </div>
      </motion.div>
 

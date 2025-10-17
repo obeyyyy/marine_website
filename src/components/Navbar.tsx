@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import CtaButton from './CtaButton';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -27,7 +28,7 @@ export default function Navbar() {
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/services", label: "Services" },
-    { href: "/about", label: "About Us" },
+    { href: "/trading", label: "Trading" },
     { href: "/contact", label: "Contact" },
   ];
 
@@ -35,7 +36,7 @@ export default function Navbar() {
     <nav 
       className={`fixed w-full z-50 transition-all duration-300 ${
         scrolled 
-          ? 'bg-white/90 backdrop-blur-md shadow-sm' 
+          ? 'bg-white/10 backdrop-blur-md shadow-sm' 
           : 'bg-transparent'
       }`}
     >
@@ -62,12 +63,18 @@ export default function Navbar() {
                 <Link 
                   key={link.href}
                   href={link.href} 
-                  className="text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors whitespace-nowrap"
+                  className="text-gray-900 hover:text-blue-600 px-3 py-2 text-md font-medium transition-colors whitespace-nowrap"
                 >
                   {link.label}
                 </Link>
               ))}
             </div>
+          </div>
+
+          {/* CTA Button - Right */}
+          <div className="hidden md:flex items-center ml-6">
+            <CtaButton/>
+        
           </div>
 
           {/* Mobile menu button */}
@@ -131,6 +138,9 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
+          <div className="px-3 py-2">
+            <CtaButton/>
+          </div>
         </div>
       </div>
     </nav>
