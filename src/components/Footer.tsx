@@ -26,7 +26,7 @@ export default function Footer() {
           <div className="lg:col-span-3 flex justify-center lg:justify-start">
             <Link href="/" className="flex">
               <Image
-                src="/logo.svg"
+                src="/images/logo.png"
                 alt="Company Logo"
                 width={150}
                 height={50}

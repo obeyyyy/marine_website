@@ -86,7 +86,7 @@ const DottedLinesBackground2: React.FC = () => (
   <div className="absolute inset-0 pointer-events-none z-0">
     {/* 1. Top-Left Dotted Border Box (around the image) */}
     <div 
-      className="absolute top-15 right-10 h-[90%] w-[47%] border-t-[3px]
+      className="absolute top-17 right-0 h-[90%] w-[50%] border-t-[3px]
                 border-dashed border-[#5e1fff]
                 opacity-70 hidden lg:block" 
     />
@@ -688,7 +688,7 @@ export default function ServicesPage() {
 
      {/* Compliance Section */}
      <motion.div 
-       className="w-full min-h-screen bg-[#EBEEFF] py-20 px-4 sm:px-6 lg:px-8"
+       className="w-full max-h-screen bg-[#EBEEFF] py-20 px-4 sm:px-6 lg:px-8"
        initial={{ opacity: 0, y: 30 }}
        whileInView={{ opacity: 1, y: 0 }}
        viewport={{ once: true, margin: "-100px" }}

@@ -46,7 +46,7 @@ export default function Navbar() {
           <div className="flex-shrink-0">
             <Link href="/" className="block">
               <Image 
-                src="/logo.svg" 
+                src="/images/logo.png" 
                 alt="VY Marine Logo" 
                 width={150} 
                 height={50} 
@@ -55,7 +55,6 @@ export default function Navbar() {
               />
             </Link>
           </div>
-          
           {/* Desktop Navigation Links - Center */}
           <div className="hidden md:flex items-center justify-center flex-1">
             <div className="flex items-center space-x-6 lg:space-x-8">
