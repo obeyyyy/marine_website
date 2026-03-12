@@ -37,8 +37,8 @@ export default function TradingPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3, duration: 0.8 }}
                     >
-                        <span className="block">Global Marine &</span>
-                        <span className="text-blue-900">Industrial Trading</span>
+                        <span className="block">Global Marine &amp;</span>
+                        <span className="text-blue-900">Industrial Solutions</span>
                     </motion.h1>
                     
                     <motion.p 
@@ -47,7 +47,7 @@ export default function TradingPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.4, duration: 0.8 }}
                     >
-                        Vy Marine's trading division specializes in sourcing and supplying premium marine equipment, industrial materials, and general trading goods. With trusted partnerships across Asia and Europe, we ensure quality, transparency, and timely delivery.
+                        Vy Marine specializes in sourcing and supplying premium marine equipment, industrial materials, and general use goods. With trusted partnerships across Asia and Europe, we ensure quality, transparency, and timely delivery.
                     </motion.p>
                 </div>
             </motion.div>
@@ -91,11 +91,12 @@ export default function TradingPage() {
                             description: "Compressors, generators, automation systems, motors.",
                             icon: "/images/trading4.png" 
                         },
-                        { 
-                            title: "GENERAL TRADING", 
-                            description: "High-demand industrial and commercial products based on client needs.",
-                            icon: "/images/trading5.png" 
-                        }
+                        // Temporarily disabled "General Trading" card as per client request:
+                        // {
+                        //     title: "GENERAL TRADING", 
+                        //     description: "High-demand industrial and commercial products based on client needs.",
+                        //     icon: "/images/trading5.png" 
+                        // }
                     ].map((item, index) => (
                         <motion.div 
                             key={index} 
@@ -120,7 +121,7 @@ export default function TradingPage() {
                 </motion.div>
             </motion.div>
 
-            {/* Trading Services Section */}
+            {/* Supply Services Section */}
             <div className="w-full bg-[#F4F4F4] py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8">
             <motion.div 
                 initial={{ opacity: 0, y: 20 }}
@@ -130,7 +131,7 @@ export default function TradingPage() {
                 className="max-w-7xl mx-auto"
             >
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl font-bold text-gray-900 mb-4">TRADING SERVICES</h2>
+                    <h2 className="text-4xl font-bold text-gray-900 mb-4">SUPPLY SERVICES</h2>
                     <div className="w-24 h-1 bg-amber-400 mx-auto"></div>
                 </div>
 
@@ -236,7 +237,7 @@ export default function TradingPage() {
                                 {
                                     icon: "🤝",
                                     title: "Family Values, Professional Excellence",
-                                    description: "We combine the trust and care of a family business with the highest professional standards in marine trading.",
+                                    description: "We combine the trust and care of a family business with the highest professional standards in marine engineering, supply and services.",
                                     color: "text-blue-600"
                                 },
                                 {
@@ -292,7 +293,7 @@ export default function TradingPage() {
                                             At Vy Marine, our strength lies in the perfect balance between family values and professional excellence. As a family-run business, we approach every partnership with honesty, accountability, and a commitment to long-term growth — not just transactions.
                                         </p>
                                         <p className="leading-relaxed">
-                                            Our team combines decades of experience in marine engineering, trading, and procurement with an extensive network of trusted global suppliers. This allows us to deliver competitive prices without compromising on quality, no matter the size or urgency of your requirement.
+                                            Our team combines decades of experience in marine engineering and procurement with an extensive network of trusted global suppliers. This allows us to deliver competitive prices without compromising on quality, no matter the size or urgency of your requirement.
                                         </p>
                                         <p className="leading-relaxed font-medium">
                                             Our goal is simple: to make every client feel confident that when they work with Vy Marine, they are working with a partner who understands their world — and delivers solutions that keep operations moving smoothly.

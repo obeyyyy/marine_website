@@ -8,7 +8,7 @@ export default function Hero() {
           {/* Left side - Content */}
           <div className="md:w-1/2 mb-10 md:mb-0">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              Excellence in Marine Services & Trading
+              Excellence in Marine Services
             </h1>
             <p className="text-lg md:text-xl text-gray-600 mb-8">
             End‑to‑end services across marine, trade, and technology. Pick a single service or let us orchestrate the entire value chain—from engineering and procurement to e‑commerce enablement and after‑sales support.

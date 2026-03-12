@@ -6,9 +6,22 @@ import { FaLinkedin, FaTwitter, FaFacebook, FaInstagram } from 'react-icons/fa';
 
 export default function Footer() {
   const navLinks = [ 
-    { name: 'Services', href: '/services' ,subtitles: ['Marine Projects Engineering', 'E-commerce Solutions', 'Compliance & Documentation', 'Equipment Trading' , 'Service Brokerage' ]},
-    { name: 'Trading', href: '/trading' ,subtitles: ['Marine Equipments' , 'Spare Parts' , 'Industrial Supplies' , 'Machinery & Components' ]},
-    { name: 'Contact Us', href: '/contact' ,subtitles: ['Dubai | UK | China', 'Dummy1@vymarine.com', '+971 123456789']},
+    { 
+      name: 'Services', 
+      href: '/services',
+      subtitles: [
+        'Green Solutions',
+        'Optimization & Energy Efficiency',
+        'Dry Docking Solutions & Project Management',
+        'Ship Repairs & Supplies',
+        'Technical Consultancy',
+      ]
+    },
+    { 
+      name: 'Contact Us', 
+      href: '/contact',
+      subtitles: ['Dubai | UK | China | India', 'info@vymarine.com', '+971 123456789', '+91 1234567890'],
+    },
   ];
 
   const socialLinks = [
@@ -26,10 +39,10 @@ export default function Footer() {
           <div className="lg:col-span-3 flex justify-center lg:justify-start">
             <Link href="/" className="flex">
               <Image
-                src="/images/logo.png"
+                src="/images/new-logo.png"
                 alt="Company Logo"
-                width={150}
-                height={50}
+                width={170}
+                height={60}
                 className="h-12 w-auto"
               />
             </Link>
@@ -38,8 +51,11 @@ export default function Footer() {
           {/* Navigation Links */}
           <div className="lg:col-span-6">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-              {navLinks.map((link) => (
-                <div key={link.name} className="min-w-[200px]">
+              {navLinks.map((link, index) => (
+                <div
+                  key={link.name}
+                  className={`min-w-[200px] ${index === 0 ? 'sm:col-span-2' : ''}`}
+                >
                   <Link href={link.href}>
                     <h3 className="text-lg font-semibold text-gray-900 mb-4 hover:text-blue-600 transition-colors">
                       {link.name}

@@ -220,6 +220,87 @@ export default function ServicesPage() {
         </motion.div>
       </motion.div>
 
+      {/* Core Service Pillars (5 Pillars of Vy Marine) */}
+      <section className="bg-white py-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Our Core Service Pillars
+            </h2>
+            <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+              Vy Marine is an engineering company providing technical solutions for the maritime industry,
+              focused on safer, greener and more efficient vessel operations.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {/* 2A. Green Solutions */}
+            <div id="green-solutions" className="bg-[#EBF8FC] rounded-2xl p-8 shadow-sm">
+              <h3 className="text-2xl font-semibold text-cyan-800 mb-3">
+                Green Solutions – Digitalization &amp; Decarbonization
+              </h3>
+              <p className="text-gray-700 leading-relaxed">
+                We support shipowners with digital and decarbonization initiatives that reduce fuel
+                consumption and emissions while improving operational transparency. From performance
+                monitoring and data-driven decision making to energy-efficient retrofits, our focus is on
+                practical solutions that help vessels comply with evolving environmental regulations.
+              </p>
+            </div>
+
+            {/* 2B. Optimization and Energy Efficiency */}
+            <div id="optimization-energy-efficiency" className="bg-[#EBF8FC] rounded-2xl p-8 shadow-sm">
+              <h3 className="text-2xl font-semibold text-cyan-800 mb-3">
+                Optimization &amp; Energy Efficiency
+              </h3>
+              <p className="text-gray-700 leading-relaxed">
+                Vy Marine maximizes vessel performance while minimizing fuel consumption through smart
+                optimization and energy-efficient solutions. We focus on safer, greener and cost-effective
+                operations by analysing hull, machinery and voyage performance and recommending targeted
+                upgrades or process changes.
+              </p>
+            </div>
+
+            {/* 2C. Dry Docking Solutions and Project Management */}
+            <div id="dry-docking-solutions" className="bg-[#EBF8FC] rounded-2xl p-8 shadow-sm">
+              <h3 className="text-2xl font-semibold text-cyan-800 mb-3">
+                Dry Docking Solutions &amp; Project Management
+              </h3>
+              <p className="text-gray-700 leading-relaxed">
+                We deliver complete dry docking solutions, including specification preparation, yard
+                selection and end‑to‑end project management. Our engineers coordinate planning,
+                supervision and quality control to ensure safe, efficient and compliant dockings with
+                minimal off‑hire time.
+              </p>
+            </div>
+
+            {/* 2D. Ship Repairs and Supplies */}
+            <div id="ship-repairs-supplies" className="bg-[#EBF8FC] rounded-2xl p-8 shadow-sm">
+              <h3 className="text-2xl font-semibold text-cyan-800 mb-3">
+                Ship Repairs &amp; Supplies
+              </h3>
+              <p className="text-gray-700 leading-relaxed">
+                Vy Marine provides reliable ship repair and supply support – from scheduled maintenance and
+                voyage repairs to emergency interventions. We also arrange provision of quality spare parts
+                and consumables to keep vessels operational, compliant and ready for their next voyage.
+              </p>
+            </div>
+
+            {/* 2E. Technical Consultancy */}
+            <div id="technical-consultancy" className="bg-[#EBF8FC] rounded-2xl p-8 shadow-sm md:col-span-2">
+              <h3 className="text-2xl font-semibold text-cyan-800 mb-3">
+                Technical Consultancy
+              </h3>
+              <p className="text-gray-700 leading-relaxed">
+                Our technical consultancy team supports owners and managers with maintenance planning,
+                regulatory compliance, performance optimisation and long‑term asset strategies. We act as a
+                trusted engineering partner, helping you evaluate options and implement solutions that match
+                the operating profile and life‑cycle of each vessel.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Services Section */}
       <motion.div 
         ref={ref}
@@ -301,8 +382,7 @@ export default function ServicesPage() {
         </div>
       </motion.div>
 
-    {/* NEW CODE for the Equipment & Machinery Trading Section */}
-    // Equipment & Machinery Trading Section - Responsive
+    {/* Equipment & Machinery Supply Section - Responsive */}
     <motion.div 
     initial="hidden"
     whileInView="show"
@@ -320,7 +400,7 @@ export default function ServicesPage() {
         >
         <img 
             src="/images/services-3.png"
-            alt="Equipment & Machinery Trading" 
+            alt="Equipment & Machinery Supply" 
             className="w-full max-w-lg h-auto rounded-xl shadow-lg"
             loading="lazy"
         />
@@ -347,7 +427,7 @@ export default function ServicesPage() {
             variants={fadeInUp} 
             className="text-3xl sm:text-4xl font-bold text-gray-800 mb-4 md:mb-6"
         >
-          Equipment & Machinery Trading
+          Equipment &amp; Machinery Supply
         </motion.h2>
 
         <motion.p 
@@ -361,7 +441,7 @@ export default function ServicesPage() {
             variants={fadeInUp} 
             className="text-xl sm:text-2xl font-semibold text-gray-800 mb-3 md:mb-4"
         >
-          Our trading portfolio includes:
+          Our supply portfolio includes:
         </motion.h3>
         
         <motion.ul 
@@ -405,19 +485,17 @@ export default function ServicesPage() {
     </div>
     </motion.div>
 
-    {/* E-Commerce Solution Section */}
+    {/* E-Commerce Solution Section (temporarily disabled as per client) */}
+    {/*
     <section className="relative overflow-hidden py-24 md:py-32">
-      {/* Background with subtle pattern overlay */}
       <div className="absolute inset-0">
         <img 
           src="/images/e-commerce-bg.jpg" 
           alt="Marine E-Commerce Solutions"
           className="w-full h-full object-cover object-center"
         />
-      
       </div>
 
-      {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-20 -right-20 w-96 h-96 bg-blue-100/30 rounded-full mix-blend-multiply filter blur-3xl" />
         <div className="absolute -bottom-40 -left-20 w-[32rem] h-[32rem] bg-cyan-100/30 rounded-full mix-blend-multiply filter blur-3xl" />
@@ -444,7 +522,6 @@ export default function ServicesPage() {
         </div>
 
         <div className="relative bg-white/10 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden border border-gray-100 p-8 md:p-12 max-w-4xl mx-auto">
-          {/* Decorative corner elements */}
           <div className="absolute top-0 left-0 w-24 h-24 -mt-6 -ml-6 bg-blue-500/10 rounded-full mix-blend-multiply filter opacity-20" />
           <div className="absolute bottom-0 right-0 w-32 h-32 -mb-8 -mr-8 bg-cyan-400/10 rounded-full mix-blend-multiply filter opacity-20" />
           
@@ -456,7 +533,7 @@ export default function ServicesPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-lg md:text-xl text-gray-700 leading-relaxed mb-10 max-w-3xl mx-auto"
             >
-              Our E-Commerce platform brings marine trading online — simplifying procurement through a digital interface for faster quoting, order tracking, and vendor communication.
+              Our E‑Commerce platform brings marine procurement online — simplifying purchasing through a digital interface for faster quoting, order tracking, and vendor communication.
             </motion.p>
 
             <motion.div 
@@ -528,6 +605,7 @@ export default function ServicesPage() {
         </div>
       </div>
     </section>
+    */}
 
      {/* Services Brokerage Section */}
     <motion.div 
@@ -552,7 +630,7 @@ export default function ServicesPage() {
     </div>
 
       {/* Right Content */}
-      <div className="w-full lg:w-1/2 p-6 lg:p-12 flex-shrink-0">
+      {/* <div className="w-full lg:w-1/2 p-6 lg:p-12 flex-shrink-0">
         <div className="flex flex-col lg:flex-row h-full">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -605,86 +683,8 @@ export default function ServicesPage() {
             />
           </motion.div>
         </div>
-      </div>
+      </div> */}
       </motion.div>
-
-     {/* Trading Section */}
-     <motion.div
-       initial={{ opacity: 0, y: 20 }}
-       whileInView={{ opacity: 1, y: 0 }}
-       viewport={{ once: true }}
-       transition={{ duration: 0.6 }}
-       className="relative w-full min-h-screen bg-[#92CDE1] overflow-hidden py-12 md:py-0"
-     >
-       <DottedLinesBackground2 />
-       <div className="relative gap-30 z-10 container mx-auto px-4 md:px-6 h-full flex flex-col md:flex-row items-center justify-center min-h-[calc(100vh-6rem)] md:min-h-screen">
-         <motion.div 
-           initial={{ opacity: 0, x: -20 }}
-           whileInView={{ opacity: 1, x: 0 }}
-           viewport={{ once: true }}
-           transition={{ duration: 0.6, delay: 0.2 }}
-           className="w-full md:w-1/2 lg:w-2/5 xl:w-1/2 p-6 md:p-8 lg:p-12"
-         >
-           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-black leading-tight">
-             General Trading
-           </h1>
-           <div className="space-y-6">
-             <p className="text-base sm:text-lg lg:text-xl text-[#016CA0] leading-relaxed">
-               OVy Marine's General Trading division focuses on delivering high-quality industrial goods and marine-related materials beyond engineering and machinery.
-             </p>
-             
-             <div className="space-y-3 w-full">
-               <h3 className="text-xl sm:text-2xl font-semibold text-[#016CA0]">We handle:</h3>
-               <ul className="space-y-2 pl-5">
-                 {[
-                   'Industrial and construction materials',
-                   'Marine chemicals, lubricants, and consumables',
-                   'Safety gear and protective equipment',
-                   'Customized sourcing for specialized operations'
-                 ].map((item, index) => (
-                   <li key={index} className="flex items-start">
-                     <span className="inline-block w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#016CA0] rounded-full mt-2.5 mr-3 flex-shrink-0"></span>
-                     <span className="text-base sm:text-lg text-[#016CA0] leading-relaxed">{item}</span>
-                   </li>
-                 ))}
-               </ul>
-             </div>
-             
-             <p className="text-base sm:text-lg lg:text-xl text-[#016CA0] leading-relaxed">
-               Our commitment to reliability, transparency, and customer satisfaction ensures consistent quality and smooth supply chain operations, no matter the scale of your project.
-             </p>
-           </div>
-         </motion.div>
-         
-         <div className="relative w-full md:w-1/2 lg:w-2/5 h-64 sm:h-80 md:h-[70vh] mt-8 md:mt-0">
-           <motion.img 
-             initial={{ opacity: 0, y: 20 }}
-             whileInView={{ opacity: 1, y: 0 }}
-             viewport={{ once: true }}
-             transition={{ duration: 0.6 }}
-             className="w-full h-full object-cover rounded-2xl md:rounded-4xl shadow-lg"
-             src="/images/trading.png"
-             alt="Marine Trading Services"
-           />
-         </div>
-         
-         {/* Vessels Button */}
-        <motion.div 
-            variants={item}
-            className="absolute -bottom-4 -right-4 md:bottom-25 md:right-140
-                    flex items-center p-0 m-0 rounded-full 
-                    transition-all duration-300 hover:scale-105"
-        >
-            <div className="w-20 h-20 md:w-35 md:h-35">
-            <img 
-                src="images/vessels2.png" 
-                alt="View our Vessels" 
-                className="w-full h-full object-contain rounded-full"
-            />
-            </div>
-        </motion.div>
-       </div>
-     </motion.div>
 
      {/* Compliance Section */}
      <motion.div 
@@ -753,6 +753,64 @@ export default function ServicesPage() {
          </div>
        </div>
      </motion.div>
+
+     {/* Why work with Vy Marine */}
+     <section className="w-full bg-white py-16 px-4 sm:px-6 lg:px-8">
+       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+         <div className="space-y-5">
+           <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+             Customer‑Centric Marine Engineering
+           </h2>
+           <p className="text-lg text-gray-700 leading-relaxed">
+             We focus on long‑term partnerships with shipowners by combining practical engineering, genuine spares
+             and transparent project execution.
+           </p>
+           <ul className="space-y-3 text-gray-700">
+             <li className="flex items-start">
+               <span className="mt-2 mr-3 h-2 w-2 rounded-full bg-blue-600 flex-shrink-0" />
+               <span><strong>Customer‑centric</strong> approach – solutions built around each vessel and trade.</span>
+             </li>
+             <li className="flex items-start">
+               <span className="mt-2 mr-3 h-2 w-2 rounded-full bg-blue-600 flex-shrink-0" />
+               <span><strong>Aesthetic, practical designs</strong> that respect yard constraints and onboard realities.</span>
+             </li>
+             <li className="flex items-start">
+               <span className="mt-2 mr-3 h-2 w-2 rounded-full bg-blue-600 flex-shrink-0" />
+               <span><strong>Result‑oriented solutions</strong> with clear performance and reliability targets.</span>
+             </li>
+             <li className="flex items-start">
+               <span className="mt-2 mr-3 h-2 w-2 rounded-full bg-blue-600 flex-shrink-0" />
+               <span><strong>Genuine spares at economical pricing</strong>, backed by vetted OEM and alternative suppliers.</span>
+             </li>
+             <li className="flex items-start">
+               <span className="mt-2 mr-3 h-2 w-2 rounded-full bg-blue-600 flex-shrink-0" />
+               <span><strong>Reliable and experienced team</strong> with hands‑on shipyard and sailing repair experience.</span>
+             </li>
+           </ul>
+         </div>
+
+         <div className="space-y-5 bg-[#EBEEFF] rounded-2xl p-8 shadow-sm">
+           <h3 className="text-2xl font-semibold text-gray-900">
+             Bulk Carrier &amp; General Cargo Expertise
+           </h3>
+           <p className="text-gray-700 leading-relaxed">
+             Our team has extensive experience on bulk carriers and general cargo vessels, with a strong focus on
+             critical areas such as cranes, hatch covers and cargo‑handling systems.
+           </p>
+           <p className="text-gray-700 leading-relaxed">
+             We understand the operational and safety implications of these systems and support owners with inspection,
+             repairs and upgrades that minimise downtime.
+           </p>
+           <div className="border-t border-blue-200 pt-4">
+             <p className="text-sm text-blue-900 font-medium">
+               Coming up: our dedicated in‑house sailing repair team, providing experienced service personnel who can carry
+               out repairs during voyages.
+             </p>
+           </div>
+         </div>
+       </div>
+     </section>
+
       <QuoteForm bgColor='bg-white' title='GET IN TOUCH WITH US TODAY'/>
       <Footer />
     </main>

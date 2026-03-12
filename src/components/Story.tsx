@@ -19,13 +19,13 @@ const Story = () => {
   const tweenRef = useRef<gsap.core.Tween | null>(null);
 
   const storyTimeline: StoryItem[] = [
-    {
-      year: "Global Reach",
-      title: "Vendor Network",
-      description:
-        "A worldwide network connecting partners across UAE, India, UK, and China, ensuring you access the best resources globally.",
-      icon: "🌍",
-    },
+    // {
+    //   year: "Global Reach",
+    //   title: "Vendor Network",
+    //   description:
+    //     "A worldwide network connecting partners across UAE, India, UK, and China, ensuring you access the best resources globally.",
+    //   icon: "🌍",
+    // },
     {
       year: "Quality",
       title: "Certified Partnerships",
