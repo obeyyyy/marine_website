@@ -13,7 +13,7 @@ const projects = [
     title: 'Pump & valve package (UAE)',
     description: 'Pump & valve package (UAE)',
     image: '/project2.jpg',
-    category: 'Trading'
+    category: 'Supply'
   },
   {
     id: 3,

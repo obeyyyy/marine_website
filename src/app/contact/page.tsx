@@ -16,7 +16,7 @@ export default function ContactPage() {
                         <div className="flex flex-col items-center text-center p-6 rounded-lg ">
                             <img src="/images/icon1.png" alt="Location 1" className="w-16 h-16 mb-4 object-contain" />
                             <h3 className="text-xl font-semibold mb-2">OUR LOCATIONS</h3>
-                            <p className="">Dubai | UK | China</p>
+                            <p className="">Dubai | UK | China | India</p>
                         </div>
                         <div className="flex flex-col items-center text-center p-6 rounded-lg ">
                             <img src="/images/icon2.png" alt="Location 2" className="w-16 h-16 mb-4 object-contain" />
@@ -24,11 +24,12 @@ export default function ContactPage() {
                             <p className="">+971 123456789</p>
                             <p className="">+44 123456789</p>
                             <p className="">+86 123456789</p>
+                            <p className="">+91 1234567890</p>
                         </div>
                         <div className="flex flex-col items-center text-center p-6 rounded-lg ">
                             <img src="/images/icon3.png" alt="Location 3" className="w-16 h-16 mb-4 object-contain" />
                             <h3 className="text-xl font-semibold mb-2">EMAIL US</h3>
-                            <p className="">Dummy1@vymarine.com</p>
+                            <p className="">info@vymarine.com</p>
                         </div>
                     </div>
                 </div>

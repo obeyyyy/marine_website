@@ -1,7 +1,8 @@
-'use client';
+ 'use client';
 
 import { motion, useInView, Variants } from 'framer-motion';
 import { useRef } from 'react';
+import Link from 'next/link';
 
 const cardVariants: Variants = {
   offscreen: {
@@ -42,46 +43,57 @@ const containerVariants: Variants = {
 
 const services = [
   {
-    icon: <img src={"/images/service-1.png"} className="w-8 h-8 " />,
-    title: 'MARINE PROJECTS ENGINEERING',
-    description: 'Feasibility, design reviews, vendor selection, and owner’s engineering for refits, retrofits, and new builds.'
+    icon: <img src={"/images/service-1.png"} className="w-8 h-8" />,
+    title: 'Green Solutions',
+    description: 'Digitalization and decarbonization solutions for sustainable maritime operations.',
+    href: '/green-solutions',
   },
   {
-    icon:  <img src={"/images/service-2.png"} className="w-8 h-8 "/>,
-    title: 'EQUIPMENT & MACHINERY TRADING',
-    description: 'Sourcing, QA, and logistics for pumps, valves, deck machinery, safety systems, and spares—OEM or equivalent.'
-
+    icon: <img src={"/images/service-2.png"} className="w-8 h-8" />,
+    title: 'Optimization & Energy Efficiency',
+    description: 'Maximize vessel performance while minimizing fuel consumption.',
+    href: '/optimization-energy-efficiency',
   },
   {
-    icon:  <img src={"/images/service-3.png"} className="w-8 h-8 " />,
-    title: 'E-COMMERCE SOLUTIONS',
-    description: 'B2B storefronts, RFQ flows, and catalogue management to bring your inventory online with real‑time quoting.'
+    icon: <img src={"/images/service-3.png"} className="w-8 h-8" />,
+    title: 'Dry Docking Solutions & Project Management',
+    description: 'Provide dry dock planning, yard selection, and full project supervision.',
+    href: '/dry-docking-solutions',
   },
   {
-    icon:  <img src={"/images/service-4.png"} className="w-8 h-8 " />,
-    title: 'SERVICE BROKEAGE',
-    description: 'Connect with vetted surveyors, repair yards, and technicians worldwide—booked and coordinated by us.'
+    icon: <img src={"/images/service-4.png"} className="w-8 h-8" />,
+    title: 'Ship Repairs & Supplies',
+    description: 'Offer ship repair services, emergency maintenance, and spare parts support.',
+    href: '/ship-repairs-supplies',
   },
   {
-    icon:  <img src={"/images/service-5.png"} className="w-8 h-8 " />,
-    title: 'GENERAL TRADING',
-    description: 'Beyond marine: industrial consumables, tools, and engineered products for energy, utilities, and manufacturing.'
+    icon: <img src={"/images/service-5.png"} className="w-8 h-8" />,
+    title: 'Technical Consultancy',
+    description: 'Provide expert consultancy on vessel maintenance, regulatory compliance, and performance optimization.',
+    href: '/technical-consultancy',
   },
-  {
-    icon:  <img src={"/images/service-6.png"} className="w-8 h-8 " />,
-    title: 'COMPLIANCE & DOCUMENTATION',
-    description: 'INCOTERMS, HS codes, export control checks, and paperwork handled correctly and on time.'
-  }
 ];
 
-function ServiceCard({ service, index }: { service: typeof services[0], index: number }) {
+type Service = typeof services[0];
+
+function ServiceCard({
+  service,
+  index,
+  isLast,
+}: {
+  service: Service;
+  index: number;
+  isLast: boolean;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   return (
     <motion.div
       ref={ref}
-      className="p-6 bg-gray-50 rounded-lg"
+      className={`flex flex-col h-full p-6 bg-gray-50 rounded-2xl border border-white/60 shadow-sm ${
+        isLast ? 'md:col-span-2 md:max-w-sm md:mx-auto' : ''
+      }`}
       initial="offscreen"
       animate={isInView ? "onscreen" : "offscreen"}
       variants={cardVariants}
@@ -95,8 +107,25 @@ function ServiceCard({ service, index }: { service: typeof services[0], index: n
       >
         {service.icon}
       </motion.div>
-      <h3 className="text-xl font-extrabold text-black mb-2">{service.title}</h3>
-      <p className="text-gray-600">{service.description}</p>
+      <h3 className="text-lg font-extrabold text-black mb-2">{service.title}</h3>
+      <p className="text-sm text-gray-600 flex-1">{service.description}</p>
+      <div className="mt-6">
+        <Link
+          href={service.href}
+          className="inline-flex items-center px-4 py-2 text-sm font-semibold text-blue-700 bg-white rounded-full shadow-sm hover:bg-blue-50 transition-colors"
+        >
+          Learn more
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="ml-2 h-4 w-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </Link>
+      </div>
     </motion.div>
   );
 }
@@ -106,17 +135,19 @@ export default function Services() {
   const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   return (
-    <section className="py-16 overflow-hidden">
-      <div className="container mx-auto px-6">
-        <motion.div 
+    <section className="py-20 bg-[#EBEEFF] overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Our Services
+          </h2>
           <motion.div 
-            className="w-20 h-1 bg-blue-600 mx-auto"
+            className="w-24 h-1 bg-blue-600 mx-auto rounded-full"
             initial={{ scaleX: 0 }}
             animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
             transition={{ delay: 0.2, duration: 0.5, ease: 'easeOut' }}
@@ -124,14 +155,19 @@ export default function Services() {
         </motion.div>
         
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "show" : "hidden"}
           ref={ref}
         >
           {services.map((service, index) => (
-            <ServiceCard key={index} service={service} index={index} />
+            <ServiceCard
+              key={service.title}
+              service={service}
+              index={index}
+              isLast={index === services.length - 1}
+            />
           ))}
         </motion.div>
       </div>
