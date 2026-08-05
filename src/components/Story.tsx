@@ -1,202 +1,180 @@
-"use client";
-import { useRef, useLayoutEffect } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+'use client';
 
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+import { useRef, useLayoutEffect } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { BadgeCheck, BarChart3, Sprout, Zap, Timer } from 'lucide-react';
 
-interface StoryItem {
-  year: string;
-  title: string;
-  description: string;
-  icon?: string;
-}
+gsap.registerPlugin(ScrollTrigger);
+
+const storyTimeline = [
+  {
+    kicker: 'Quality',
+    title: 'Certified Partnerships',
+    description:
+      'Our partnerships with ISO-certified manufacturers guarantee that every product meets international standards of excellence.',
+    icon: BadgeCheck,
+  },
+  {
+    kicker: 'Transparency',
+    title: 'Project Reporting',
+    description:
+      "With transparent, milestone-based project tracking, you're always informed at every step of the journey.",
+    icon: BarChart3,
+  },
+  {
+    kicker: 'Sustainability',
+    title: 'Responsible Sourcing',
+    description:
+      'Our sourcing practices prioritize environmental stewardship and sustainability in every decision we make.',
+    icon: Sprout,
+  },
+  {
+    kicker: 'Efficiency',
+    title: 'Rapid Response',
+    description:
+      'We move fast — with a typical 72-hour lead time to shortlist qualified vendors for your unique needs.',
+    icon: Zap,
+  },
+  {
+    kicker: 'Reliability',
+    title: 'On-time Delivery',
+    description:
+      'With a 97% on-time delivery rate, we ensure your projects stay on schedule without compromise.',
+    icon: Timer,
+  },
+];
 
 const Story = () => {
   const panelsContainerRef = useRef<HTMLDivElement>(null);
   const panelsSectionRef = useRef<HTMLDivElement>(null);
+  const progressRef = useRef<HTMLDivElement>(null);
   const tweenRef = useRef<gsap.core.Tween | null>(null);
 
-  const storyTimeline: StoryItem[] = [
-    // {
-    //   year: "Global Reach",
-    //   title: "Vendor Network",
-    //   description:
-    //     "A worldwide network connecting partners across UAE, India, UK, and China, ensuring you access the best resources globally.",
-    //   icon: "🌍",
-    // },
-    {
-      year: "Quality",
-      title: "Certified Partnerships",
-      description:
-        "Our partnerships with ISO-certified manufacturers guarantee that every product meets international standards of excellence.",
-      icon: "✅",
-    },
-    {
-      year: "Transparency",
-      title: "Project Reporting",
-      description:
-        "With transparent, milestone-based project tracking, you're always informed at every step of the journey.",
-      icon: "📊",
-    },
-    {
-      year: "Sustainability",
-      title: "Responsible Sourcing",
-      description:
-        "Our sourcing practices prioritize environmental stewardship and sustainability in every decision we make.",
-      icon: "🌱",
-    },
-    {
-      year: "Efficiency",
-      title: "Rapid Response",
-      description:
-        "We move fast — with a typical 72-hour lead time to shortlist qualified vendors for your unique needs.",
-      icon: "⚡",
-    },
-    {
-      year: "Reliability",
-      title: "On-time Delivery",
-      description:
-        "With a 97% on-time delivery rate, we ensure your projects stay on schedule without compromise.",
-      icon: "⏱️",
-    },
-  ];
-
-  // Horizontal scroll setup
   useLayoutEffect(() => {
     if (!panelsContainerRef.current || !panelsSectionRef.current) return;
-    const panels = gsap.utils.toArray(".panel");
-    const container = panelsContainerRef.current;
+    const ctx = gsap.context(() => {
+      const panels = gsap.utils.toArray<HTMLElement>('.panel');
+      const container = panelsContainerRef.current!;
 
-    gsap.set(container, { width: `${panels.length * 100}%` });
+      gsap.set(container, { width: `${panels.length * 100}%` });
 
-    tweenRef.current = gsap.to(panels as gsap.TweenTarget[], {
-      x: () => -1 * (container.scrollWidth - window.innerWidth),
-      ease: "none",
-      scrollTrigger: {
-        trigger: panelsSectionRef.current,
-        pin: true,
-        scrub: 1,
-        start: "top top",
-        end: () => `+=${container.scrollWidth - window.innerWidth}`,
-        invalidateOnRefresh: true,
-      },
-    });
-
-    // Animate panels as they come into view
-    panels.forEach((panel: any, i) => {
-      gsap.fromTo(
-        panel.querySelector(".panel-content"),
-        {
-          opacity: 0,
-          x: i % 2 === 0 ? 100 : -100,
-          scale: 0.95,
-        },
-        {
-          opacity: 1,
-          x: 0,
-          scale: 1,
-          duration: 0.2,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: panel,
-            containerAnimation: tweenRef.current || undefined,
-            start: "left center",
-            end: "right center",
-            toggleActions: "play reverse play reverse",
+      tweenRef.current = gsap.to(panels, {
+        x: () => -1 * (container.scrollWidth - window.innerWidth),
+        ease: 'none',
+        scrollTrigger: {
+          trigger: panelsSectionRef.current,
+          pin: true,
+          scrub: 1,
+          start: 'top top',
+          end: () => `+=${container.scrollWidth - window.innerWidth}`,
+          invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            if (progressRef.current) {
+              progressRef.current.style.transform = `scaleX(${self.progress})`;
+            }
           },
-        }
-      );
-    });
+        },
+      });
 
-    return () => {
-      tweenRef.current?.kill();
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
+      panels.forEach((panel, i) => {
+        gsap.fromTo(
+          panel.querySelector('.panel-content'),
+          { opacity: 0, x: i === 0 ? 0 : 120, scale: 0.96 },
+          {
+            opacity: 1,
+            x: 0,
+            scale: 1,
+            duration: 0.3,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: panel,
+              containerAnimation: tweenRef.current || undefined,
+              start: 'left center',
+              end: 'right center',
+              toggleActions: 'play reverse play reverse',
+            },
+          }
+        );
+      });
+    }, panelsSectionRef);
+
+    return () => ctx.revert();
   }, []);
 
-  const scrollToPanel = (index: number) => {
-    const panel = document.getElementById(`panel-${index + 1}`);
-    panel?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
-    <section className="relative min-h-screen overflow-hidden bg-gradient-to-b from-sky-50 via-blue-50 to-slate-100 text-slate-900">
-      {/* Section Header */}
-      <div className="absolute top-0 left-0 w-full text-center py-16 bg-gradient-to-b from-white/70 to-transparent backdrop-blur-sm z-20">
-        <h2 className="text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-blue-700 to-sky-500 bg-clip-text text-transparent tracking-tight drop-shadow-sm">
-          Our Story
-        </h2>
-        <p className="mt-4 text-slate-600 text-lg sm:text-xl max-w-2xl mx-auto px-6">
-          A journey built on trust, innovation, and reliability — connecting
-          the world through sustainable and transparent partnerships.
-        </p>
-      </div>
-
-      {/* Panels Section */}
+    <section className="relative text-white overflow-hidden">
+      {/* Pinned horizontal panels */}
       <div ref={panelsSectionRef} className="relative h-screen w-full overflow-hidden">
+        {/* Background — transparent so the cinematic video shows through */}
+        <div className="absolute top-1/3 left-1/4 w-[30rem] h-[30rem] rounded-full bg-white/5 blur-3xl" />
+
+        {/* Section header (stays while pinned) */}
+        <div className="absolute top-0 left-0 w-full text-center pt-20 z-20 px-6 pointer-events-none">
+          <span className="inline-block text-xs font-semibold tracking-[0.25em] uppercase text-accent-400 mb-4">
+            Why VY Marine
+          </span>
+          <h2 className="font-display text-3xl sm:text-5xl font-bold text-white">
+            Built on trust. Proven at sea.
+          </h2>
+        </div>
+
         <div
           ref={panelsContainerRef}
-          className="flex flex-nowrap w-full h-full overflow-hidden"
+          className="relative flex flex-nowrap w-full h-full overflow-hidden"
         >
           {storyTimeline.map((item, index) => (
             <div
-            key={index}
-            id={`panel-${index + 1}`}
-            className="panel w-screen h-full flex items-center justify-center px-6 sm:px-10"
-          >
-            <div
-              className={`panel-content max-w-2xl w-11/12 text-center rounded-3xl border shadow-2xl backdrop-blur-xl p-10 transform transition-all duration-500 hover:-translate-y-3 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(0,0,0,0.15)] relative overflow-hidden
-                ${index % 6 === 0
-                  ? "bg-gradient-to-br from-sky-500 via-blue-500 to-indigo-600 text-white border-blue-400/50"
-                  : index % 6 === 1
-                  ? "bg-gradient-to-br from-purple-500 via-fuchsia-500 to-pink-500 text-white border-fuchsia-400/50"
-                  : index % 6 === 2
-                  ? "bg-gradient-to-br from-emerald-500 via-green-400 to-lime-500 text-white border-green-400/50"
-                  : index % 6 === 3
-                  ? "bg-gradient-to-br from-orange-400 via-amber-500 to-yellow-400 text-white border-amber-400/50"
-                  : index % 6 === 4
-                  ? "bg-gradient-to-br from-rose-500 via-pink-500 to-red-500 text-white border-rose-400/50"
-                  : "bg-gradient-to-br from-cyan-400 via-sky-400 to-blue-500 text-white border-cyan-300/50"
-                }`}
+              key={index}
+              id={`panel-${index + 1}`}
+              className="panel w-screen h-full flex items-center justify-center px-6 sm:px-10 pt-24"
             >
-              {/* Glow animation overlay */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent opacity-0 hover:opacity-20 transition-opacity duration-700 animate-pulse" />
+              <div className="panel-content relative max-w-3xl w-full">
+                {/* Giant outlined index */}
+                <span className="font-display text-[9rem] sm:text-[13rem] font-bold leading-none text-outline absolute -top-24 sm:-top-36 -left-2 select-none pointer-events-none">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
 
-              <div className="inline-flex items-center gap-2 bg-white/20 px-5 py-2 rounded-full text-sm font-semibold mb-6 backdrop-blur-md border border-white/30">
-                <span className="text-lg">{item.icon}</span>
-                {item.year}
+                <div className="relative border border-white/10 bg-white/5 p-10 sm:p-14 overflow-hidden">
+                  <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-white/5 blur-3xl pointer-events-none" />
+
+                  <div className="flex items-center gap-3 mb-7">
+                    <div className="w-11 h-11 bg-white/5 flex items-center justify-center">
+                      <item.icon className="h-5 w-5 text-accent-400" />
+                    </div>
+                    <span className="text-xs font-medium tracking-[0.15em] uppercase text-accent-400">
+                      {item.kicker}
+                    </span>
+                  </div>
+
+                  <h3 className="font-display text-3xl sm:text-4xl font-bold mb-5 text-white">
+                    {item.title}
+                  </h3>
+                  <p className="text-base sm:text-lg leading-relaxed text-white/65 max-w-xl">
+                    {item.description}
+                  </p>
+
+                  <div className="mt-8 h-0.5 w-16 bg-accent-400" />
+                </div>
               </div>
-
-              <h3 className="text-3xl sm:text-4xl font-extrabold mb-4 drop-shadow-md">
-                {item.title}
-              </h3>
-
-              <p className="text-base sm:text-lg leading-relaxed text-white/90 font-light">
-                {item.description}
-              </p>
             </div>
-          </div>
-
           ))}
         </div>
-      </div>
 
-      {/* Scroll Indicator */}
-      <div className="fixed bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-50 bg-white/80 backdrop-blur-md px-5 py-3 rounded-full shadow-lg">
-        {storyTimeline.map((item, index) => (
-          <button
-            key={index}
-            onClick={() => scrollToPanel(index)}
-            className="relative group"
-          >
-            <div className="w-3.5 h-3.5 bg-blue-300 rounded-full transition-all duration-300 group-hover:scale-125 group-hover:bg-blue-500" />
-            <span className="absolute -top-9 left-1/2 -translate-x-1/2 text-xs text-slate-700 bg-white/90 px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap shadow">
-              {item.title}
-            </span>
-          </button>
-        ))}
+        {/* Progress bar */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 w-56">
+          <div className="flex justify-between text-[10px] uppercase tracking-widest text-white/40 mb-2">
+            <span>01</span>
+            <span>{String(storyTimeline.length).padStart(2, '0')}</span>
+          </div>
+          <div className="h-0.5 w-full bg-white/15 rounded-full overflow-hidden">
+            <div
+              ref={progressRef}
+              className="h-full w-full bg-accent-400 origin-left"
+              style={{ transform: 'scaleX(0)' }}
+            />
+          </div>
+        </div>
       </div>
     </section>
   );

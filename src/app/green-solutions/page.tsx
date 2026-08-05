@@ -1,119 +1,201 @@
- 'use client';
+'use client';
 
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
+import { ArrowRight, Route, Fuel, Fan, FileCheck2, LineChart, HardHat } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import QuoteForm from '@/components/QuoteForm';
-import Link from 'next/link';
+import PageHero from '@/components/PageHero';
+
+const phases = [
+  {
+    step: '01',
+    icon: Route,
+    title: 'Assess & Prioritise',
+    description:
+      'Vessel screening, emission baselines and regulatory gap analysis. We identify which ships need what, and in what order.',
+    items: ['Emission reduction roadmaps', 'CII / EEXI gap analysis', 'Fleet-level prioritisation'],
+  },
+  {
+    step: '02',
+    icon: Fuel,
+    title: 'Design & Engineer',
+    description:
+      'Concept designs and technical assessments for alternative fuels, energy-saving devices and hybrid solutions.',
+    items: ['LNG, methanol, ammonia readiness', 'ESD selection (propellers, ducts, sails)', 'Retrofit engineering packages'],
+  },
+  {
+    step: '03',
+    icon: FileCheck2,
+    title: 'Comply & Document',
+    description:
+      'Full documentation support for IMO, EU and local frameworks — including SEEMP, CII and EEXI submissions.',
+    items: ['SEEMP III preparation', 'CII rating improvement plans', 'Class & flag documentation'],
+  },
+  {
+    step: '04',
+    icon: LineChart,
+    title: 'Monitor & Improve',
+    description:
+      'KPIs, dashboards and onboard routines to track real-world impact and close the loop between intent and outcome.',
+    items: ['Performance monitoring setup', 'Crew engagement & training', "Owner's engineering throughout"],
+  },
+];
 
 export default function GreenSolutionsPage() {
   return (
-    <main className="min-h-screen bg-[#EBEEFF] w-full relative overflow-hidden">
+    <main className="min-h-screen bg-navy-950 w-full">
       <Navbar />
 
-      {/* Hero */}
-      <section className="bg-[#92CDE1] py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left flex flex-col md:flex-row items-center gap-10">
-          <div className="flex-1">
-            <p className="text-sm font-semibold tracking-wide text-blue-900 uppercase mb-3">
-              Sustainability First
-            </p>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight mb-4">
-              Green Marine Solutions
-            </h1>
-            <p className="text-base sm:text-lg md:text-xl text-black/80 max-w-2xl">
-              Supporting shipowners and operators with environmentally responsible upgrades, compliance
-              strategies, and lifecycle efficiency improvements across the fleet.
-            </p>
-          </div>
-          <div className="flex-1 flex justify-center">
-            <img
-              src="/images/green-solutions.png"
-              alt="Green marine solutions"
-              className="w-full max-w-md rounded-2xl shadow-lg object-cover"
-            />
+      <PageHero
+        eyebrow="Sustainability first"
+        title="Green Marine Solutions"
+        subtitle="Supporting shipowners and operators with environmentally responsible upgrades, compliance strategies, and lifecycle efficiency improvements across the fleet."
+        breadcrumb="Green Solutions"
+        backgroundImage="/images/services-2.png"
+      />
+
+      {/* Intro + image */}
+      <section className="relative py-24 border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.7 }}
+            >
+              <p className="text-xs font-medium tracking-[0.15em] uppercase text-accent-400 mb-4">
+                Decarbonisation through practical engineering
+              </p>
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
+                From regulatory pressure to operational action
+              </h2>
+              <p className="text-white/60 leading-relaxed mb-6">
+                We help you plan and execute green upgrades that balance regulatory compliance,
+                technical feasibility, and commercial realities — from single-vessel projects to
+                full fleet programmes.
+              </p>
+              <p className="text-white/60 leading-relaxed">
+                No silver bullets. Just structured engineering, honest assessments and a roadmap
+                your crew can actually follow.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.8 }}
+              className="relative h-[350px] lg:h-[450px] border border-white/10 overflow-hidden"
+            >
+              <Image
+                src="/images/services-3.png"
+                alt="Green marine solutions"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-950/50 to-transparent" />
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Intro + Features */}
-      <section className="py-16 md:py-20 bg-[#EBEEFF]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Decarbonisation Through Practical Engineering
-            </h2>
-            <p className="text-gray-700 text-base sm:text-lg">
-              We help you plan and execute green upgrades that balance regulatory compliance, technical
-              feasibility, and commercial realities – from single-vessel projects to full fleet programs.
+      {/* Timeline / Roadmap */}
+      <section className="relative py-24 border-b border-white/10">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="mb-16"
+          >
+            <p className="text-xs font-medium tracking-[0.15em] uppercase text-accent-400 mb-4">
+              The roadmap
             </p>
-          </div>
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-white">
+              Four phases, one direction
+            </h2>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {[
-              {
-                title: 'Emission Reduction Roadmaps',
-                desc: 'Strategy, vessel screening, and prioritisation to meet IMO, EU and local emission targets.',
-              },
-              {
-                title: 'Alternative Fuel Readiness',
-                desc: 'Technical assessments and concept designs for LNG, methanol, ammonia and hybrid solutions.',
-              },
-              {
-                title: 'Energy-Saving Devices',
-                desc: 'Selection and engineering support for ESDs such as propeller upgrades, ducts and sails.',
-              },
-              {
-                title: 'Compliance & Documentation',
-                desc: 'Support with CII, EEXI, SEEMP and other frameworks, including documentation and data flows.',
-              },
-              {
-                title: 'Lifecycle Performance Monitoring',
-                desc: 'Setting up KPIs, dashboards and routines to track the real impact of installed solutions.',
-              },
-              {
-                title: 'Owner’s Engineering',
-                desc: 'Independent technical partner throughout tendering, yard negotiations and implementation.',
-              },
-            ].map((item) => (
-              <article
-                key={item.title}
-                className="bg-white/70 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 p-6 border border-white/60"
+          <div className="relative">
+            {/* Vertical line */}
+            <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-white/10 md:-translate-x-1/2" />
+
+            {phases.map((phase, index) => (
+              <motion.div
+                key={phase.step}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                className={`relative flex flex-col md:flex-row gap-8 mb-16 last:mb-0 ${
+                  index % 2 === 1 ? 'md:flex-row-reverse' : ''
+                }`}
               >
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">{item.title}</h3>
-                <p className="text-sm sm:text-base text-gray-700">{item.desc}</p>
-              </article>
+                {/* Spacer for alternating layout */}
+                <div className="hidden md:block md:w-1/2" />
+
+                {/* Content */}
+                <div className={`md:w-1/2 pl-12 md:pl-0 ${index % 2 === 1 ? 'md:pl-12' : 'md:pr-12 md:text-right'}`}>
+                  <div className={`flex items-center gap-4 mb-5 ${index % 2 === 1 ? '' : 'md:flex-row-reverse'}`}>
+                    <div className="w-12 h-12 bg-white/5 flex items-center justify-center text-accent-400 shrink-0">
+                      <phase.icon className="h-5 w-5" />
+                    </div>
+                    <span className="font-display text-5xl font-bold text-white/10">{phase.step}</span>
+                  </div>
+                  <h3 className="font-display text-2xl font-bold text-white mb-4">{phase.title}</h3>
+                  <p className="text-white/55 leading-relaxed mb-5">{phase.description}</p>
+                  <ul className={`space-y-2 ${index % 2 === 1 ? '' : 'md:text-right'}`}>
+                    {phase.items.map((item) => (
+                      <li key={item} className="text-sm text-white/45">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Node on the line */}
+                <div className="absolute left-0 md:left-1/2 top-2 w-3 h-3 bg-accent-400 md:-translate-x-1/2" />
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Call to action */}
-      <section className="bg-[#9DCBDB] py-16 md:py-20">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Ready to Plan Your Green Upgrade?
-          </h2>
-          <p className="text-base sm:text-lg text-gray-800 mb-8 max-w-3xl mx-auto">
-            Whether you are planning a single retrofit or a multi-vessel programme, we can help you build
-            a roadmap that is technically sound and commercially viable.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+      {/* CTA */}
+      <section className="relative py-24 border-b border-white/10">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-5">
+              Ready to plan your green upgrade?
+            </h2>
+            <p className="text-white/55 mb-8 max-w-2xl mx-auto">
+              Whether you are planning a single retrofit or a multi-vessel programme, we can help
+              you build a roadmap that is technically sound and commercially viable.
+            </p>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-8 py-3 rounded-lg bg-blue-700 text-white font-semibold shadow-md hover:bg-blue-800 transition-colors"
+              className="group inline-flex items-center gap-2 text-sm font-medium text-white border border-white/20 px-7 py-3.5 hover:bg-white/5 transition-colors duration-300"
             >
               Talk to our team
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
-            <span className="text-sm text-gray-700">
-              Prefer a form? Use the detailed enquiry form below.
-            </span>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      <QuoteForm title="GET IN TOUCH WITH US TODAY" bgColor="bg-white" />
+      <QuoteForm title="Get in touch with us today" />
       <Footer />
     </main>
   );
 }
-

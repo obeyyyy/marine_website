@@ -1,119 +1,167 @@
- 'use client';
+'use client';
 
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
+import { ArrowRight, ClipboardList, Handshake, Eye, Landmark, Wrench, FileBarChart } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import QuoteForm from '@/components/QuoteForm';
-import Link from 'next/link';
+import PageHero from '@/components/PageHero';
+
+const steps = [
+  {
+    icon: ClipboardList,
+    title: 'Scope & Budget',
+    description:
+      'Technical review, work list preparation and budget estimates aligned with your operational plans.',
+  },
+  {
+    icon: Handshake,
+    title: 'Yard & Vendor Selection',
+    description:
+      'Support with yard selection, negotiations and integration of specialist contractors.',
+  },
+  {
+    icon: Eye,
+    title: 'On-Site Supervision',
+    description:
+      "Owner's representative on site to monitor progress, quality, safety and variation orders.",
+  },
+  {
+    icon: Landmark,
+    title: 'Class & Regulatory',
+    description:
+      'Planning and coordination of class surveys, flag requirements and documentation.',
+  },
+  {
+    icon: Wrench,
+    title: 'Upgrades & Retrofits',
+    description:
+      'Integration of green technologies, ESDs and other upgrades into the docking programme.',
+  },
+  {
+    icon: FileBarChart,
+    title: 'Post-Docking Review',
+    description:
+      'Close-out reports, lessons learned and recommended actions for the next docking cycle.',
+  },
+];
 
 export default function DryDockingSolutionsPage() {
   return (
-    <main className="min-h-screen bg-[#EBEEFF] w-full relative overflow-hidden">
+    <main className="min-h-screen bg-navy-950 w-full">
       <Navbar />
 
-      {/* Hero */}
-      <section className="bg-[#92CDE1] py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-10">
-          <div className="flex-1 text-center md:text-left">
-            <p className="text-sm font-semibold tracking-wide text-blue-900 uppercase mb-3">
-              Planned &amp; Emergency Yard Stays
-            </p>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight mb-4">
-              Dry Docking Solutions
-            </h1>
-            <p className="text-base sm:text-lg md:text-xl text-black/80 max-w-2xl">
-              From scope definition to redelivery, we coordinate technical, commercial and logistical
-              aspects of your dry docking projects.
-            </p>
-          </div>
-          <div className="flex-1 flex justify-center">
-            <img
-              src="/images/dry-docking.png"
-              alt="Dry docking solutions"
-              className="w-full max-w-md rounded-2xl shadow-lg object-cover"
-            />
-          </div>
+      <PageHero
+        eyebrow="Planned & emergency yard stays"
+        title="Dry Docking Solutions"
+        subtitle="From scope definition to redelivery, we coordinate technical, commercial and logistical aspects of your dry docking projects."
+        breadcrumb="Dry Docking"
+        backgroundImage="/images/services-4.png"
+      />
+
+      {/* Full-width image */}
+      <section className="relative h-[40vh] min-h-[300px] border-b border-white/10 overflow-hidden">
+        <Image
+          src="/images/services-5.png"
+          alt="Dry docking"
+          fill
+          className="object-cover"
+          sizes="100vw"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/40 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="text-white/70 text-lg max-w-2xl"
+          >
+            We act as your on-the-ground partner, aligning yards, suppliers and service providers
+            so your vessel returns to service safely, on time and on budget.
+          </motion.p>
         </div>
       </section>
 
-      {/* Intro + Features */}
-      <section className="py-16 md:py-20 bg-[#EBEEFF]">
+      {/* Process steps — horizontal connected cards */}
+      <section className="relative py-24 border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              End-to-End Docking Management
-            </h2>
-            <p className="text-gray-700 text-base sm:text-lg">
-              We act as your on-the-ground partner, aligning yards, suppliers and service providers so
-              your vessel returns to service safely, on time and on budget.
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="mb-16"
+          >
+            <p className="text-xs font-medium tracking-[0.15em] uppercase text-accent-400 mb-4">
+              The process
             </p>
-          </div>
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-white">
+              End-to-end docking management
+            </h2>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {[
-              {
-                title: 'Scope & Budget Definition',
-                desc: 'Technical review, work list preparation and budget estimates aligned with your operational plans.',
-              },
-              {
-                title: 'Yard & Vendor Coordination',
-                desc: 'Support with yard selection, negotiations and integration of specialist contractors.',
-              },
-              {
-                title: 'On-Site Supervision',
-                desc: 'Owner’s representative on site to monitor progress, quality, safety and variation orders.',
-              },
-              {
-                title: 'Class & Regulatory Interface',
-                desc: 'Planning and coordination of class surveys, flag requirements and documentation.',
-              },
-              {
-                title: 'Upgrades & Retrofits',
-                desc: 'Integration of green technologies, ESDs and other upgrades into the docking programme.',
-              },
-              {
-                title: 'Post-Docking Review',
-                desc: 'Close-out reports, lessons learned and recommended actions for the next docking cycle.',
-              },
-            ].map((item) => (
-              <article
-                key={item.title}
-                className="bg-white/70 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 p-6 border border-white/60"
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10">
+            {steps.map((step, index) => (
+              <motion.div
+                key={step.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.6, delay: (index % 3) * 0.1 }}
+                className="group relative p-8 md:p-10 bg-navy-950 hover:bg-white/[0.03] transition-colors duration-300"
               >
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">{item.title}</h3>
-                <p className="text-sm sm:text-base text-gray-700">{item.desc}</p>
-              </article>
+                {/* Step number */}
+                <div className="flex items-center gap-4 mb-6">
+                  <span className="font-display text-4xl font-bold text-accent-400">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <div className="h-px flex-1 bg-white/10" />
+                  <step.icon className="h-5 w-5 text-white/40" />
+                </div>
+
+                <h3 className="font-display text-lg font-semibold text-white mb-3">
+                  {step.title}
+                </h3>
+                <p className="text-sm leading-relaxed text-white/55">{step.description}</p>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Call to action */}
-      <section className="bg-[#9DCBDB] py-16 md:py-20">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Planning a Docking or Retrofit?
-          </h2>
-          <p className="text-base sm:text-lg text-gray-800 mb-8 max-w-3xl mx-auto">
-            Share your upcoming docking window or project idea and we will help you turn it into a clear,
-            structured execution plan.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+      {/* CTA */}
+      <section className="relative py-24 border-b border-white/10">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-5">
+              Planning a docking or retrofit?
+            </h2>
+            <p className="text-white/55 mb-8 max-w-2xl mx-auto">
+              Share your upcoming docking window or project idea and we will help you turn it into
+              a clear, structured execution plan.
+            </p>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-8 py-3 rounded-lg bg-blue-700 text-white font-semibold shadow-md hover:bg-blue-800 transition-colors"
+              className="group inline-flex items-center gap-2 text-sm font-medium text-white border border-white/20 px-7 py-3.5 hover:bg-white/5 transition-colors duration-300"
             >
               Discuss your docking project
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
-            <span className="text-sm text-gray-700">
-              Or outline your scope directly using our enquiry form below.
-            </span>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      <QuoteForm title="GET IN TOUCH WITH US TODAY" bgColor="bg-white" />
+      <QuoteForm title="Get in touch with us today" />
       <Footer />
     </main>
   );
 }
-

@@ -1,119 +1,215 @@
- 'use client';
+'use client';
 
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
+import { ArrowRight, Hammer, CircuitBoard, Users, Package, Anchor, PhoneCall } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import QuoteForm from '@/components/QuoteForm';
-import Link from 'next/link';
+import PageHero from '@/components/PageHero';
+
+const services = [
+  {
+    icon: Hammer,
+    title: 'Mechanical & Hull Repairs',
+    description:
+      'Repairs to machinery, piping, structure and coatings through vetted service partners.',
+  },
+  {
+    icon: CircuitBoard,
+    title: 'Electrical & Automation',
+    description:
+      'Troubleshooting and upgrade works for electrical systems, automation and navigation.',
+  },
+  {
+    icon: Users,
+    title: 'Riding Squads',
+    description:
+      'Multi-discipline teams that can travel with the vessel to minimise off-hire time.',
+  },
+  {
+    icon: Package,
+    title: 'Spare Parts & Consumables',
+    description:
+      'Sourcing and logistics for genuine parts, equivalents and critical consumables.',
+  },
+  {
+    icon: Anchor,
+    title: 'Port & Yard Coordination',
+    description:
+      'On-site coordination with port agents, terminals and yards for smooth execution.',
+  },
+];
 
 export default function ShipRepairsSuppliesPage() {
   return (
-    <main className="min-h-screen bg-[#EBEEFF] w-full relative overflow-hidden">
+    <main className="min-h-screen bg-navy-950 w-full">
       <Navbar />
 
-      {/* Hero */}
-      <section className="bg-[#92CDE1] py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-10">
-          <div className="flex-1 text-center md:text-left">
-            <p className="text-sm font-semibold tracking-wide text-blue-900 uppercase mb-3">
-              Reliable Support, In Port &amp; At Sea
-            </p>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight mb-4">
-              Ship Repairs &amp; Supplies
-            </h1>
-            <p className="text-base sm:text-lg md:text-xl text-black/80 max-w-2xl">
-              Fast, coordinated responses for mechanical breakdowns, damage repairs and urgent spare part
-              needs – supported by a trusted vendor network.
-            </p>
-          </div>
-          <div className="flex-1 flex justify-center">
-            <img
-              src="/images/repairs-supplies.png"
-              alt="Ship repairs and supplies"
-              className="w-full max-w-md rounded-2xl shadow-lg object-cover"
-            />
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Reliable support, in port & at sea"
+        title="Ship Repairs & Supplies"
+        subtitle="Fast, coordinated responses for mechanical breakdowns, damage repairs and urgent spare part needs — supported by a trusted vendor network."
+        breadcrumb="Ship Repairs"
+        backgroundImage="/images/services-5.png"
+      />
 
-      {/* Intro + Features */}
-      <section className="py-16 md:py-20 bg-[#EBEEFF]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              From Minor Repairs to Complex Jobs
-            </h2>
-            <p className="text-gray-700 text-base sm:text-lg">
-              We coordinate workshops, riding squads and OEM service teams to solve issues quickly while
-              keeping safety, quality and cost under control.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {[
-              {
-                title: 'Mechanical & Hull Repairs',
-                desc: 'Repairs to machinery, piping, structure and coatings through vetted service partners.',
-              },
-              {
-                title: 'Electrical & Automation Support',
-                desc: 'Troubleshooting and upgrade works for electrical systems, automation and navigation.',
-              },
-              {
-                title: 'Riding Squads',
-                desc: 'Multi-discipline teams that can travel with the vessel to minimise off-hire time.',
-              },
-              {
-                title: 'Spare Parts & Consumables',
-                desc: 'Sourcing and logistics for genuine parts, equivalents and critical consumables.',
-              },
-              {
-                title: 'Port & Yard Coordination',
-                desc: 'On-site coordination with port agents, terminals and yards for smooth execution.',
-              },
-              {
-                title: '24/7 Case Handling',
-                desc: 'Reactive support for urgent incidents, from first assessment through to close-out.',
-              },
-            ].map((item) => (
-              <article
-                key={item.title}
-                className="bg-white/70 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 p-6 border border-white/60"
-              >
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">{item.title}</h3>
-                <p className="text-sm sm:text-base text-gray-700">{item.desc}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Call to action */}
-      <section className="bg-[#9DCBDB] py-16 md:py-20">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Need Immediate Technical Support?
-          </h2>
-          <p className="text-base sm:text-lg text-gray-800 mb-8 max-w-3xl mx-auto">
-            Share the situation, the vessel position and time constraints – we will coordinate the right
-            mix of people, parts and partners.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+      {/* 24/7 Emergency banner */}
+      <section className="relative border-b border-white/10 bg-white/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col md:flex-row items-center justify-between gap-6"
+          >
+            <div className="flex items-center gap-5">
+              <div className="w-14 h-14 bg-accent-400/10 flex items-center justify-center text-accent-400">
+                <PhoneCall className="h-6 w-6" />
+              </div>
+              <div>
+                <p className="font-display text-xl font-bold text-white">24/7 Emergency Response</p>
+                <p className="text-sm text-white/50">From first assessment through to close-out — we move fast.</p>
+              </div>
+            </div>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-8 py-3 rounded-lg bg-blue-700 text-white font-semibold shadow-md hover:bg-blue-800 transition-colors"
+              className="text-sm font-medium text-accent-400 border border-accent-400/30 px-6 py-3 hover:bg-accent-400/10 transition-colors duration-300"
             >
-              Contact our repairs team
+              Contact our repairs team →
             </Link>
-            <span className="text-sm text-gray-700">
-              You can also include technical details via the enquiry form below.
-            </span>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Image + intro */}
+      <section className="relative py-24 border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.8 }}
+              className="relative h-[350px] lg:h-[450px] border border-white/10 overflow-hidden"
+            >
+              <Image
+                src="/images/services-6.png"
+                alt="Ship repairs"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-950/50 to-transparent" />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+            >
+              <p className="text-xs font-medium tracking-[0.15em] uppercase text-accent-400 mb-4">
+                From minor repairs to complex jobs
+              </p>
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
+                Coordinated. Fast. Safe.
+              </h2>
+              <p className="text-white/60 leading-relaxed mb-6">
+                We coordinate workshops, riding squads and OEM service teams to solve issues
+                quickly while keeping safety, quality and cost under control.
+              </p>
+              <p className="text-white/60 leading-relaxed">
+                One point of contact. A vetted network. Clear communication from the first call
+                to the final sign-off.
+              </p>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      <QuoteForm title="GET IN TOUCH WITH US TODAY" bgColor="bg-white" />
+      {/* Services — asymmetric grid (first card spans 2 cols) */}
+      <section className="relative py-24 border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="mb-16"
+          >
+            <p className="text-xs font-medium tracking-[0.15em] uppercase text-accent-400 mb-4">
+              What we handle
+            </p>
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-white">
+              Five service areas
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10">
+            {services.map((service, index) => (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.6, delay: (index % 3) * 0.1 }}
+                className={`p-8 md:p-10 bg-navy-950 hover:bg-white/[0.03] transition-colors duration-300 ${
+                  index === 0 ? 'md:col-span-2' : ''
+                }`}
+              >
+                <service.icon className="h-7 w-7 text-accent-400 mb-6" />
+                <h3 className="font-display text-xl font-semibold text-white mb-3">
+                  {service.title}
+                </h3>
+                <p className="text-sm leading-relaxed text-white/55">{service.description}</p>
+              </motion.div>
+            ))}
+            {/* Filler cell to complete the grid */}
+            <div className="p-8 md:p-10 bg-navy-950 flex items-center">
+              <Link
+                href="/contact"
+                className="group inline-flex items-center gap-2 text-sm font-medium text-accent-400 hover:text-white transition-colors duration-300"
+              >
+                Need something else? Just ask.
+                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="relative py-24 border-b border-white/10">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-5">
+              Need immediate technical support?
+            </h2>
+            <p className="text-white/55 mb-8 max-w-2xl mx-auto">
+              Share the situation, the vessel position and time constraints — we will coordinate
+              the right mix of people, parts and partners.
+            </p>
+            <Link
+              href="/contact"
+              className="group inline-flex items-center gap-2 text-sm font-medium text-white border border-white/20 px-7 py-3.5 hover:bg-white/5 transition-colors duration-300"
+            >
+              Contact our repairs team
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      <QuoteForm title="Get in touch with us today" />
       <Footer />
     </main>
   );
 }
-

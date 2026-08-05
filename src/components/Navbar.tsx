@@ -1,89 +1,82 @@
- 'use client';
+'use client';
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
+import { ChevronDown, Menu, X } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
 import CtaButton from './CtaButton';
+
+const servicesLinks = [
+  { href: '/green-solutions', label: 'Green Solutions' },
+  { href: '/optimization-energy-efficiency', label: 'Optimization & Energy Efficiency' },
+  { href: '/dry-docking-solutions', label: 'Dry Docking Solutions' },
+  { href: '/ship-repairs-supplies', label: 'Ship Repairs & Supplies' },
+  { href: '/technical-consultancy', label: 'Technical Consultancy' },
+];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const servicesMenuRef = useRef<HTMLDivElement | null>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 10;
-      if (isScrolled !== scrolled) {
-        setScrolled(isScrolled);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => setScrolled(window.scrollY > 24);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [scrolled]);
+  }, []);
 
   useEffect(() => {
     if (!isServicesOpen) return;
-
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        servicesMenuRef.current &&
-        !servicesMenuRef.current.contains(event.target as Node)
-      ) {
+      if (servicesMenuRef.current && !servicesMenuRef.current.contains(event.target as Node)) {
         setIsServicesOpen(false);
       }
     };
-
     document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isServicesOpen]);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  useEffect(() => {
+    setIsOpen(false);
+    setIsServicesOpen(false);
+  }, [pathname]);
 
-  const servicesLinks = [
-    { href: "/services#green-solutions", label: "Green Solutions" },
-    { href: "/services#optimization-energy-efficiency", label: "Optimization & Energy Efficiency" },
-    { href: "/services#dry-docking-solutions", label: "Dry Docking Solutions" },
-    { href: "/services#ship-repairs-supplies", label: "Ship Repairs & Supplies" },
-    { href: "/services#technical-consultancy", label: "Technical Consultancy" },
-  ];
+  const linkClass = (active: boolean) =>
+    `relative px-3 py-2 text-sm font-medium tracking-wide transition-colors duration-300 ${
+      active ? 'text-accent-400' : 'text-white/80 hover:text-white'
+    } after:absolute after:left-3 after:right-3 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-accent-400 after:transition-transform after:duration-300 hover:after:scale-x-100`;
 
   return (
-    <nav 
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled 
-          ? 'bg-white/10 backdrop-blur-md shadow-sm' 
-          : 'bg-transparent'
+    <nav
+      className={`fixed w-full z-50 transition-all duration-500 ${
+        scrolled
+          ? 'bg-navy-950/85 backdrop-blur-xl border-b border-white/10 shadow-[0_8px_32px_rgba(4,13,26,0.45)]'
+          : 'bg-transparent border-b border-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Logo - Left */}
-          <div className="flex-shrink-0">
-            <Link href="/" className="block">
-              <Image 
-                src="/images/new-logo.png" 
-                alt="VY Marine Logo" 
-                width={150} 
-                height={50} 
-                className="h-10 w-auto"
-                priority
-              />
-            </Link>
-          </div>
-          {/* Desktop Navigation Links - Center */}
+          {/* Logo */}
+          <Link href="/" className="flex-shrink-0 block">
+            <Image
+              src="/images/new-logo.png"
+              alt="VY Marine"
+              width={150}
+              height={50}
+              className="h-9 w-auto"
+              priority
+            />
+          </Link>
+
+          {/* Desktop links */}
           <div className="hidden md:flex items-center justify-center flex-1">
-            <div className="flex items-center space-x-6 lg:space-x-8">
-              {/* Home */}
-              <Link 
-                href="/" 
-                className="text-gray-900 hover:text-blue-600 px-3 py-2 text-md font-medium transition-colors whitespace-nowrap"
-              >
+            <div className="flex items-center gap-2 lg:gap-4">
+              <Link href="/" className={linkClass(pathname === '/')}>
                 Home
               </Link>
 
@@ -91,185 +84,156 @@ export default function Navbar() {
               <div className="relative" ref={servicesMenuRef}>
                 <button
                   type="button"
-                  className="inline-flex items-center text-gray-900 hover:text-blue-600 px-3 py-2 text-md font-medium transition-colors whitespace-nowrap focus:outline-none"
+                  className={`inline-flex items-center gap-1 ${linkClass(
+                    pathname === '/services' || servicesLinks.some((s) => s.href === pathname)
+                  )}`}
                   aria-haspopup="true"
                   aria-expanded={isServicesOpen}
                   onClick={() => setIsServicesOpen((prev) => !prev)}
                 >
-                  <span>Services</span>
-                  <svg
-                    className={`ml-2 h-4 w-4 transform transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : 'rotate-0'}`}
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
+                  Services
+                  <ChevronDown
+                    className={`h-4 w-4 transition-transform duration-300 ${
+                      isServicesOpen ? 'rotate-180' : ''
+                    }`}
+                  />
                 </button>
 
-                <div
-                  className={`absolute left-0 mt-2 w-64 rounded-md shadow-lg bg-white ring-1 ring-black/5 transition-all duration-200 origin-top ${
-                    isServicesOpen
-                      ? 'opacity-100 translate-y-0 pointer-events-auto'
-                      : 'opacity-0 -translate-y-1 pointer-events-none'
-                  }`}
-                >
-                  <div className="py-2">
-                    {servicesLinks.map((service) => (
+                <AnimatePresence>
+                  {isServicesOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 8 }}
+                      transition={{ duration: 0.2 }}
+                      className="absolute left-0 mt-3 w-80 rounded-2xl bg-navy-900/95 backdrop-blur-xl border border-white/10 shadow-[0_24px_60px_rgba(4,13,26,0.6)] overflow-hidden"
+                    >
                       <Link
-                        key={service.href}
-                        href={service.href}
-                        className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100 hover:text-blue-600"
+                        href="/services"
+                        className="block px-5 py-3.5 text-sm font-semibold text-accent-400 hover:bg-white/5 border-b border-white/10"
                         onClick={() => setIsServicesOpen(false)}
                       >
-                        {service.label}
+                        All Services — Overview
                       </Link>
-                    ))}
-                  </div>
-                </div>
+                      {servicesLinks.map((service) => (
+                        <Link
+                          key={service.href}
+                          href={service.href}
+                          className="block px-5 py-3 text-sm text-white/75 hover:text-white hover:bg-white/5 transition-colors"
+                          onClick={() => setIsServicesOpen(false)}
+                        >
+                          {service.label}
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
 
-              {/* Contact */}
-              <Link 
-                href="/contact" 
-                className="text-gray-900 hover:text-blue-600 px-3 py-2 text-md font-medium transition-colors whitespace-nowrap"
-              >
+              <Link href="/trading" className={linkClass(pathname === '/trading')}>
+                Trading
+              </Link>
+
+              <Link href="/contact" className={linkClass(pathname === '/contact')}>
                 Contact
               </Link>
             </div>
           </div>
 
-          {/* CTA Button - Right */}
+          {/* CTA */}
           <div className="hidden md:flex items-center ml-6">
-            <CtaButton/>
-        
+            <CtaButton />
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
-            <button
-              onClick={toggleMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-900 hover:text-blue-600 focus:outline-none"
-              aria-expanded="false"
-            >
-              <span className="sr-only">Open main menu</span>
-              {/* Hamburger icon */}
-              <svg
-                className={`h-6 w-6 ${isOpen ? 'hidden' : 'block'}`}
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-              {/* Close icon */}
-              <svg
-                className={`h-6 w-6 ${isOpen ? 'block' : 'hidden'}`}
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-          </div>
+          <button
+            onClick={() => setIsOpen((prev) => !prev)}
+            className="md:hidden inline-flex items-center justify-center p-2 rounded-lg text-white hover:text-accent-400 hover:bg-white/5 transition-colors"
+            aria-expanded={isOpen}
+          >
+            <span className="sr-only">Open main menu</span>
+            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
         </div>
       </div>
 
       {/* Mobile menu */}
-      <div
-        className={`md:hidden transition-all duration-300 ease-in-out ${
-          isOpen ? 'max-h-96' : 'max-h-0 overflow-hidden'
-        }`}
-      >
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-lg">
-          {/* Home */}
-          <Link
-            href="/"
-            className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-100"
-            onClick={() => setIsOpen(false)}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden overflow-hidden bg-navy-950/95 backdrop-blur-xl border-t border-white/10"
           >
-            Home
-          </Link>
-
-          {/* Services accordion */}
-          <button
-            type="button"
-            className="w-full flex items-center justify-between px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-100 focus:outline-none"
-            onClick={() => setIsServicesOpen((prev) => !prev)}
-            aria-haspopup="true"
-            aria-expanded={isServicesOpen}
-          >
-            <span>Services</span>
-            <svg
-              className={`h-5 w-5 transform transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : 'rotate-0'}`}
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-          </button>
-          <div
-            className={`pl-4 pr-2 space-y-1 transition-all duration-200 ${
-              isServicesOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
-            }`}
-          >
-            {servicesLinks.map((service) => (
+            <div className="px-4 pt-4 pb-6 space-y-1">
               <Link
-                key={service.href}
-                href={service.href}
-                className="block px-3 py-1.5 rounded-md text-sm font-medium text-gray-800 hover:bg-gray-100"
-                onClick={() => {
-                  setIsOpen(false);
-                  setIsServicesOpen(false);
-                }}
+                href="/"
+                className="block px-3 py-2.5 rounded-lg text-base font-medium text-white/85 hover:text-white hover:bg-white/5"
               >
-                {service.label}
+                Home
               </Link>
-            ))}
-          </div>
 
-          {/* Contact */}
-          <Link
-            href="/contact"
-            className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 hover:bg-gray-100"
-            onClick={() => setIsOpen(false)}
-          >
-            Contact
-          </Link>
+              <button
+                type="button"
+                className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-base font-medium text-white/85 hover:text-white hover:bg-white/5"
+                onClick={() => setIsServicesOpen((prev) => !prev)}
+              >
+                <span>Services</span>
+                <ChevronDown
+                  className={`h-5 w-5 transition-transform duration-300 ${
+                    isServicesOpen ? 'rotate-180' : ''
+                  }`}
+                />
+              </button>
+              <AnimatePresence>
+                {isServicesOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    className="overflow-hidden pl-4 space-y-1"
+                  >
+                    <Link
+                      href="/services"
+                      className="block px-3 py-2 rounded-lg text-sm font-semibold text-accent-400 hover:bg-white/5"
+                    >
+                      All Services
+                    </Link>
+                    {servicesLinks.map((service) => (
+                      <Link
+                        key={service.href}
+                        href={service.href}
+                        className="block px-3 py-2 rounded-lg text-sm text-white/70 hover:text-white hover:bg-white/5"
+                      >
+                        {service.label}
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
 
-          <div className="px-3 py-2">
-            <CtaButton/>
-          </div>
-        </div>
-      </div>
+              <Link
+                href="/trading"
+                className="block px-3 py-2.5 rounded-lg text-base font-medium text-white/85 hover:text-white hover:bg-white/5"
+              >
+                Trading
+              </Link>
+              <Link
+                href="/contact"
+                className="block px-3 py-2.5 rounded-lg text-base font-medium text-white/85 hover:text-white hover:bg-white/5"
+              >
+                Contact
+              </Link>
+
+              <div className="px-3 pt-3">
+                <CtaButton className="w-full" />
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }
