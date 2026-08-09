@@ -3,9 +3,9 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import Link from 'next/link';
-import { ArrowRight, Plus, Minus } from 'lucide-react';
+import { Plus, Minus } from 'lucide-react';
 import Navbar from '@/components/Navbar';
+import CtaButton from '@/components/CtaButton';
 import Footer from '@/components/Footer';
 import QuoteForm from '@/components/QuoteForm';
 import PageHero from '@/components/PageHero';
@@ -196,13 +196,7 @@ export default function TechnicalConsultancyPage() {
               From one-off questions to full project support, we are ready to help you move
               forward with confidence.
             </p>
-            <Link
-              href="/contact"
-              className="group inline-flex items-center gap-2 text-sm font-medium text-white border border-white/20 px-7 py-3.5 hover:bg-white/5 transition-colors duration-300"
-            >
-              Speak with a consultant
-              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </Link>
+            <CtaButton href="/contact" label="Speak with a consultant" variant="ghost" />
           </motion.div>
         </div>
       </section>

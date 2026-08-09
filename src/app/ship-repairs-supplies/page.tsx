@@ -2,8 +2,8 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import Link from 'next/link';
-import { ArrowRight, Hammer, CircuitBoard, Users, Package, Anchor, PhoneCall } from 'lucide-react';
+import { Hammer, CircuitBoard, Users, Package, Anchor, PhoneCall } from 'lucide-react';
+import CtaButton from '@/components/CtaButton';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import QuoteForm from '@/components/QuoteForm';
@@ -74,12 +74,7 @@ export default function ShipRepairsSuppliesPage() {
                 <p className="text-sm text-white/50">From first assessment through to close-out — we move fast.</p>
               </div>
             </div>
-            <Link
-              href="/contact"
-              className="text-sm font-medium text-accent-400 border border-accent-400/30 px-6 py-3 hover:bg-accent-400/10 transition-colors duration-300"
-            >
-              Contact our repairs team →
-            </Link>
+            <CtaButton href="/contact" label="Contact our repairs team" variant="ghost" />
           </motion.div>
         </div>
       </section>
@@ -167,16 +162,6 @@ export default function ShipRepairsSuppliesPage() {
                 <p className="text-sm leading-relaxed text-white/55">{service.description}</p>
               </motion.div>
             ))}
-            {/* Filler cell to complete the grid */}
-            <div className="p-8 md:p-10 bg-navy-950 flex items-center">
-              <Link
-                href="/contact"
-                className="group inline-flex items-center gap-2 text-sm font-medium text-accent-400 hover:text-white transition-colors duration-300"
-              >
-                Need something else? Just ask.
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
-            </div>
           </div>
         </div>
       </section>
@@ -197,13 +182,7 @@ export default function ShipRepairsSuppliesPage() {
               Share the situation, the vessel position and time constraints — we will coordinate
               the right mix of people, parts and partners.
             </p>
-            <Link
-              href="/contact"
-              className="group inline-flex items-center gap-2 text-sm font-medium text-white border border-white/20 px-7 py-3.5 hover:bg-white/5 transition-colors duration-300"
-            >
-              Contact our repairs team
-              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </Link>
+            <CtaButton href="/contact" label="Contact our repairs team" variant="ghost" />
           </motion.div>
         </div>
       </section>

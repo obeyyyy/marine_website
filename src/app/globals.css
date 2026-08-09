@@ -148,3 +148,9 @@ body {
   -webkit-text-stroke: 2px rgba(125, 211, 252, 0.25);
   color: transparent;
 }
+
+/* Story section step dots — active state driven via JS (see Story.tsx) */
+.story-dot.is-active .story-dot-core {
+  background-color: #22d3ee;
+  transform: scale(1.4);
+}

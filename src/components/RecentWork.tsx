@@ -1,8 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Link from 'next/link';
 import { Cog, Package, Globe, ArrowUpRight } from 'lucide-react';
+import CtaButton from './CtaButton';
 
 const projects = [
   {
@@ -91,13 +91,7 @@ export default function RecentWork() {
           transition={{ duration: 0.7, delay: 0.3 }}
           className="text-center mt-14"
         >
-          <Link
-            href="/contact"
-            className="group inline-flex items-center gap-2 text-sm font-medium text-white border border-white/20 px-7 py-3.5 hover:bg-white/5 transition-colors duration-300"
-          >
-            Discuss your project
-            <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </Link>
+          <CtaButton href="/contact" label="Discuss your project" variant="ghost" icon={ArrowUpRight} />
         </motion.div>
       </div>
     </section>

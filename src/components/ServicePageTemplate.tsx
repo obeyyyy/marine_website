@@ -1,9 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Link from 'next/link';
 import type { LucideIcon } from 'lucide-react';
-import { ArrowRight } from 'lucide-react';
+import CtaButton from './CtaButton';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import QuoteForm from './QuoteForm';
@@ -105,13 +104,7 @@ export default function ServicePageTemplate({
               <p className="text-base md:text-lg text-white/60 mb-9 max-w-2xl mx-auto">
                 {ctaText}
               </p>
-              <Link
-                href="/contact"
-                className="group inline-flex items-center gap-2 rounded-full bg-accent-400 text-navy-950 font-semibold text-sm tracking-wide px-8 py-4 hover:bg-cyan-300 hover:shadow-[0_0_28px_rgba(34,211,238,0.45)] transition-all duration-300"
-              >
-                {ctaButtonLabel}
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
+              <CtaButton href="/contact" label={ctaButtonLabel} />
             </div>
           </motion.div>
         </div>

@@ -1,11 +1,13 @@
 'use client';
 
 import { useRef, useLayoutEffect } from 'react';
+import Link from 'next/link';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { BadgeCheck, BarChart3, Sprout, Zap, Timer } from 'lucide-react';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import { BadgeCheck, BarChart3, Sprout, Zap, Timer, ArrowUpRight } from 'lucide-react';
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 const storyTimeline = [
   {
@@ -49,6 +51,9 @@ const Story = () => {
   const panelsContainerRef = useRef<HTMLDivElement>(null);
   const panelsSectionRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef<HTMLDivElement>(null);
+  const counterRef = useRef<HTMLSpanElement>(null);
+  const scrollHintRef = useRef<HTMLDivElement>(null);
+  const dotsRef = useRef<HTMLButtonElement[]>([]);
   const tweenRef = useRef<gsap.core.Tween | null>(null);
 
   useLayoutEffect(() => {
@@ -56,6 +61,7 @@ const Story = () => {
     const ctx = gsap.context(() => {
       const panels = gsap.utils.toArray<HTMLElement>('.panel');
       const container = panelsContainerRef.current!;
+      const lastIndex = panels.length - 1;
 
       gsap.set(container, { width: `${panels.length * 100}%` });
 
@@ -70,9 +76,21 @@ const Story = () => {
           end: () => `+=${container.scrollWidth - window.innerWidth}`,
           invalidateOnRefresh: true,
           onUpdate: (self) => {
+            const progress = self.progress;
             if (progressRef.current) {
-              progressRef.current.style.transform = `scaleX(${self.progress})`;
+              progressRef.current.style.width = `${progress * 100}%`;
             }
+            if (scrollHintRef.current) {
+              gsap.to(scrollHintRef.current, { opacity: progress > 0.03 ? 0 : 1, duration: 0.3 });
+            }
+
+            const activeIndex = Math.min(lastIndex, Math.round(progress * lastIndex));
+            if (counterRef.current) {
+              counterRef.current.textContent = String(activeIndex + 1).padStart(2, '0');
+            }
+            dotsRef.current.forEach((dot, i) => {
+              dot.classList.toggle('is-active', i === activeIndex);
+            });
           },
         },
       });
@@ -102,21 +120,39 @@ const Story = () => {
     return () => ctx.revert();
   }, []);
 
+  const goToPanel = (index: number) => {
+    const scrollTrigger = tweenRef.current?.scrollTrigger;
+    if (!scrollTrigger) return;
+    const target = gsap.utils.mapRange(
+      0,
+      1,
+      scrollTrigger.start,
+      scrollTrigger.end,
+      index / (storyTimeline.length - 1)
+    );
+    gsap.to(window, { duration: 1, ease: 'power2.inOut', scrollTo: { y: target } });
+  };
+
   return (
     <section className="relative text-white overflow-hidden">
       {/* Pinned horizontal panels */}
       <div ref={panelsSectionRef} className="relative h-screen w-full overflow-hidden">
-        {/* Background — transparent so the cinematic video shows through */}
-        <div className="absolute top-1/3 left-1/4 w-[30rem] h-[30rem] rounded-full bg-white/5 blur-3xl" />
-
         {/* Section header (stays while pinned) */}
-        <div className="absolute top-0 left-0 w-full text-center pt-20 z-20 px-6 pointer-events-none">
+        <div className="absolute top-0 left-0 w-full flex flex-col items-center text-center pt-20 z-20 px-6 pointer-events-none">
           <span className="inline-block text-xs font-semibold tracking-[0.25em] uppercase text-accent-400 mb-4">
             Why VY Marine
           </span>
           <h2 className="font-display text-3xl sm:text-5xl font-bold text-white">
             Built on trust. Proven at sea.
           </h2>
+
+          {/* Scroll affordance — hints that this section scrolls horizontally */}
+          <span
+            ref={scrollHintRef}
+            className="mt-6 text-[11px] uppercase tracking-[0.25em] text-white/35"
+          >
+            Keep scrolling
+          </span>
         </div>
 
         <div
@@ -135,13 +171,9 @@ const Story = () => {
                   {String(index + 1).padStart(2, '0')}
                 </span>
 
-                <div className="relative border border-white/10 bg-white/5 p-10 sm:p-14 overflow-hidden">
-                  <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-white/5 blur-3xl pointer-events-none" />
-
+                <div className="relative border border-white/10 bg-white/5 p-10 sm:p-14">
                   <div className="flex items-center gap-3 mb-7">
-                    <div className="w-11 h-11 bg-white/5 flex items-center justify-center">
-                      <item.icon className="h-5 w-5 text-accent-400" />
-                    </div>
+                    <item.icon className="h-5 w-5 text-accent-400" />
                     <span className="text-xs font-medium tracking-[0.15em] uppercase text-accent-400">
                       {item.kicker}
                     </span>
@@ -155,24 +187,58 @@ const Story = () => {
                   </p>
 
                   <div className="mt-8 h-0.5 w-16 bg-accent-400" />
+
+                  {index === storyTimeline.length - 1 && (
+                    <Link
+                      href="/services"
+                      className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-white/70 hover:text-accent-400 transition-colors duration-300"
+                    >
+                      Explore our services
+                      <ArrowUpRight className="h-4 w-4" />
+                    </Link>
+                  )}
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Progress bar */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 w-56">
-          <div className="flex justify-between text-[10px] uppercase tracking-widest text-white/40 mb-2">
-            <span>01</span>
-            <span>{String(storyTimeline.length).padStart(2, '0')}</span>
-          </div>
-          <div className="h-0.5 w-full bg-white/15 rounded-full overflow-hidden">
-            <div
-              ref={progressRef}
-              className="h-full w-full bg-accent-400 origin-left"
-              style={{ transform: 'scaleX(0)' }}
-            />
+        {/* Progress rail with clickable step navigation */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 w-full max-w-xs px-6">
+          <div className="flex items-center gap-4">
+            <span ref={counterRef} className="font-display text-sm text-white/60 tabular-nums w-6">
+              01
+            </span>
+
+            <div className="relative flex-1 h-4 flex items-center">
+              <div className="absolute inset-x-0 h-px bg-white/15">
+                <div
+                  ref={progressRef}
+                  className="h-px bg-accent-400"
+                  style={{ width: '0%' }}
+                />
+              </div>
+              <div className="relative flex justify-between w-full">
+                {storyTimeline.map((item, index) => (
+                  <button
+                    key={item.title}
+                    ref={(el) => {
+                      if (el) dotsRef.current[index] = el;
+                    }}
+                    type="button"
+                    onClick={() => goToPanel(index)}
+                    aria-label={`Go to ${item.title}`}
+                    className="story-dot group relative flex h-4 w-4 items-center justify-center focus-visible:outline-none"
+                  >
+                    <span className="story-dot-core h-1.5 w-1.5 rounded-full bg-white/30 transition-colors duration-300 group-hover:bg-white/60" />
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <span className="font-display text-sm text-white/30 tabular-nums w-6 text-right">
+              {String(storyTimeline.length).padStart(2, '0')}
+            </span>
           </div>
         </div>
       </div>

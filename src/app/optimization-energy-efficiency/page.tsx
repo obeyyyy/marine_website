@@ -2,9 +2,9 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import Link from 'next/link';
-import { ArrowRight, Activity, Navigation, Settings, MonitorCheck, Users, RefreshCcw } from 'lucide-react';
+import { Activity, Navigation, Settings, MonitorCheck, Users, RefreshCcw } from 'lucide-react';
 import Navbar from '@/components/Navbar';
+import CtaButton from '@/components/CtaButton';
 import Footer from '@/components/Footer';
 import QuoteForm from '@/components/QuoteForm';
 import PageHero from '@/components/PageHero';
@@ -210,13 +210,7 @@ export default function OptimizationEnergyEfficiencyPage() {
               Share your vessel or fleet profile with us and we will help you identify practical,
               step-by-step efficiency opportunities.
             </p>
-            <Link
-              href="/contact"
-              className="group inline-flex items-center gap-2 text-sm font-medium text-white border border-white/20 px-7 py-3.5 hover:bg-white/5 transition-colors duration-300"
-            >
-              Schedule a consultation
-              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </Link>
+            <CtaButton href="/contact" label="Schedule a consultation" variant="ghost" />
           </motion.div>
         </div>
       </section>
