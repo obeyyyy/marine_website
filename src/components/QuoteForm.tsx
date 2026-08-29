@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, Clock, ShieldCheck, MessageSquare, CheckCircle2 } from 'lucide-react';
+import { Send, Clock, ShieldCheck, MessageSquare, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 
 interface QuoteFormProps {
   bgColor?: string;
@@ -22,17 +22,32 @@ export default function QuoteForm({
     phone: '',
     message: '',
   });
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [error, setError] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    setSubmitted(true);
+    setStatus('sending');
+    setError('');
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(result.error || 'Unable to send your enquiry.');
+      setStatus('success');
+    } catch (submitError) {
+      console.error('Contact form submission failed:', submitError);
+      setError(submitError instanceof Error ? submitError.message : 'Unable to send your enquiry. Please try again.');
+      setStatus('error');
+    }
   };
 
   return (
@@ -78,22 +93,7 @@ export default function QuoteForm({
 
           {/* Form */}
           <div className="lg:col-span-3 p-10 lg:p-12">
-            {submitted ? (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="h-full flex flex-col items-center justify-center text-center py-16"
-              >
-                <CheckCircle2 className="h-14 w-14 text-accent-400 mb-6" />
-                <h3 className="font-display text-2xl font-bold text-white mb-3">
-                  Message sent
-                </h3>
-                <p className="text-white/60 max-w-sm">
-                  Thank you for reaching out. Our team will get back to you within 24 hours.
-                </p>
-              </motion.div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
                   <div>
                     <label htmlFor="firstName" className="block text-xs font-medium uppercase tracking-wider text-white/50 mb-2">
@@ -176,13 +176,17 @@ export default function QuoteForm({
                   whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.99 }}
                   type="submit"
-                  className="group w-full inline-flex items-center justify-center gap-2 bg-white text-navy-950 text-sm font-semibold tracking-wide py-4 px-6 hover:bg-white/90 transition-colors duration-300"
+                  disabled={status === 'sending'}
+                  aria-busy={status === 'sending'}
+                  className={`group w-full inline-flex items-center justify-center gap-2 text-sm font-semibold tracking-wide py-4 px-6 transition-colors duration-300 disabled:cursor-wait ${status === 'success' ? 'bg-emerald-500 text-white' : status === 'error' ? 'bg-red-500/90 text-white hover:bg-red-500' : 'bg-white text-navy-950 hover:bg-white/90'}`}
                 >
-                  Send message
-                  <Send className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  {status === 'sending' ? 'Sending…' : status === 'success' ? 'Email sent successfully' : 'Send message'}
+                  {status === 'sending' ? <Loader2 className="h-4 w-4 animate-spin" /> : status === 'success' ? <CheckCircle2 className="h-4 w-4" /> : <Send className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />}
                 </motion.button>
-              </form>
-            )}
+                {status === 'error' && (
+                  <p role="alert" className="flex items-start gap-2 text-sm text-red-300"><AlertCircle className="h-4 w-4 mt-0.5 shrink-0" />{error}</p>
+                )}
+            </form>
           </div>
         </motion.div>
       </div>

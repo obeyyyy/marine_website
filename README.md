@@ -34,3 +34,10 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Environment variables
+
+The contact form sends the enquiry to `CONTACT_RECIPIENT_EMAIL` and an automated confirmation to the visitor through Resend. Configure these variables in the deployment environment (never commit `.env.local`):
+
+- `NEXT_PUBLIC_RESEND_API_KEY` — Resend API key. It is read only by the server route despite the existing variable name; for a future cleanup, prefer renaming it to `RESEND_API_KEY`.
+- `RESEND_FROM_EMAIL` — sender address on a verified Resend domain.
+- `CONTACT_RECIPIENT_EMAIL` — inbox that receives website enquiries.
