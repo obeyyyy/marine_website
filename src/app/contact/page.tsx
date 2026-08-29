@@ -15,9 +15,7 @@ const offices = [
 ];
 
 const contacts = [
-  { label: 'RFQ & general', value: 'info@vymarine.com' },
-  { label: 'Technical', value: 'tech@vymarine.com' },
-  { label: 'Supply', value: 'supply@vymarine.com' },
+  { label: 'All enquiries', value: 'info@vymarine.com' },
 ];
 
 export default function ContactPage() {

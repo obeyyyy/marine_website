@@ -39,5 +39,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 The contact form sends the enquiry to `CONTACT_RECIPIENT_EMAIL` and an automated confirmation to the visitor through Resend. Configure these variables in the deployment environment (never commit `.env.local`):
 
 - `NEXT_PUBLIC_RESEND_API_KEY` — Resend API key. It is read only by the server route despite the existing variable name; for a future cleanup, prefer renaming it to `RESEND_API_KEY`.
-- `RESEND_FROM_EMAIL` — sender address on a verified Resend domain.
-- `CONTACT_RECIPIENT_EMAIL` — inbox that receives website enquiries.
+- `RESEND_FROM_EMAIL` — `VY Marine <info@vymarine.com>` (the `vymarine.com` domain must be verified in Resend).
+- `CONTACT_RECIPIENT_EMAIL` — `info@vymarine.com`.
