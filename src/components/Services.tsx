@@ -9,9 +9,10 @@ const services = [
     icon: Leaf,
     title: 'Green Solutions',
     description:
-      'Digitalization and decarbonization solutions for sustainable maritime operations — from emission roadmaps to alternative fuel readiness.',
+      'Comprehensive digitalization and decarbonization solutions for sustainable maritime operations. We guide you through emission roadmaps, alternative fuel readiness, and regulatory compliance — transforming your fleet for a cleaner future.',
     href: '/green-solutions',
     featured: true,
+    highlights: ['Emission roadmaps', 'Alternative fuels', 'Regulatory compliance'],
   },
   {
     icon: Gauge,
@@ -80,29 +81,65 @@ export default function Services() {
                   service.featured ? 'min-h-[420px]' : ''
                 }`}
               >
-                <span
-                  className={`font-display text-5xl font-bold mb-10 ${
-                    service.featured ? 'text-outline' : 'text-white/10'
-                  }`}
-                >
-                  {String(index + 1).padStart(2, '0')}
-                </span>
+                {service.featured ? (
+                  <>
+                    <span className="font-display text-7xl font-bold text-outline leading-none mb-12">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
 
-                <div className="mb-6">
-                  <service.icon className="h-6 w-6 text-accent-400" />
-                </div>
+                    <service.icon className="h-6 w-6 text-accent-400 mb-8" />
 
-                <h3 className="font-display text-xl font-semibold mb-3 text-white">
-                  {service.title}
-                </h3>
-                <p className="text-sm leading-relaxed flex-1 text-white/55">
-                  {service.description}
-                </p>
+                    <h3 className="font-display text-3xl font-semibold mb-5 text-white leading-[1.1]">
+                      Green <span className="text-accent-400">Solutions</span>
+                    </h3>
 
-                <div className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-white/70 group-hover:text-accent-400 transition-colors duration-300">
-                  Explore service
-                  <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </div>
+                    <p className="text-base leading-relaxed text-white/65 mb-8">
+                      {service.description}
+                    </p>
+
+                    <div className="mt-auto">
+                      <div className="flex flex-wrap gap-x-3 gap-y-1 mb-8 text-xs tracking-wide text-white/40">
+                        {service.highlights?.map((h, i) => (
+                          <span key={h}>
+                            {i > 0 && <span className="mr-3 text-white/20">/</span>}
+                            {h}
+                          </span>
+                        ))}
+                      </div>
+
+                      <div className="inline-flex items-center gap-2 text-sm font-medium text-white/70 group-hover:text-accent-400 transition-colors duration-300">
+                        Explore service
+                        <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <span
+                      className={`font-display text-5xl font-bold mb-10 ${
+                        service.featured ? 'text-outline' : 'text-white/10'
+                      }`}
+                    >
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+
+                    <div className="mb-6">
+                      <service.icon className="h-6 w-6 text-accent-400" />
+                    </div>
+
+                    <h3 className="font-display text-xl font-semibold mb-3 text-white">
+                      {service.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed flex-1 text-white/55">
+                      {service.description}
+                    </p>
+
+                    <div className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-white/70 group-hover:text-accent-400 transition-colors duration-300">
+                      Explore service
+                      <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </div>
+                  </>
+                )}
               </Link>
             </motion.div>
           ))}
