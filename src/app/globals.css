@@ -1,0 +1,156 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #0b1526;
+}
+
+@theme inline {
+  /* Brand palette — deep ocean navy + cyan accent */
+  --color-navy-950: #040d1a;
+  --color-navy-900: #071a2f;
+  --color-navy-800: #0c2645;
+  --color-navy-700: #133659;
+  --color-accent-400: #22d3ee;
+  --color-accent-500: #06b6d4;
+  --color-mist-50: #f5f8fc;
+  --color-mist-100: #e9eff7;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: var(--font-sora), var(--font-inter), sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+}
+
+::selection {
+  background: #22d3ee;
+  color: #040d1a;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #071a2f;
+}
+::-webkit-scrollbar-thumb {
+  background: #16456e;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #22d3ee;
+}
+
+/* ---------- Keyframes ---------- */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-18px); }
+}
+
+@keyframes wave-drift {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes scroll-dot {
+  0% { transform: translateY(0); opacity: 1; }
+  70% { transform: translateY(14px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 0; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-float {
+  animation: float 7s ease-in-out infinite;
+}
+.animate-pulse-glow {
+  animation: pulse-glow 6s ease-in-out infinite;
+}
+.animate-spin-slow {
+  animation: spin-slow 45s linear infinite;
+}
+.animate-scroll-dot {
+  animation: scroll-dot 1.8s ease-in-out infinite;
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Drifting layered waves (hero bottom) */
+.wave-layer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  animation: wave-drift linear infinite;
+  will-change: transform;
+}
+
+/* ---------- Texture helpers ---------- */
+
+/* Fine nautical grid on dark sections */
+.bg-grid-dark {
+  background-image:
+    linear-gradient(rgba(148, 197, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 197, 255, 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* Dot chart pattern on light sections */
+.bg-dots-light {
+  background-image: radial-gradient(rgba(12, 38, 69, 0.08) 1.5px, transparent 1.5px);
+  background-size: 26px 26px;
+}
+
+/* Gradient headline text */
+.text-gradient-cyan {
+  background: linear-gradient(92deg, #7dd3fc 0%, #22d3ee 45%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Giant outlined numerals */
+.text-outline {
+  -webkit-text-stroke: 2px rgba(125, 211, 252, 0.25);
+  color: transparent;
+}
+
+/* Story section step dots — active state driven via JS (see Story.tsx) */
+.story-dot.is-active .story-dot-core {
+  background-color: #22d3ee;
+  transform: scale(1.4);
+}
