@@ -15,7 +15,7 @@ const sora = Sora({
 export const metadata: Metadata = {
   title: "VY Marine — Marine Engineering, Trading & Technical Services",
   description:
-    "VY Marine delivers green solutions, energy efficiency, dry docking management, ship repairs & supplies, and technical consultancy for the global maritime industry.",
+    "VY Marine provides digitalization and decarbonization support, energy saving solutions, dry dock support, technical spares and stores supply, and specialized technical services.",
 };
 
 export default function RootLayout({

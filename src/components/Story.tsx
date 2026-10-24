@@ -12,16 +12,16 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 const storyTimeline = [
   {
     kicker: 'Quality',
-    title: 'Certified Partnerships',
+    title: 'Supplier Coordination',
     description:
-      'Our partnerships with ISO-certified manufacturers guarantee that every product meets international standards of excellence.',
+      'We can help identify and coordinate suppliers based on the requirements of each assignment.',
     icon: BadgeCheck,
   },
   {
     kicker: 'Transparency',
     title: 'Project Reporting',
     description:
-      "With transparent, milestone-based project tracking, you're always informed at every step of the journey.",
+      'We aim to keep communication clear and aligned with the agreed project scope.',
     icon: BarChart3,
   },
   {
@@ -33,16 +33,16 @@ const storyTimeline = [
   },
   {
     kicker: 'Efficiency',
-    title: 'Rapid Response',
+    title: 'Responsive Support',
     description:
-      'We move fast — with a typical 72-hour lead time to shortlist qualified vendors for your unique needs.',
+      'We review enquiries and discuss practical next steps based on the request and availability.',
     icon: Zap,
   },
   {
     kicker: 'Reliability',
-    title: 'On-time Delivery',
+    title: 'Project Coordination',
     description:
-      'With a 97% on-time delivery rate, we ensure your projects stay on schedule without compromise.',
+      'We coordinate with relevant parties to support project requirements and timelines.',
     icon: Timer,
   },
 ];

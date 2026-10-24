@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, Clock, ShieldCheck, MessageSquare, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
+import { Send, ShieldCheck, MessageSquare, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 
 interface QuoteFormProps {
   bgColor?: string;
@@ -70,14 +70,13 @@ export default function QuoteForm({
                 {title}
               </h2>
               <p className="text-sm text-white/60 leading-relaxed mb-10">
-                Send us your RFQ, scope of work or part list — our team will come back to you with
-                a clear, structured proposal.
+                Send us your RFQ, scope of work or part list. Our team will review your enquiry
+                and discuss the appropriate next steps.
               </p>
 
               <ul className="space-y-5">
                 {[
-                  { icon: Clock, text: 'Response within 24 hours' },
-                  { icon: ShieldCheck, text: 'ISO-certified partner network' },
+                  { icon: ShieldCheck, text: 'Solutions shaped to your requirements' },
                   { icon: MessageSquare, text: 'Direct line to our engineers' },
                 ].map((item) => (
                   <li key={item.text} className="flex items-center gap-3 text-sm text-white/75">

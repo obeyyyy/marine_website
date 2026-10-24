@@ -53,7 +53,7 @@ export async function POST(request: Request) {
       from,
       to: [email],
       subject: 'We received your VY Marine enquiry',
-      text: `Hi ${firstName},\n\nThank you for contacting VY Marine. We received your enquiry and our team will respond within 24 hours.\n\nThis is an automated confirmation; please do not reply to this email.\n\nVY Marine`,
+      text: `Hi ${firstName},\n\nThank you for contacting VY Marine. We have received your enquiry and will review the details. Our team will follow up to discuss the next steps.\n\nThis is an automated confirmation; please do not reply to this email.\n\nVY Marine`,
     });
 
     if (autoReply.error) {

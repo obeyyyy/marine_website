@@ -34,8 +34,9 @@ export default function Hero() {
           ref={subheadRef}
           className="text-base sm:text-lg lg:text-xl text-white/60 max-w-2xl mb-12"
         >
-          Decarbonization, dry-docking supervision, and spares trading
-          for safer, greener, and more efficient fleets.
+          Digitalization, decarbonization, energy saving solutions, dry dock support,
+          technical spares and stores supply, and specialized technical services for safer,
+          greener and more efficient fleets.
         </p>
 
         <div ref={ctaGroupRef} className="flex flex-col sm:flex-row gap-6">

@@ -10,10 +10,10 @@ import QuoteForm from '@/components/QuoteForm';
 import PageHero from '@/components/PageHero';
 
 const metrics = [
-  { value: '5–15%', label: 'Typical fuel savings range' },
-  { value: '2–4%', label: 'From hull cleaning alone' },
-  { value: '3–8%', label: 'From engine & aux tuning' },
-  { value: '1–5%', label: 'From voyage optimisation' },
+  { value: '01', label: 'Understand vessel operations' },
+  { value: '02', label: 'Identify energy saving opportunities' },
+  { value: '03', label: 'Review practical options' },
+  { value: '04', label: 'Plan next steps together' },
 ];
 
 const capabilities = [
@@ -63,7 +63,7 @@ export default function OptimizationEnergyEfficiencyPage() {
       <PageHero
         eyebrow="Performance & fuel savings"
         title="Optimization & Energy Efficiency"
-        subtitle="From hull to propeller, from engine room to bridge, we optimise your vessels for safer, leaner and more predictable performance."
+        subtitle="We discuss practical energy saving solutions based on each vessel's operating context and project requirements."
         breadcrumb="Optimization"
         backgroundImage="/images/services-3.png"
       />
@@ -82,7 +82,7 @@ export default function OptimizationEnergyEfficiencyPage() {
               The opportunity
             </p>
             <h2 className="font-display text-3xl md:text-4xl font-bold text-white leading-tight">
-              Small changes, measurable impact
+              A practical approach to energy saving
             </h2>
           </motion.div>
 
@@ -140,12 +140,12 @@ export default function OptimizationEnergyEfficiencyPage() {
                 What we actually do on board
               </h2>
               <p className="text-white/60 leading-relaxed mb-6">
-                We combine operational data, engineering expertise and practical experience to
-                identify improvements that crews can trust and owners can measure.
+                We consider vessel operations, available information and project requirements to
+                discuss relevant energy saving opportunities.
               </p>
               <p className="text-white/60 leading-relaxed">
-                No black boxes. No generic dashboards. Just clear recommendations, validated data
-                and routines that stick.
+                Recommendations depend on the vessel, the information available and the agreed
+                scope of work.
               </p>
             </motion.div>
           </div>

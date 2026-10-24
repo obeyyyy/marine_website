@@ -13,15 +13,15 @@ const pillars = [
   {
     id: 'green-solutions',
     image: '/images/services-2.png',
-    kicker: 'Digitalization & Decarbonization',
+    kicker: 'Decarbonization & Digitalization',
     title: 'Green Solutions',
     description:
-      'Environmentally responsible upgrades, compliance strategies and lifecycle efficiency improvements — helping fleets meet IMO, EU and local emission targets without losing commercial focus.',
+      'Decarbonization and digitalization support, including guidance on practical options for greener and more efficient vessel operations.',
     points: [
-      'Emission reduction roadmaps',
-      'Alternative fuel readiness (LNG, methanol, ammonia)',
+      'Decarbonization planning support',
+      'Alternative fuel assessments',
       'Energy-saving devices & retrofits',
-      'CII, EEXI and SEEMP compliance support',
+      'Emissions and regulatory guidance',
     ],
     href: '/green-solutions',
   },
@@ -31,7 +31,7 @@ const pillars = [
     kicker: 'Performance & Fuel Savings',
     title: 'Optimization & Energy Efficiency',
     description:
-      'From hull to propeller, from engine room to bridge — we combine operational data and engineering expertise to deliver measurable fuel savings that crews can trust.',
+      'Energy saving solutions informed by vessel operations and engineering considerations, with recommendations suited to each project.',
     points: [
       'Performance diagnostics & sea trial analysis',
       'Voyage optimization support',
@@ -46,7 +46,7 @@ const pillars = [
     kicker: 'Planned & Emergency Yard Stays',
     title: 'Dry Docking Solutions & Project Management',
     description:
-      'End-to-end docking management as your on-the-ground partner — aligning yards, suppliers and service providers so your vessel returns to service safely, on time and on budget.',
+      'Dry dock support that can include scope discussions, yard coordination and communication with relevant service providers.',
     points: [
       'Scope & budget definition',
       'Yard selection & vendor coordination',
@@ -61,12 +61,12 @@ const pillars = [
     kicker: 'Reliable Support, In Port & At Sea',
     title: 'Ship Repairs & Supplies',
     description:
-      'Fast, coordinated responses for mechanical breakdowns, damage repairs and urgent spare part needs — supported by a trusted, ISO-certified vendor network.',
+      'Technical spares and stores supply, along with coordination support for repair and maintenance requirements.',
     points: [
       'Mechanical, hull & electrical repairs',
-      'Riding squads that travel with the vessel',
-      'Spare parts sourcing & logistics',
-      '24/7 emergency case handling',
+      'Specialized technical service coordination',
+      'Spare parts sourcing & supply',
+      'Repair and maintenance support',
     ],
     href: '/ship-repairs-supplies',
   },
@@ -76,7 +76,7 @@ const pillars = [
     kicker: 'Independent Engineering Expertise',
     title: 'Technical Consultancy',
     description:
-      'Clear, unbiased technical guidance — acting as an extension of your team with additional capacity, specialist skills and an independent point of view.',
+      'Technical guidance and specialized services shaped around the needs and scope of each assignment.',
     points: [
       'Feasibility & concept studies',
       'Design reviews & failure analysis',

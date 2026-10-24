@@ -12,31 +12,31 @@ export const SERVICE_LINKS: ServiceNavItem[] = [
   {
     href: '/green-solutions',
     label: 'Green Solutions',
-    description: 'Decarbonization & digitalization for cleaner fleets.',
+    description: 'Decarbonization, followed by digitalization, for greener fleets.',
     icon: Leaf,
   },
   {
     href: '/optimization-energy-efficiency',
     label: 'Optimization & Energy Efficiency',
-    description: 'Maximize vessel performance, minimize fuel burn.',
+    description: 'Energy saving solutions for more efficient vessel operations.',
     icon: Gauge,
   },
   {
     href: '/dry-docking-solutions',
     label: 'Dry Docking Solutions',
-    description: 'Yard selection and full project supervision.',
+    description: 'Practical support for planned dry dock projects.',
     icon: Anchor,
   },
   {
     href: '/ship-repairs-supplies',
     label: 'Ship Repairs & Supplies',
-    description: 'Repairs, emergency maintenance, spare parts.',
+    description: 'Technical spares, stores supply, and specialized services.',
     icon: Wrench,
   },
   {
     href: '/technical-consultancy',
     label: 'Technical Consultancy',
-    description: 'Expert guidance on compliance and performance.',
+    description: 'Specialized technical services and engineering guidance.',
     icon: ClipboardCheck,
   },
 ];

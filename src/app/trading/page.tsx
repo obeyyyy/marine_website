@@ -42,60 +42,60 @@ const categories = [
 const supplyServices = [
   {
     icon: Boxes,
-    title: 'Stock & Ready Inventory',
+    title: 'Marine Spares & Stores Supply',
     description:
-      'A wide range of marine spares, OEM parts and proprietary components in stock for rapid response to urgent requests.',
+      'Sourcing support for marine spares, OEM parts and components based on your requirements.',
   },
   {
     icon: Warehouse,
     title: 'Warehousing & Distribution',
     description:
-      'Strategic warehousing in key ports and regions to minimize lead times and enable faster local delivery options.',
+      'Coordination of warehousing and distribution options where available for the project.',
   },
   {
     icon: Hammer,
     title: 'Manufacturing & Repairs',
     description:
-      'Cost-effective refurbishment, reconditioning and re-manufacturing of marine components to OEM standards.',
+      'Support to discuss refurbishment, reconditioning or repair options for marine components.',
   },
   {
     icon: Anchor,
     title: 'Port Liaison',
     description:
-      'Professional representation in shipyards and ports, handling all local regulations, documentation and logistics.',
+      'Coordination support with ports and yards, subject to the requirements of each project.',
   },
   {
     icon: Siren,
-    title: 'Emergency Supply',
+    title: 'Time-sensitive Supply Requests',
     description:
-      '24/7 emergency procurement and expedited delivery services to minimize vessel downtime during critical situations.',
+      'We can review time-sensitive procurement requests and discuss available sourcing and delivery options.',
   },
   {
     icon: FileCheck2,
     title: 'Compliance & Certification',
     description:
-      'Expert support with classification society documentation, inspections and certification to meet all regulatory requirements.',
+      'Assistance with relevant documentation and certification requirements can be discussed for each assignment.',
   },
 ];
 
 const strengths = [
   {
     icon: Handshake,
-    title: 'Family Values, Professional Excellence',
+    title: 'Personal, Professional Service',
     description:
-      'We combine the trust and care of a family business with the highest professional standards in marine engineering, supply and services.',
+      'We work with clients to understand the scope and discuss suitable marine engineering and supply support.',
   },
   {
     icon: Globe2,
-    title: 'Global Network',
+    title: 'Supplier Coordination',
     description:
-      'Access to an extensive network of trusted suppliers worldwide, ensuring quality and competitive pricing.',
+      'We can coordinate with suppliers relevant to the requested products and location.',
   },
   {
     icon: Award,
-    title: 'Marine Expertise',
+    title: 'Marine Technical Support',
     description:
-      'Decades of combined experience in marine engineering, procurement and logistics solutions.',
+      'Discuss your marine engineering, procurement and logistics requirements with our team.',
   },
 ];
 
@@ -105,9 +105,9 @@ export default function TradingPage() {
       <Navbar />
 
       <PageHero
-        eyebrow="Supplying excellence across oceans"
-        title="Global Marine & Industrial Solutions"
-        subtitle="VY Marine specializes in sourcing and supplying premium marine equipment, industrial materials, and general use goods. With trusted partnerships across Asia and Europe, we ensure quality, transparency and timely delivery."
+        eyebrow="Marine spares, stores and supply support"
+        title="Marine Spares & Stores Supply"
+        subtitle="We support sourcing enquiries for marine equipment, spare parts, stores and industrial supplies. Availability, scope and delivery arrangements depend on each request."
         breadcrumb="Trading"
         backgroundImage="/images/trading3.png"
       />
@@ -126,10 +126,10 @@ export default function TradingPage() {
               What we supply
             </p>
             <h2 className="font-display text-3xl md:text-5xl font-bold text-white leading-tight mb-5">
-              Reliable sourcing, trusted partnership
+              Sourcing support for your requirements
             </h2>
             <p className="text-lg text-white/60">
-              Quality products for every operation — sourced, certified and delivered on schedule.
+              Share the items and delivery requirements you are looking for, and we can discuss the available options.
             </p>
           </motion.div>
 

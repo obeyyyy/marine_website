@@ -26,7 +26,7 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Get in touch"
         title="Let's talk about your next project"
-        subtitle="Whether it's an urgent repair, a fleet-wide efficiency programme or a single RFQ — our team responds within 24 hours."
+        subtitle="Contact us to discuss energy saving solutions, dry dock support, technical spares and stores supply, or specialized technical services."
         breadcrumb="Contact"
         backgroundImage="/images/hero.png"
       />
@@ -94,7 +94,7 @@ export default function ContactPage() {
                   <div>
                     <p className="text-sm text-white/50 mb-2">Phone</p>
                     <p className="text-white">+971 4 123 4567</p>
-                    <p className="text-white/50 text-sm mt-1">Available 24/7 for emergencies</p>
+                    <p className="text-white/50 text-sm mt-1">Contact us to discuss your requirements.</p>
                   </div>
                 </div>
 
@@ -102,8 +102,7 @@ export default function ContactPage() {
                   <Clock className="h-5 w-5 text-accent-400 mt-0.5" />
                   <div>
                     <p className="text-sm text-white/50 mb-2">Response time</p>
-                    <p className="text-white">Standard enquiries within 24 hours.</p>
-                    <p className="text-white/50 text-sm mt-1">Critical spares and repairs — immediate.</p>
+                    <p className="text-white">Our team will review your enquiry and respond as soon as possible.</p>
                   </div>
                 </div>
               </div>

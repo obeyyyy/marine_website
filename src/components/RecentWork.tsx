@@ -9,7 +9,7 @@ const projects = [
     id: 1,
     title: 'Deck Winch Retrofit',
     description:
-      'Full engineering and supervision of a deck winch retrofit — from scope definition through sea trials.',
+      'Engineering and coordination support for a deck winch retrofit, scoped to the project requirements.',
     category: 'Engineering',
     icon: Cog,
   },
@@ -17,7 +17,7 @@ const projects = [
     id: 2,
     title: 'Pump & Valve Package — UAE',
     description:
-      'Sourcing, certification and delivery of a complete pump and valve package for a fleet operator in the UAE.',
+      'Sourcing support for a pump and valve package for a fleet operator in the UAE.',
     category: 'Supply',
     icon: Package,
   },
@@ -44,15 +44,15 @@ export default function RecentWork() {
         >
           <div className="max-w-xl">
             <p className="text-xs font-medium tracking-[0.2em] uppercase text-accent-400 mb-4">
-              Track record
+              Project capabilities
             </p>
             <h2 className="font-display text-3xl md:text-5xl font-bold text-white leading-tight">
-              Recent work & supply highlights
+              Areas of work & supply
             </h2>
           </div>
           <p className="text-white/55 max-w-sm">
-            A selection of recent projects showing how we deliver across engineering, supply and
-            digital enablement.
+            Examples of the engineering, supply and digital support areas we can discuss for
+            individual project requirements.
           </p>
         </motion.div>
 

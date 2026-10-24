@@ -26,13 +26,13 @@ const services = [
     icon: Users,
     title: 'Riding Squads',
     description:
-      'Multi-discipline teams that can travel with the vessel to minimise off-hire time.',
+      'Specialized technical services and onboard support can be discussed for each assignment.',
   },
   {
     icon: Package,
     title: 'Spare Parts & Consumables',
     description:
-      'Sourcing and logistics for genuine parts, equivalents and critical consumables.',
+      'Sourcing support for technical spares, stores and consumables.',
   },
   {
     icon: Anchor,
@@ -48,14 +48,14 @@ export default function ShipRepairsSuppliesPage() {
       <Navbar />
 
       <PageHero
-        eyebrow="Reliable support, in port & at sea"
+        eyebrow="Technical spares, stores and services"
         title="Ship Repairs & Supplies"
-        subtitle="Fast, coordinated responses for mechanical breakdowns, damage repairs and urgent spare part needs — supported by a trusted vendor network."
+        subtitle="Discuss technical spares and stores supply, repairs, and specialized technical service requirements with our team."
         breadcrumb="Ship Repairs"
         backgroundImage="/images/services-5.png"
       />
 
-      {/* 24/7 Emergency banner */}
+      {/* Contact banner */}
       <section className="relative border-b border-white/10 bg-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <motion.div
@@ -70,8 +70,8 @@ export default function ShipRepairsSuppliesPage() {
                 <PhoneCall className="h-6 w-6" />
               </div>
               <div>
-                <p className="font-display text-xl font-bold text-white">24/7 Emergency Response</p>
-                <p className="text-sm text-white/50">From first assessment through to close-out — we move fast.</p>
+                <p className="font-display text-xl font-bold text-white">Discuss your technical requirements</p>
+                <p className="text-sm text-white/50">Share the vessel, parts or service details with our team.</p>
               </div>
             </div>
             <CtaButton href="/contact" label="Contact our repairs team" variant="ghost" />
@@ -176,11 +176,11 @@ export default function ShipRepairsSuppliesPage() {
             transition={{ duration: 0.7 }}
           >
             <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-5">
-              Need immediate technical support?
+              Discuss your technical support needs
             </h2>
             <p className="text-white/55 mb-8 max-w-2xl mx-auto">
-              Share the situation, the vessel position and time constraints — we will coordinate
-              the right mix of people, parts and partners.
+              Share the situation, vessel location and timing, and our team can discuss possible
+              support options.
             </p>
             <CtaButton href="/contact" label="Contact our repairs team" variant="ghost" />
           </motion.div>
