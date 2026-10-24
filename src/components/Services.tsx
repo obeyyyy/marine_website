@@ -46,21 +46,21 @@ export default function Services() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 24, filter: 'blur(12px)' }}
+          whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
           viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-2xl mb-16"
         >
           <p className="text-xs font-medium tracking-[0.2em] uppercase text-accent-400 mb-4">
-            What we do
+            VY Marine · Capabilities
           </p>
           <h2 className="font-display text-3xl md:text-5xl font-bold text-white leading-tight mb-5">
-            Five pillars of maritime expertise
+            Our services
           </h2>
           <p className="text-lg text-white/60">
-            Technical solutions built around safer, greener and more efficient vessel operations —
-            delivered by engineers who understand life at sea.
+            Decarbonization, digitalization, energy saving solutions, dry dock support, technical
+            spares and stores supply, and specialized technical services.
           </p>
         </motion.div>
 
@@ -69,10 +69,10 @@ export default function Services() {
           {services.map((service, index) => (
             <motion.div
               key={service.title}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 30, filter: 'blur(10px)' }}
+              whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.7, delay: (index % 3) * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.8, delay: (index % 3) * 0.1, ease: [0.16, 1, 0.3, 1] }}
               className={service.featured ? 'md:col-span-2 lg:col-span-1 lg:row-span-2' : ''}
             >
               <Link
