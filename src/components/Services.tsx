@@ -58,10 +58,6 @@ export default function Services() {
           <h2 className="font-display text-3xl md:text-5xl font-bold text-white leading-tight mb-5">
             Our services
           </h2>
-          <p className="text-lg text-white/60">
-            Decarbonization, digitalization, energy saving solutions, dry dock support, technical
-            spares and stores supply, and specialized technical services.
-          </p>
         </motion.div>
 
         {/* Clean cards */}
