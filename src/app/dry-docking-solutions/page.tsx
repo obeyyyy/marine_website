@@ -81,7 +81,7 @@ export default function DryDockingSolutionsPage() {
             className="text-white/70 text-lg max-w-2xl"
           >
             We act as your on-the-ground partner, aligning yards, suppliers and service providers
-            so your vessel returns to service safely, on time and on budget.
+            with the aim of supporting a safe and well-coordinated return to service.
           </motion.p>
         </div>
       </section>
