@@ -50,9 +50,9 @@ export default function Navbar() {
               <Image
                 src="/images/new-logo.png"
                 alt="VY Marine"
-                width={150}
+                width={200}
                 height={50}
-                className="h-9 w-auto"
+                className="h-12 w-auto"
                 priority
               />
             </motion.span>

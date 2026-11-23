@@ -7,7 +7,6 @@ import { Plus, Minus } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import CtaButton from '@/components/CtaButton';
 import Footer from '@/components/Footer';
-import QuoteForm from '@/components/QuoteForm';
 import PageHero from '@/components/PageHero';
 
 const faqs = [
@@ -35,11 +34,6 @@ const faqs = [
     question: 'Can you act as our long-term technical partner?',
     answer:
       "Many of our clients use us as Owner's Engineer across multiple projects, refits and retrofit programmes. We become an extension of your team, not a separate vendor.",
-  },
-  {
-    question: 'Do you offer training for our shore staff or crew?',
-    answer:
-      'We run workshops, produce documentation and coach your people on specific topics — building internal capability over time rather than creating dependency.',
   },
 ];
 
@@ -201,7 +195,6 @@ export default function TechnicalConsultancyPage() {
         </div>
       </section>
 
-      <QuoteForm title="Get in touch with us today" />
       <Footer />
     </main>
   );

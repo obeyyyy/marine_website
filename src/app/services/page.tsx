@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { ArrowRight, Check } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import QuoteForm from '@/components/QuoteForm';
 import PageHero from '@/components/PageHero';
 
 const pillars = [
@@ -57,7 +56,7 @@ const pillars = [
   },
   {
     id: 'ship-repairs-supplies',
-    image: '/images/services-5.png',
+    image: '/images/ship-repairs-service-crew.png',
     kicker: 'Reliable Support, In Port & At Sea',
     title: 'Ship Repairs & Supplies',
     description:
@@ -84,6 +83,21 @@ const pillars = [
       'Training & knowledge transfer',
     ],
     href: '/technical-consultancy',
+  },
+  {
+    id: 'crew-supply',
+    image: '/images/trading-marine-procurement.png',
+    kicker: 'Trained service crew',
+    title: 'Crew Supply',
+    description:
+      'Technician crews recruited and employed by VyMarine and deployed worldwide for Hatchwin’s international jobs.',
+    points: [
+      'Crew recruited and employed by VyMarine',
+      'Trained service technicians',
+      'Worldwide deployment for international jobs',
+      'For Hatchwin Marine Equipment Co., Limited',
+    ],
+    href: '/crew-supply',
   },
 ];
 
@@ -171,7 +185,6 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <QuoteForm title="Need a quote or a technical opinion?" />
       <Footer />
     </main>
   );

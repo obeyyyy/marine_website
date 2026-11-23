@@ -15,7 +15,6 @@ import {
 } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import QuoteForm from '@/components/QuoteForm';
 import PageHero from '@/components/PageHero';
 
 const categories = [
@@ -215,8 +214,8 @@ export default function TradingPage() {
               className="relative h-[400px] lg:h-[500px] border border-white/10 overflow-hidden"
             >
               <Image
-                src="/images/trading4.png"
-                alt="VY Marine operations"
+                src="/images/trading-marine-procurement.png"
+                alt="Marine procurement professional coordinating supplies at a commercial port"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -265,7 +264,6 @@ export default function TradingPage() {
         </div>
       </section>
 
-      <QuoteForm title="Need a quote on equipment or spares?" />
       <Footer />
     </main>
   );

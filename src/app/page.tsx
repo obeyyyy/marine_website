@@ -7,7 +7,6 @@ import Stats from '@/components/Stats';
 import Services from '@/components/Services';
 import Story from '@/components/Story';
 import RecentWork from '@/components/RecentWork';
-import QuoteForm from '@/components/QuoteForm';
 import Footer from '@/components/Footer';
 
 export default function Home() {
@@ -22,9 +21,8 @@ export default function Home() {
         <Hero />
         <Stats />
         <Services />
-        <Story />
         <RecentWork />
-        <QuoteForm />
+        <Story />
         <Footer />
       </div>
     </main>

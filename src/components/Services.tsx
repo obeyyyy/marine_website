@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Leaf, Gauge, Anchor, Wrench, ClipboardCheck, ArrowUpRight } from 'lucide-react';
+import { Leaf, Gauge, Anchor, Wrench, ClipboardCheck, UsersRound, ArrowUpRight } from 'lucide-react';
 
 const services = [
   {
@@ -38,6 +38,12 @@ const services = [
     description: 'Specialized technical services and engineering guidance.',
     href: '/technical-consultancy',
   },
+  {
+    icon: UsersRound,
+    title: 'Crew Supply',
+    description: 'Trained service crew for Hatchwin China international jobs.',
+    href: '/crew-supply',
+  },
 ];
 
 export default function Services() {
@@ -69,7 +75,6 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.8, delay: (index % 3) * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className={service.featured ? 'md:col-span-2 lg:col-span-1 lg:row-span-2' : ''}
             >
               <Link
                 href={service.href}

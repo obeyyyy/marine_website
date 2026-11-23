@@ -10,6 +10,7 @@ const serviceLinks = [
   { label: 'Optimization & Energy Efficiency', href: '/optimization-energy-efficiency' },
   { label: 'Dry Docking Solutions', href: '/dry-docking-solutions' },
   { label: 'Ship Repairs & Supplies', href: '/ship-repairs-supplies' },
+  { label: 'Crew Supply', href: '/crew-supply' },
   { label: 'Technical Consultancy', href: '/technical-consultancy' },
 ];
 
@@ -45,9 +46,9 @@ export default function Footer() {
               <Image
                 src="/images/new-logo.png"
                 alt="VY Marine"
-                width={170}
+                width={210}
                 height={60}
-                className="h-10 w-auto"
+                className="h-14 w-auto"
               />
             </Link>
             <p className="text-sm leading-relaxed text-white/60 max-w-sm mb-6">
@@ -123,18 +124,18 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <Phone className="h-4 w-4 mt-0.5 text-accent-400 shrink-0" />
                 <div className="space-y-1">
-                  <a href="tel:+971123456789" className="block hover:text-white transition-colors">
-                    +971 123 456 789
+                  <a href="tel:+447424475971" className="block hover:text-white transition-colors">
+                    +44 7424 475971
                   </a>
-                  <a href="tel:+911234567890" className="block hover:text-white transition-colors">
-                    +91 123 456 7890
+                  <a href="tel:+8615317223817" className="block hover:text-white transition-colors">
+                    +86 153 1722 3817
                   </a>
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <Mail className="h-4 w-4 mt-0.5 text-accent-400 shrink-0" />
-                <a href="mailto:info@vymarine.com" className="hover:text-white transition-colors">
-                  info@vymarine.com
+                <a href="mailto:admin@vymarines.com" className="hover:text-white transition-colors">
+                  admin@vymarines.com
                 </a>
               </li>
             </ul>

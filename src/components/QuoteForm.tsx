@@ -150,7 +150,7 @@ export default function QuoteForm({
                       value={formData.phone}
                       onChange={handleChange}
                       className={inputClass}
-                      placeholder="+971 ..."
+                      placeholder="+44 ..."
                     />
                   </div>
                 </div>

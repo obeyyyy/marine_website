@@ -6,7 +6,6 @@ import { Activity, Navigation, Settings, MonitorCheck, Users, RefreshCcw } from 
 import Navbar from '@/components/Navbar';
 import CtaButton from '@/components/CtaButton';
 import Footer from '@/components/Footer';
-import QuoteForm from '@/components/QuoteForm';
 import PageHero from '@/components/PageHero';
 
 const metrics = [
@@ -215,7 +214,6 @@ export default function OptimizationEnergyEfficiencyPage() {
         </div>
       </section>
 
-      <QuoteForm title="Get in touch with us today" />
       <Footer />
     </main>
   );

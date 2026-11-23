@@ -1,33 +1,28 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Cog, Package, Globe, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import CtaButton from './CtaButton';
 
-const projects = [
+const capabilities = [
   {
     id: 1,
-    title: 'Deck Winch Retrofit',
+    tag: 'CREW',
+    title: 'Trained Service Crew for Hatchwin China',
     description:
-      'Engineering and coordination support for a deck winch retrofit, scoped to the project requirements.',
-    category: 'Engineering',
-    icon: Cog,
+      'Technician crews recruited and employed by VyMarine and deployed worldwide for Hatchwin’s international jobs.',
   },
   {
     id: 2,
-    title: 'Pump & Valve Package — UAE',
-    description:
-      'Sourcing support for a pump and valve package for a fleet operator in the UAE.',
-    category: 'Supply',
-    icon: Package,
+    title: 'Coming soon',
+    description: '',
+    tag: 'Coming soon',
   },
   {
     id: 3,
-    title: 'RFQ Portal for Spares',
-    description:
-      'A digital request-for-quote portal streamlining spare part procurement across a multi-vessel fleet.',
-    category: 'E-Commerce',
-    icon: Globe,
+    title: 'Coming soon',
+    description: '',
+    tag: 'Coming soon',
   },
 ];
 
@@ -44,41 +39,42 @@ export default function RecentWork() {
         >
           <div className="max-w-xl">
             <p className="text-xs font-medium tracking-[0.2em] uppercase text-accent-400 mb-4">
-              Project capabilities
+              Current focus
             </p>
             <h2 className="font-display text-3xl md:text-5xl font-bold text-white leading-tight">
-              Areas of work & supply
+              Project capabilities
             </h2>
           </div>
           <p className="text-white/55 max-w-sm">
-            Examples of the engineering, supply and digital support areas we can discuss for
-            individual project requirements.
+            Trained service crews for Hatchwin’s international jobs.
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
+          {capabilities.map((capability, index) => (
             <motion.article
-              key={project.id}
+              key={capability.id}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.7, delay: index * 0.12, ease: [0.16, 1, 0.3, 1] }}
               className="group relative border border-white/10 bg-white/5 hover:bg-white/[0.07] transition-colors duration-300"
             >
-              {/* Visual header */}
-              <div className="relative h-40 bg-white/5 overflow-hidden flex items-center justify-center">
-                <project.icon className="h-12 w-12 text-white/60 group-hover:text-accent-400 transition-colors duration-300" />
-                <span className="absolute top-4 left-4 text-[10px] font-medium tracking-[0.15em] uppercase text-white/70 border border-white/15 px-3 py-1">
-                  {project.category}
+              <div className="p-7 md:p-8">
+                <span className="mb-5 inline-block border border-accent-400/40 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-accent-400">
+                  {capability.tag}
                 </span>
-              </div>
-
-              <div className="p-7">
-                <h3 className="font-display text-xl font-semibold text-white mb-3 group-hover:text-accent-400 transition-colors duration-300">
-                  {project.title}
+                <h3 className="font-display text-xl font-semibold text-white mb-3">
+                  {capability.title}
                 </h3>
-                <p className="text-sm leading-relaxed text-white/55">{project.description}</p>
+                {capability.description && (
+                  <p className="text-sm leading-relaxed text-white/55">{capability.description}</p>
+                )}
+                {capability.id === 1 && (
+                  <p className="mt-4 text-xs tracking-wide text-white/35">
+                    Hatchwin Marine Equipment Co., Limited
+                  </p>
+                )}
               </div>
             </motion.article>
           ))}

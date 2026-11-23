@@ -15,7 +15,7 @@ const offices = [
 ];
 
 const contacts = [
-  { label: 'All enquiries', value: 'info@vymarine.com' },
+  { label: 'All enquiries', value: 'admin@vymarines.com' },
 ];
 
 export default function ContactPage() {
@@ -93,7 +93,8 @@ export default function ContactPage() {
                   <Phone className="h-5 w-5 text-accent-400 mt-0.5" />
                   <div>
                     <p className="text-sm text-white/50 mb-2">Phone</p>
-                    <p className="text-white">+971 4 123 4567</p>
+                    <a href="tel:+447424475971" className="block text-white hover:text-accent-400 transition-colors">+44 7424 475971</a>
+                    <a href="tel:+8615317223817" className="block text-white hover:text-accent-400 transition-colors">+86 153 1722 3817</a>
                     <p className="text-white/50 text-sm mt-1">Contact us to discuss your requirements.</p>
                   </div>
                 </div>

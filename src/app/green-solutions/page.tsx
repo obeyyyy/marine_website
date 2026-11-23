@@ -6,7 +6,6 @@ import { Route, Fuel, Fan, FileCheck2, LineChart, HardHat } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import CtaButton from '@/components/CtaButton';
 import Footer from '@/components/Footer';
-import QuoteForm from '@/components/QuoteForm';
 import PageHero from '@/components/PageHero';
 
 const phases = [
@@ -44,6 +43,27 @@ const phases = [
   },
 ];
 
+const results = [
+  {
+    value: '3–5%',
+    title: 'Fuel Savings Per Vessel',
+    description:
+      'Achieved within the first voyage cycle on MV ABC through IoT sensor integration and PROPELIQ diagnostics.',
+  },
+  {
+    value: 'E → D',
+    title: 'CII Rating Recovery',
+    description:
+      'Operational quick-wins and SEEMP III planning delivered measurable CII improvement without capital expenditure.',
+  },
+  {
+    value: '6–8 hrs',
+    title: 'Superintendent Time Reclaimed',
+    description:
+      'Weekly time savings per superintendent after shifting from manual noon report review to live daily dashboards.',
+  },
+];
+
 export default function GreenSolutionsPage() {
   return (
     <main className="min-h-screen bg-navy-950 w-full">
@@ -67,20 +87,13 @@ export default function GreenSolutionsPage() {
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.7 }}
             >
-              <p className="text-xs font-medium tracking-[0.15em] uppercase text-accent-400 mb-4">
-                Decarbonisation through practical engineering
-              </p>
               <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-6 leading-tight">
-                From regulatory pressure to operational action
+                Decarbonisation with practical engineering
               </h2>
-              <p className="text-white/60 leading-relaxed mb-6">
-                We help you plan and execute green upgrades that balance regulatory compliance,
-                technical feasibility, and commercial realities — from single-vessel projects to
-                full fleet programmes.
-              </p>
-              <p className="text-white/60 leading-relaxed">
-                No silver bullets. Just structured engineering, honest assessments and a roadmap
-                your crew can actually follow.
+              <p className="text-lg leading-relaxed text-white/65">
+                Built for ship managers facing CII downgrade risk, CFOs absorbing EU ETS exposure,
+                and technical directors tired of vendor-driven advice. If your vessel must trade
+                beyond 2027, this is not optional thinking.
               </p>
             </motion.div>
 
@@ -92,14 +105,51 @@ export default function GreenSolutionsPage() {
               className="relative h-[350px] lg:h-[450px] border border-white/10 overflow-hidden"
             >
               <Image
-                src="/images/services-3.png"
-                alt="Green marine solutions"
+                src="/images/green-solutions-practical-engineering.png"
+                alt="Marine salvage and towing operation viewed from above"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy-950/50 to-transparent" />
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Proven results */}
+      <section className="relative border-b border-white/10 py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.7 }}
+            className="mb-14 text-center"
+          >
+            <h2 className="font-display text-3xl font-bold text-white md:text-4xl">Proven Results</h2>
+            <p className="mt-4 text-white/65">
+              Real outcomes from our maritime energy intelligence solutions.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+            {results.map((result, index) => (
+              <motion.article
+                key={result.title}
+                initial={{ opacity: 0, y: 28 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-50px' }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="border border-white/25 bg-white/[0.02] px-7 py-10 text-center sm:px-9"
+              >
+                <p className="mb-2 font-display text-5xl font-bold tracking-tight text-blue-500 sm:text-6xl">
+                  {result.value}
+                </p>
+                <h3 className="mb-5 text-lg font-semibold text-white">{result.title}</h3>
+                <p className="text-sm leading-relaxed text-white/65">{result.description}</p>
+              </motion.article>
+            ))}
           </div>
         </div>
       </section>
@@ -188,7 +238,6 @@ export default function GreenSolutionsPage() {
         </div>
       </section>
 
-      <QuoteForm title="Get in touch with us today" />
       <Footer />
     </main>
   );

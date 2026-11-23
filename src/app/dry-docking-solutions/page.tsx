@@ -6,7 +6,6 @@ import { ClipboardList, Handshake, Eye, Landmark, Wrench, FileBarChart } from 'l
 import Navbar from '@/components/Navbar';
 import CtaButton from '@/components/CtaButton';
 import Footer from '@/components/Footer';
-import QuoteForm from '@/components/QuoteForm';
 import PageHero from '@/components/PageHero';
 
 const steps = [
@@ -154,7 +153,6 @@ export default function DryDockingSolutionsPage() {
         </div>
       </section>
 
-      <QuoteForm title="Get in touch with us today" />
       <Footer />
     </main>
   );

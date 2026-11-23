@@ -5,7 +5,6 @@ import type { LucideIcon } from 'lucide-react';
 import CtaButton from './CtaButton';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import QuoteForm from './QuoteForm';
 import PageHero from './PageHero';
 
 export type ServiceFeature = {
@@ -110,7 +109,6 @@ export default function ServicePageTemplate({
         </div>
       </section>
 
-      <QuoteForm title="Get in touch with us today" />
       <Footer />
     </main>
   );

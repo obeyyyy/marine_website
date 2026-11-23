@@ -1,4 +1,4 @@
-import { Leaf, Gauge, Anchor, Wrench, ClipboardCheck } from 'lucide-react';
+import { Leaf, Gauge, Anchor, Wrench, ClipboardCheck, UsersRound } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
 export type ServiceNavItem = {
@@ -38,6 +38,12 @@ export const SERVICE_LINKS: ServiceNavItem[] = [
     label: 'Technical Consultancy',
     description: 'Specialized technical services and engineering guidance.',
     icon: ClipboardCheck,
+  },
+  {
+    href: '/crew-supply',
+    label: 'Crew Supply',
+    description: 'Trained service crew for Hatchwin China international jobs.',
+    icon: UsersRound,
   },
 ];
 

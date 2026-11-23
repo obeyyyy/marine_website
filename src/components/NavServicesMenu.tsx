@@ -116,26 +116,11 @@ export function NavServicesMenu({ active, isOpen, onOpenChange }: NavServicesMen
                       What we do
                     </p>
                     <h3 className="font-display text-2xl md:text-3xl font-bold text-white leading-snug mb-4">
-                      Five pillars of maritime expertise
+                      Six areas of maritime support
                     </h3>
                     <p className="text-sm text-white/55 leading-relaxed mb-9 max-w-sm">
-                      Technical solutions built around safer, greener and more efficient vessel
-                      operations — delivered by engineers who understand life at sea.
+                      Explore our marine engineering, energy saving, dry dock, supply and crew support services.
                     </p>
-                    <div className="grid grid-cols-2 gap-6 mb-9 max-w-xs">
-                      <div>
-                        <div className="font-display text-3xl font-bold text-white">97%</div>
-                        <div className="text-[11px] uppercase tracking-wider text-white/40 mt-1">
-                          On-time delivery
-                        </div>
-                      </div>
-                      <div>
-                        <div className="font-display text-3xl font-bold text-white">4</div>
-                        <div className="text-[11px] uppercase tracking-wider text-white/40 mt-1">
-                          Countries served
-                        </div>
-                      </div>
-                    </div>
                     <Link
                       href="/services"
                       onClick={() => onOpenChange(false)}

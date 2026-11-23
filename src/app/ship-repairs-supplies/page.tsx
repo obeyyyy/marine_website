@@ -6,7 +6,6 @@ import { Hammer, CircuitBoard, Users, Package, Anchor, PhoneCall } from 'lucide-
 import CtaButton from '@/components/CtaButton';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import QuoteForm from '@/components/QuoteForm';
 import PageHero from '@/components/PageHero';
 
 const services = [
@@ -187,7 +186,6 @@ export default function ShipRepairsSuppliesPage() {
         </div>
       </section>
 
-      <QuoteForm title="Get in touch with us today" />
       <Footer />
     </main>
   );
