@@ -35,7 +35,7 @@ export default function CrewSupplyPage() {
         title="Trained Service Crew for Hatchwin China"
         subtitle="Technician crews recruited and employed by VyMarine and deployed worldwide for Hatchwin’s international jobs."
         breadcrumb="Crew Supply"
-        backgroundImage="/images/trading-marine-procurement.png"
+        backgroundImage="/images/trading-marine-procurement.webp"
       />
 
       <section className="relative border-b border-white/10 py-24">

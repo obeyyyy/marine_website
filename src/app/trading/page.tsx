@@ -214,7 +214,7 @@ export default function TradingPage() {
               className="relative h-[400px] lg:h-[500px] border border-white/10 overflow-hidden"
             >
               <Image
-                src="/images/trading-marine-procurement.png"
+                src="/images/trading-marine-procurement.webp"
                 alt="Marine procurement professional coordinating supplies at a commercial port"
                 fill
                 className="object-cover"

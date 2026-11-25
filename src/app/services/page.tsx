@@ -56,7 +56,7 @@ const pillars = [
   },
   {
     id: 'ship-repairs-supplies',
-    image: '/images/ship-repairs-service-crew.png',
+    image: '/images/ship-repairs-service-crew.webp',
     kicker: 'Reliable Support, In Port & At Sea',
     title: 'Ship Repairs & Supplies',
     description:
@@ -86,7 +86,7 @@ const pillars = [
   },
   {
     id: 'crew-supply',
-    image: '/images/trading-marine-procurement.png',
+    image: '/images/trading-marine-procurement.webp',
     kicker: 'Trained service crew',
     title: 'Crew Supply',
     description:

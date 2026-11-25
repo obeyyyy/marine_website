@@ -105,7 +105,7 @@ export default function GreenSolutionsPage() {
               className="relative h-[350px] lg:h-[450px] border border-white/10 overflow-hidden"
             >
               <Image
-                src="/images/green-solutions-practical-engineering.png"
+                src="/images/green-solutions-practical-engineering.webp"
                 alt="Marine salvage and towing operation viewed from above"
                 fill
                 className="object-cover"

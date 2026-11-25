@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
+import { motion, useScroll, useMotionValueEvent, useReducedMotion } from 'framer-motion';
 
 /**
  * A fixed-position, scroll-scrubbed cinematic video that stays pinned
@@ -15,20 +15,35 @@ import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
  */
 export default function CinematicBackground() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const targetTime = useRef(0);
   const hasMetadata = useRef(false);
+  const requestedLoad = useRef(false);
+  const latestProgress = useRef(0);
+  const seekFrame = useRef<number | null>(null);
+  const shouldReduceMotion = useReducedMotion();
 
   const { scrollYProgress } = useScroll();
 
   useMotionValueEvent(scrollYProgress, 'change', (v) => {
+    latestProgress.current = v;
+    if (shouldReduceMotion || v < 0.005) return;
+
     const video = videoRef.current;
-    if (!video || !hasMetadata.current) return;
-    targetTime.current = Math.min(v, 0.999) * video.duration;
-    // Set currentTime directly — no chase, no easing.
-    // The browser decodes the nearest keyframe to this position.
-    if (Math.abs(video.currentTime - targetTime.current) > 0.02) {
-      video.currentTime = targetTime.current;
+    if (!video) return;
+
+    // Defer the large video request until the visitor starts scrolling.
+    if (!requestedLoad.current) {
+      requestedLoad.current = true;
+      video.load();
     }
+
+    if (!hasMetadata.current || seekFrame.current !== null) return;
+    seekFrame.current = requestAnimationFrame(() => {
+      seekFrame.current = null;
+      const targetTime = Math.min(latestProgress.current, 0.999) * video.duration;
+      if (Number.isFinite(targetTime) && Math.abs(video.currentTime - targetTime) > 0.02) {
+        video.currentTime = targetTime;
+      }
+    });
   });
 
   useEffect(() => {
@@ -37,16 +52,14 @@ export default function CinematicBackground() {
 
     const onLoaded = () => {
       hasMetadata.current = true;
-      // Start at first frame
-      video.currentTime = 0;
+      const targetTime = Math.min(latestProgress.current, 0.999) * video.duration;
+      if (Number.isFinite(targetTime)) video.currentTime = targetTime;
     };
     video.addEventListener('loadedmetadata', onLoaded);
 
-    // Force the video to load all frames into memory for faster seeking
-    video.load();
-
     return () => {
       video.removeEventListener('loadedmetadata', onLoaded);
+      if (seekFrame.current !== null) cancelAnimationFrame(seekFrame.current);
     };
   }, []);
 
@@ -57,7 +70,7 @@ export default function CinematicBackground() {
         ref={videoRef}
         muted
         playsInline
-        preload="auto"
+        preload="none"
         poster="/images/ship-poster.jpg"
         className="absolute inset-0 w-full h-full object-cover"
       >
