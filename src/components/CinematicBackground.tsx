@@ -71,7 +71,7 @@ export default function CinematicBackground() {
         muted
         playsInline
         preload="none"
-        poster="/images/ship-poster.jpg"
+        poster="/images/ship-scrub-poster.jpg"
         className="absolute inset-0 w-full h-full object-cover"
       >
         <source src="/videos/ship-scrub.mp4" type="video/mp4" />
